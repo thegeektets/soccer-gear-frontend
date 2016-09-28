@@ -11,7 +11,8 @@
     // map tells the System loader where to look for things
     var map = {
         'app': 'src/tmp/app',
-        'test': 'src/tmp/test'
+        'test': 'src/tmp/test',
+        'angular2-cookie': 'node_modules/angular2-cookie'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
@@ -24,6 +25,10 @@
         },
         'rxjs': {
             defaultExtension: 'js'
+        },
+        'angular2-cookie': {
+            main: 'core.js',
+            defaultExtension: 'js'
         }
     };
 
@@ -31,7 +36,8 @@
     var npmPackages = [
         '@angular',
         'rxjs',
-        'lodash'
+        'lodash',
+        'angular2-cookie'
     ];
 
     // Add package entries for packages that expose barrels using index.js

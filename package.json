@@ -1,12 +1,12 @@
 {
-  "name": "angular2-starter",
+  "name": "soccer-gear-frontend",
   "version": "1.0.0",
-  "author": "Antony Budianto",
-  "description": "Angular 2 Starter with extensible features",
+  "author": "Tunaweza",
+  "description": "Soccer gear front end app",
   "main": "src/tmp/app/main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antonybudianto/angular2-starter.git"
+    "url": "git@gitlab.tunaweza.com:tunaweza/soccer-gear-frontend.git"
   },
   "engines": {
     "node": ">=4.3",
@@ -39,7 +39,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antonybudianto/angular2-starter/issues"
+    "url": "https://gitlab.tunaweza.com/tunaweza/soccer-gear-frontend/issues"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -51,6 +51,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "@ngstarter/systemjs-extension": "1.0.0-rc.4",
+    "angular2-cookie": "^1.2.4",
     "bootstrap-sass": "^3.3.7",
     "codelyzer": "0.0.28",
     "core-js": "^2.4.1",
