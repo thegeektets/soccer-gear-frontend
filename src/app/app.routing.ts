@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeRoutes } from './home/index';
 import { TodolistRoutes } from './todolist/index';
 import { AuthRoutes } from './Auth/auth.routes';
+import {ProductRoutes} from './product/product.routes';
 
 const appRoutes: Routes = [
     ...HomeRoutes,
     ...TodolistRoutes,
-    ...AuthRoutes
+    ...AuthRoutes,
+    ...ProductRoutes
 ];
 
 export const appRoutingProviders: any[] = [

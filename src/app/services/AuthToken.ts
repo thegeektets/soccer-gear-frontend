@@ -5,7 +5,7 @@ import {CookieService} from 'angular2-cookie/core';
 export class AuthToken {
 
     constructor(private _cookieService: CookieService) {
-
+        //
     }
 
     public getToken() {

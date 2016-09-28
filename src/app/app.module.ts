@@ -12,6 +12,9 @@ import { HttpSettingsService } from './services/HttpSettingsService';
 import { SessionService } from './services/SessionService';
 import { SettingsService } from './services/SettingsService';
 import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
+import { AuthService } from './Auth/services/auth.service';
+import { AuthToken } from './services/AuthToken';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
     declarations: [
@@ -19,6 +22,7 @@ import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
     ],
     imports: [
         AuthModule,
+        ProductModule,
         NavbarModule,
         HomeModule,
         TodolistModule,
@@ -27,6 +31,8 @@ import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
     ],
     providers: [
         APP_PROVIDERS,
+        AuthService,
+        AuthToken,
         appRoutingProviders,
         HttpSettingsService,
         SessionService,

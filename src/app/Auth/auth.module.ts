@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { AuthComponent } from './components/auth.component';
-import {APP_PROVIDERS} from '../app.providers';
-import { AuthService } from './services/auth.service';
-import { AuthToken } from '../services/AuthToken';
-import { LOADING_DIRECTIVES } from '../directives/Loading/loading';
+import { APP_PROVIDERS } from '../app.providers';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingModule } from '../directives/Loading/loading.module';
 
 @NgModule({
     declarations: [
-        AuthComponent,
-        LOADING_DIRECTIVES
+        AuthComponent
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        LoadingModule
     ],
     exports: [
         AuthComponent

@@ -17,16 +17,12 @@ export class HttpSettingsService {
     }
 
     public getHeaders(): Headers {
-        let headersObj = {
-            'Content-Type': 'application/json',
-            'Authorization': ''
-        };
+        let headers: Headers = new Headers();
+        headers.append('Content-Type', 'application/json');
         let token = this._sessionService.getToken();
-        if (token != null) {
-            headersObj.Authorization = 'Token ' + token;
-        }
+        headers.append('Authorization', 'Token ' + token);
 
-        return new Headers(headersObj);
+        return headers;
     }
 
     public getUnauthorizedHeaders(): Headers {

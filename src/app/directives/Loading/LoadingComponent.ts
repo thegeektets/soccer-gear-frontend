@@ -19,7 +19,7 @@ export class LoadingComponent {
     private minHeight: number = 200;
 
     @Input()
-    private scheme: string = 'red-white';
+    private scheme: string = 'blue-white';
 
     public getMinHeight(asNumber = false): number | string {
         if (asNumber) {

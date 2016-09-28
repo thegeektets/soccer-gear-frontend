@@ -1,0 +1,11 @@
+<as-loading *ngIf="loading"></as-loading>
+
+<h1>product listing</h1>
+<div *ngIf="!loading">
+    <ul>
+        <li *ngFor="let product of productsResponse.results">
+            <a [routerLink]="['/product/' + product.id ]">{{ product.title }}</a>
+        </li>
+    </ul>
+    <pre>{{ productsResponse | json }}</pre>
+</div>
