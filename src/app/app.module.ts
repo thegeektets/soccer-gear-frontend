@@ -15,6 +15,7 @@ import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
 import { AuthService } from './Auth/services/auth.service';
 import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
+import { UserService } from './Account/services/user.service';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { ProductModule } from './product/product.module';
         AuthToken,
         appRoutingProviders,
         HttpSettingsService,
+        UserService,
         SessionService,
         SettingsService,
         ANGULAR2_COOKIE_PROVIDERS
