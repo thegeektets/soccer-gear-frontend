@@ -7,6 +7,7 @@ import { NavbarModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './Auth/auth.module';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpSettingsService } from './services/HttpSettingsService';
 import { SessionService } from './services/SessionService';
 import { SettingsService } from './services/SettingsService';
@@ -28,7 +29,8 @@ import { UserService } from './Account/services/user.service';
         NavbarModule,
         HomeModule,
         routing,
-        HttpModule
+        HttpModule,
+        BrowserModule
     ],
     providers: [
         APP_PROVIDERS,
