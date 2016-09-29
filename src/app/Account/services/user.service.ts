@@ -12,11 +12,11 @@ import {User} from '../models/user';
 
 export class UserService extends BaseService {
 
-    public _basePath = 'api-token-auth/';
+    public _basePath = 'auth/user/';
 
     constructor(public http: Http,
                 public _httpSettings: HttpSettingsService,
-                public _sesstionService: SessionService,
+                public _sessionService: SessionService,
                 private _authToken: AuthToken
     ) {
         super(http, _httpSettings);

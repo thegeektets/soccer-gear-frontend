@@ -4,14 +4,14 @@ import {Http, Response} from '@angular/http';
 import {SettingsService} from './SettingsService';
 import {AuthToken} from './AuthToken';
 import {Router} from '@angular/router';
-import {UserService} from '../Account/services/user.service';
-import {User} from '../Account/models/user';
+// import {UserService} from '../Account/services/user.service';
+// import {User} from '../Account/models/user';
 
 @Injectable()
 export class SessionService {
 
     public authStatus: EventEmitter<any> = new EventEmitter();
-    public user: User;
+    // public user: User;
 
     private _basePath = 'api-token-auth/';
     private _apiVersion = '1';
@@ -20,10 +20,10 @@ export class SessionService {
         private _http: Http,
         private _settings: SettingsService,
         private _authToken: AuthToken,
-        private _router: Router,
-        private _userService: UserService
+        private _router: Router
+        // private _userService: UserService
     ) {
-        this.authStatus.subscribe((auth) => {
+        /* this.authStatus.subscribe((auth) => {
             if (auth.authenticated === true) {
                 this._userService.get('current_user').subscribe((res) => {
                     this.user = res;
@@ -32,7 +32,7 @@ export class SessionService {
             if (auth.authenticated === false) {
                 this.user = undefined;
             }
-        });
+        }); */
     }
 
     public getToken() {

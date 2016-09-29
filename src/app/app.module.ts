@@ -15,6 +15,7 @@ import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
 import { AuthService } from './Auth/services/auth.service';
 import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
+import { AccountModule } from './Account/account.module';
 import { UserService } from './Account/services/user.service';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserService } from './Account/services/user.service';
     ],
     imports: [
         AuthModule,
+        AccountModule,
         ProductModule,
         NavbarModule,
         HomeModule,

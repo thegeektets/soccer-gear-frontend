@@ -1,36 +1,36 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../services/auth.service';
-import {AuthToken} from '../../services/AuthToken';
+import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 
 
 @Component({
-    selector: 'as-auth',
-    templateUrl: 'app/Auth/templates/auth.html',
+    selector: 'as-register',
+    templateUrl: 'app/Account/templates/register.html',
     styleUrls: [
-        'app/Auth/styles/auth.css'
+        'app/Account/styles/register.css'
     ]
 })
 
-export class AuthComponent {
+export class RegisterComponent {
+
     public password: string;
     public username: string;
+    public email: string;
     public errorMsg: string | void;
 
     private loading: boolean = false;
 
     constructor(
-        private _authService: AuthService,
-        private _authToken: AuthToken,
+        private _userService: UserService,
         private _router: Router
     ) {
         return;
     };
 
-    login() {
+    register_user() {
         this.loading = true;
         this.errorMsg = null;
-        this._authService.login(JSON.stringify({'username': this.username, 'password': this.password}))
+        this._userService.post(JSON.stringify({'username': this.username, 'password': this.password}))
             .subscribe((res) => {
                     this.loading = false;
                 },
