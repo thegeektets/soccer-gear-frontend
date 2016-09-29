@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
 import { NavbarModule } from './shared';
 import { HomeModule } from './home/home.module';
-import { TodolistModule } from './todolist/todolist.module';
 import { AuthModule } from './Auth/auth.module';
 import { HttpModule } from '@angular/http';
 import { HttpSettingsService } from './services/HttpSettingsService';
@@ -28,7 +27,6 @@ import { UserService } from './Account/services/user.service';
         ProductModule,
         NavbarModule,
         HomeModule,
-        TodolistModule,
         routing,
         HttpModule
     ],
