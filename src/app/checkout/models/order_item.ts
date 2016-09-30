@@ -1,16 +1,14 @@
 import {BaseModel} from '../../bases/models/BaseModel';
+import {Order} from './order';
+import {Product} from '../../product/models/product';
 
-export class Product extends BaseModel {
-
+export class OrderItem extends BaseModel {
     public id: number;
-    public title: string;
+    public order_id: Order[];
+    public product_id: Product[];
     public price: string;
-    public description: string;
-    public size: string;
-    public color: string;
-    public main_image: any[];
-    public images: any[];
-    public video: any[];
+    public quantity: string;
+    public user_id: number;
 
     constructor (obj: Object) {
         super();

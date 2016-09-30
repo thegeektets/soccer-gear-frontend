@@ -1,16 +1,10 @@
 import {BaseModel} from '../../bases/models/BaseModel';
 
-export class Product extends BaseModel {
+export class Payment extends BaseModel {
 
     public id: number;
-    public title: string;
-    public price: string;
-    public description: string;
-    public size: string;
-    public color: string;
-    public main_image: any[];
-    public images: any[];
-    public video: any[];
+    public mpesa_code: string;
+    public user_id: number;
 
     constructor (obj: Object) {
         super();
