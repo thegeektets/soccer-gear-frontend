@@ -11,7 +11,7 @@
                                 name="useremail"
                                 placeholder="email address"
                                 class="form-control"
-                                [(ngModel)]="useremail"
+                                [(ngModel)]="user.email"
                                 required
                         />
                     </div>
@@ -20,7 +20,7 @@
                                 name="username"
                                 placeholder="username"
                                 class="form-control"
-                                [(ngModel)]="username"
+                                [(ngModel)]="user.username"
                                 required
                         />
                     </div>
@@ -30,7 +30,7 @@
                                 type="password"
                                 placeholder="password"
                                 class="form-control"
-                                [(ngModel)]="password"
+                                [(ngModel)]="user.password"
                                 required
                         />
                     </div>
@@ -40,11 +40,11 @@
                                 type="password"
                                 placeholder="confirm password"
                                 class="form-control"
-                                [(ngModel)]="cpassword"
+                                [(ngModel)]="user.password_again"
                                 required
                         />
                     </div>
-                    <button (click)="register_user()" class="col-sm-offset-4 btn btn-primary" [disabled]="regForm.form.valid == false">Submit Information</button>
+                    <button (click)="registerUser()" class="col-sm-offset-4 btn btn-primary" >Submit Information</button>
                 </form>
             </div>
         </div>

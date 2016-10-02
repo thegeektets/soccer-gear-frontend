@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {Router} from '@angular/router';
-
+import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import { NewUser } from '../models/new-user';
 
 @Component({
     selector: 'as-register',
@@ -13,24 +13,22 @@ import {Router} from '@angular/router';
 
 export class RegisterComponent {
 
-    public password: string;
-    public username: string;
-    public email: string;
+    public user: NewUser = new NewUser({});
+
     public errorMsg: string | void;
 
     private loading: boolean = false;
 
-    constructor(
-        private _userService: UserService,
-        private _router: Router
-    ) {
+    constructor(private _userService: UserService,
+                private _router: Router) {
         return;
     };
 
-    register_user() {
+    registerUser() {
         this.loading = true;
         this.errorMsg = null;
-        this._userService.post(JSON.stringify({'username': this.username, 'password': this.password}))
+        console.log('registering');
+        this._userService.register(JSON.stringify(this.user))
             .subscribe((res) => {
                     this.loading = false;
                 },
@@ -39,10 +37,9 @@ export class RegisterComponent {
                     if (errorMsg.hasOwnProperty('non_field_errors')) {
                         this.errorMsg = errorMsg.non_field_errors;
                     }
-                    this.password = '';
+                    this.user.password = '';
                 }
             );
     }
-
 
 }
