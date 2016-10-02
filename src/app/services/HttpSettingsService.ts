@@ -20,8 +20,9 @@ export class HttpSettingsService {
         let headers: Headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let token = this._sessionService.getToken();
-        headers.append('Authorization', 'Token ' + token);
-
+        if (token !== null) {
+            headers.append('Authorization', 'Token ' + token);
+        }
         return headers;
     }
 

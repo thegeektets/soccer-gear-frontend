@@ -39,42 +39,14 @@ export class AppComponent {
         });
 
         // checks if the user is logged in
-        this._activatedRoute.url.subscribe((nextValue: UrlSegment[]) => {
-
-            if (nextValue[0].path !== 'auth/login' &&
-                nextValue[0].path !== 'auth/register' &&
-                nextValue[0].path !== 'auth/forgot-password' &&
-                nextValue[0].path !== '' &&
-                !nextValue[0].path.match(/^auth\/forgot\-password\//)
-            ) {
-                if (!this.isAuthenticated) {
-                    this._router.navigate(['/auth/login']);
-                }
-            }
-
-            this._applicationRef.tick();
-            setTimeout(() => {
-                this._applicationRef.tick();
-            }, 100);
-            setTimeout(() => {
-                this._applicationRef.tick();
-            }, 300);
-            setTimeout(() => {
-                this._applicationRef.tick();
-            }, 500);
-            setTimeout(() => {
-                this._applicationRef.tick();
-            }, 700);
-
-        });
-
 
         this._router.events.subscribe((nextValue: NavigationStart) => {
-            console.log(nextValue);
 
             if (nextValue.url !== '/auth/login' &&
                 nextValue.url !== '/auth/register' &&
                 nextValue.url !== '/auth/forgot-password' &&
+                nextValue.url !== '/products' &&
+                !nextValue.url.match(/^\/product\/.*?$/) &&
                 nextValue.url !== '/' &&
                 !nextValue.url.match(/^\/auth\/forgot\-password\//)
             ) {
