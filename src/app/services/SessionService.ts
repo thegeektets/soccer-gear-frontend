@@ -1,38 +1,27 @@
-import {Injectable, EventEmitter} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Http, Response} from '@angular/http';
-import {SettingsService} from './SettingsService';
-import {AuthToken} from './AuthToken';
-import {Router} from '@angular/router';
-// import {UserService} from '../Account/services/user.service';
-// import {User} from '../Account/models/user';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
+import { SettingsService } from './SettingsService';
+import { AuthToken } from './AuthToken';
+import { Router } from '@angular/router';
+import { User } from '../Account/models/user';
 
 @Injectable()
 export class SessionService {
 
     public authStatus: EventEmitter<any> = new EventEmitter();
-    // public user: User;
+    public user: User;
+    public userObservable: EventEmitter<any> = new EventEmitter();
 
     private _basePath = 'api-token-auth/';
     private _apiVersion = '1';
 
-    constructor(
-        private _http: Http,
-        private _settings: SettingsService,
-        private _authToken: AuthToken,
-        private _router: Router
-        // private _userService: UserService
+
+    constructor(private _http: Http,
+                private _settings: SettingsService,
+                private _authToken: AuthToken,
+                private _router: Router
     ) {
-        /* this.authStatus.subscribe((auth) => {
-            if (auth.authenticated === true) {
-                this._userService.get('current_user').subscribe((res) => {
-                    this.user = res;
-                });
-            }
-            if (auth.authenticated === false) {
-                this.user = undefined;
-            }
-        }); */
     }
 
     public getToken() {
@@ -67,7 +56,14 @@ export class SessionService {
         }
     }
 
-    private handleError (error: Response) {
+    public setUser(user: User) {
+        this.user = user;
+        if (user !== null) {
+            this.userObservable.emit(user);
+        }
+    }
+
+    private handleError(error: Response) {
         // in a real world app, we may send the error to some remote logging infrastructure
         // instead of just logging it to the console
         let toReturn;
@@ -78,7 +74,4 @@ export class SessionService {
         }
         return toReturn;
     }
-
-
-
 }

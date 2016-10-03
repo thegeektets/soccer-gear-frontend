@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { SessionService } from '../../services/SessionService';
 
 @Component({
     selector: 'as-navbar',
@@ -7,4 +8,18 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class NavbarComponent {
     @Input() brand: string;
+    @Input() isAuthenticated: boolean = false;
+    @Input() userDisplayName: string = '';
+
+    constructor(
+        private _sessionService: SessionService
+    ) {
+
+    }
+
+    logout() {
+        this._sessionService.logout();
+    }
+
+
 }

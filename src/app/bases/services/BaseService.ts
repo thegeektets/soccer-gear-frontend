@@ -28,8 +28,11 @@ export class BaseService {
     }
 
 
-    public getUrl() {
-        return this._httpSettings.getBaseUrl() + this._basePath;
+    public getUrl(path?) {
+        if (typeof path === 'undefined') {
+            path = this._basePath;
+        }
+        return this._httpSettings.getBaseUrl() + path;
     }
 
     public getList(params?: Object): Observable<any> {

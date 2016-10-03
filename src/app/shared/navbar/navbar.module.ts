@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './index';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
         NavbarComponent
     ],
     imports: [
-        RouterModule
+        RouterModule,
+        CommonModule
     ],
     exports: [
         NavbarComponent

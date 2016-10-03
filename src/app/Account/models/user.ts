@@ -39,4 +39,8 @@ export class User extends BaseModel {
         }
     }
 
+    getName() {
+        return this.first_name + ' ' + this.last_name;
+    }
+
 }

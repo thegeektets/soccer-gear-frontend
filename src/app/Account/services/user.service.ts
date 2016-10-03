@@ -13,6 +13,7 @@ import {User} from '../models/user';
 export class UserService extends BaseService {
 
     public _basePath = 'auth/user/';
+    public _registerPath = 'register/';
 
     constructor(public http: Http,
                 public _httpSettings: HttpSettingsService,
@@ -36,6 +37,19 @@ export class UserService extends BaseService {
         return new User(res.json());
     }
 
-
+    public register(data, params?): Observable<any> {
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getUnauthorizedHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl(this._registerPath), data, options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
 
 }
