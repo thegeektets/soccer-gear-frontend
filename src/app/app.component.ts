@@ -43,7 +43,7 @@ export class AppComponent {
         this._router.events.subscribe((nextValue: NavigationStart) => {
 
             if (nextValue.url !== '/auth/login' &&
-                nextValue.url !== '/auth/register' &&
+                nextValue.url !== '/account/register' &&
                 nextValue.url !== '/auth/forgot-password' &&
                 nextValue.url !== '/products' &&
                 !nextValue.url.match(/^\/product\/.*?$/) &&
