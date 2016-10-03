@@ -11,7 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpSettingsService } from './services/HttpSettingsService';
 import { SessionService } from './services/SessionService';
 import { SettingsService } from './services/SettingsService';
-import { ANGULAR2_COOKIE_PROVIDERS } from 'angular2-cookie/core';
 import { AuthService } from './Auth/services/auth.service';
 import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
@@ -40,8 +39,7 @@ import { UserService } from './Account/services/user.service';
         HttpSettingsService,
         UserService,
         SessionService,
-        SettingsService,
-        ANGULAR2_COOKIE_PROVIDERS
+        SettingsService
     ],
     bootstrap: [ AppComponent ]
 })
