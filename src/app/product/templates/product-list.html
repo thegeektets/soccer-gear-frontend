@@ -1,11 +1,35 @@
 <as-loading *ngIf="loading"></as-loading>
+<div class="panel panel-default">
+    <div class="panel-heading" >
+        <h2>product listing</h2>
+    </div>
+</div>
 
-<h1>product listing</h1>
+
 <div *ngIf="!loading">
-    <ul>
-        <li *ngFor="let product of productsResponse.results">
-            <a [routerLink]="['/product/' + product.id ]">{{ product.title }}</a>
-        </li>
-    </ul>
-    <pre>{{ productsResponse | json }}</pre>
+    <div *ngFor="let product of productsResponse.results; let i = index" class="col-sm-6 col-md-3 product" >
+        <div class="thumbnail">
+            <a [routerLink]="['/product/' + product.id]">
+                <img width="600" height="600" src="assets/images/ng2.jpg" alt="Ng2">
+            </a>
+
+            <div class="caption">
+                <span>Name: </span>
+                <a [routerLink]="['/product/' + product.id ]">{{ product.title }}</a><br>
+                    <span>Price:</span>&nbsp;&nbsp;&nbsp;{{  product.price}}<br>
+            </div>
+            <hr>
+            <div class="cart_buttons">
+                <button type="button" class="btn btn-default btn-sm">Add to Cart</button>
+
+                <a [routerLink]="['/product/' + product.id]">
+                    <button type="button" class="btn btn-default btn-sm" >View Details</button>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    <!--<pre>{{ productsResponse.results | json }}</pre>-->
+
 </div>
