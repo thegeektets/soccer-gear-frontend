@@ -15,14 +15,16 @@ interface RouteParams {
     ]
 })
 export class ProductDetailComponent implements OnInit {
-
+    attribute;
     public product: Product;
 
     private loading: boolean = false;
 
+
     constructor(
         private _productService: ProductService,
         private _activatedRoute: ActivatedRoute
+
     ) {
         this._activatedRoute.params.subscribe((res: RouteParams) => {
             if (res.hasOwnProperty('id')) {

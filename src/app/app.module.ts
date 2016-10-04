@@ -17,6 +17,7 @@ import { ProductModule } from './product/product.module';
 import { AccountModule } from './Account/account.module';
 import { UserService } from './Account/services/user.service';
 
+
 @NgModule({
     declarations: [
         AppComponent
@@ -29,7 +30,7 @@ import { UserService } from './Account/services/user.service';
         HomeModule,
         routing,
         HttpModule,
-        BrowserModule
+        BrowserModule,
     ],
     providers: [
         APP_PROVIDERS,

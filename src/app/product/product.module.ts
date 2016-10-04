@@ -5,6 +5,9 @@ import { ProductListComponent } from './components/product-list.component';
 import { LoadingModule } from '../directives/Loading/loading.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { Ng2Webstorage } from 'ng2-webstorage';
+
 
 @NgModule({
     declarations: [
@@ -14,7 +17,9 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         LoadingModule,
-        RouterModule
+        RouterModule,
+        BrowserModule,
+        Ng2Webstorage
     ],
     exports: [
         ProductDetailComponent,

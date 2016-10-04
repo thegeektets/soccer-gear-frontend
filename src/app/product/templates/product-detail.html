@@ -1,12 +1,13 @@
 <as-loading *ngIf="loading"></as-loading>
 <div class="panel panel-default">
     <div class="panel-heading" >
-        <h2>product Details</h2>
+        <h2>Product Details</h2>
     </div>
 </div>
 
 <div *ngIf="!loading">
-    <h1 class="product-title">{{ product.title }}</h1>
 
     <pre>{{ product | json }}</pre>
+
+
 </div>

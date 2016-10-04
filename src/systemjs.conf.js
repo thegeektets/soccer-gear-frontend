@@ -37,13 +37,15 @@
         '@angular',
         'rxjs',
         'lodash',
-        'angular2-cookie'
+        'angular2-cookie',
+        'ng2-webstorage'
     ];
 
     // Add package entries for packages that expose barrels using index.js
     var packageNames = [
         // App barrels
         'app/shared',
+        'ng2-webstorage',
 
         // 3rd party barrels
         'lodash'

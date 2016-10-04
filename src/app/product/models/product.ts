@@ -13,11 +13,11 @@ export class Product extends BaseModel {
     public video: any[];
 
     constructor (obj: Object) {
-        super();
-        for (let field in obj) {
-            if (obj.hasOwnProperty(field)) {
-                this[field] = obj[field];
-            }
-        }
+       super();
+       for (let field in obj) {
+           if (obj.hasOwnProperty(field)) {
+               this[field] = obj[field];
+           }
+       }
     }
 }

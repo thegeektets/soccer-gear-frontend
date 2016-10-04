@@ -1,7 +1,7 @@
 <as-loading *ngIf="loading"></as-loading>
 <div class="panel panel-default">
     <div class="panel-heading" >
-        <h2>product listing</h2>
+        <h2>Products Shop </h2>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
             </div>
             <hr>
             <div class="cart_buttons">
-                <button type="button" class="btn btn-default btn-sm">Add to Cart</button>
+                <button type="button" class="btn btn-default btn-sm" >Add to Cart</button>
 
                 <a [routerLink]="['/product/' + product.id]">
                     <button type="button" class="btn btn-default btn-sm" >View Details</button>
@@ -30,6 +30,7 @@
 
         </div>
     </div>
-    <!--<pre>{{ productsResponse.results | json }}</pre>-->
+
+    <pre>{{ productsResponse.results | json }}</pre>
 
 </div>
