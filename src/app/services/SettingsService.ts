@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
+import { ENV } from '../shared/constant/env';
 
 @Injectable()
 export class SettingsService {
 
     private devMode = true;
-    private protocol = 'http';
-    private domain = '127.0.0.1:8000';
-    private baseUrl = '/api/';
-    private apiVersion = '1';
+    private protocol = ENV.API_PROTOCOL;
+    private domain = ENV.API_DOMAIN;
+    private baseUrl = ENV.API_baseUrl;
+    private apiVersion = ENV.API_apiVersion;
 
     constructor() {
         if (!this.devMode) {
