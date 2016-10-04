@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-    //
+    // this.product = this._productService.ge
     }
 
     getProducts(id) {
