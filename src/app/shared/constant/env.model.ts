@@ -9,4 +9,5 @@
 
 export interface AppEnv {
     APP_URL?: string;
+    API_URL?: string;
 }
