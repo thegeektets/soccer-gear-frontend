@@ -1,5 +1,7 @@
 # Angular 2 Starter
 
+go to https://gear.tunaweza.com:8443/ for deployed frontend
+
 [![Build Status](https://travis-ci.org/antonybudianto/angular2-starter.svg?branch=master)](https://travis-ci.org/antonybudianto/angular2-starter)
 [![Build status](https://ci.appveyor.com/api/projects/status/d5b3a9nnxnv5bxa5/branch/master?svg=true)](https://ci.appveyor.com/project/antonybudianto/angular2-starter/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/antonybudianto/angular2-starter/badge.svg?branch=master)](https://coveralls.io/github/antonybudianto/angular2-starter?branch=master)
