@@ -19,7 +19,7 @@
         </thead>
         <tbody>
          <tr *ngFor="let item of currentCart; let i = index" class="cart_item">
-            <td>{{item.product.title}}</td>
+            <td><a [routerLink]="['/product/' + item.product.id]">{{item.product.title}}</a></td>
             <td>{{item.product.description}}</td>
             <td>{{item.quantity}}</td>
             <td>{{item.product.price}}</td>

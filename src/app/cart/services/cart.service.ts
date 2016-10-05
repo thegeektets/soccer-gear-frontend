@@ -18,13 +18,16 @@ export class CartService {
 
         if (this.fetchCart() !== null && this.fetchCart().length !== 0) {
             this.cartItems = this.fetchCart();
+            this.productExists = false;
             for (let item of this.cartItems) {
-                if (item.product.id === this._cartItem.product.id ) {
+               if (item.product.id === this._cartItem.product.id ) {
                     item.quantity++ ;
                     item.cost = (item.quantity * item.product.price);
                     this.productExists = true;
                 }
             }
+            console.log(this.productExists);
+
             if (this.productExists === false) {
                   this.cartItems.push(this._cartItem);
             }

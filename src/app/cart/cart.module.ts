@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { APP_PROVIDERS } from '../app.providers';
+import { RouterModule } from '@angular/router';
 import { CartComponent } from './components/cart.component';
 import { CommonModule } from '@angular/common';
 import { LoadingModule } from '../directives/Loading/loading.module';
@@ -10,7 +11,8 @@ import { LoadingModule } from '../directives/Loading/loading.module';
     ],
     imports: [
         CommonModule,
-        LoadingModule
+        LoadingModule,
+        RouterModule
     ],
     exports: [
         CartComponent
