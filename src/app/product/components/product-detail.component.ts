@@ -18,7 +18,7 @@ export class ProductDetailComponent implements OnInit {
     attribute;
     public product: Product;
 
-    private loading: boolean = false;
+    private loading: boolean = true;
 
 
     constructor(

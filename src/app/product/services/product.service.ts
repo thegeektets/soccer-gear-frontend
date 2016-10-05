@@ -24,7 +24,6 @@ export class ProductService extends BaseService {
         }
         return toReturn;
     }
-
     singleMap(res: Response): Product {
         return new Product(res.json());
     }
