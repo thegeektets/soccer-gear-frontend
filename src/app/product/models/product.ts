@@ -11,6 +11,7 @@ export class Product extends BaseModel {
     public main_image: any[];
     public images: any[];
     public video: any[];
+    public category: any[];
 
     constructor (obj: Object) {
        super();

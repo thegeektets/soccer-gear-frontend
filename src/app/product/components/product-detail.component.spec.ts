@@ -93,7 +93,7 @@ describe('ProductDetailComponent', () => {
         });
     }));
 
-    it('should display product title', async(() => {
+    it('should say Product Details', async(() => {
         TestBed.compileComponents().then(() => {
             let fixture: ComponentFixture<ProductDetailComponent>;
             fixture = TestBed.createComponent(ProductDetailComponent);
@@ -101,7 +101,7 @@ describe('ProductDetailComponent', () => {
             fixture.detectChanges();
 
             let compiled = fixture.debugElement.nativeElement;
-            expect(compiled.querySelector('h1.product-title').innerHTML).toMatch(fixture.componentInstance.product.title);
+            expect(compiled.querySelector('h2').innerHTML).toMatch('Product Details');
 
         });
     }));
