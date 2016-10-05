@@ -23,7 +23,6 @@ export class CartService {
                     item.quantity++ ;
                     item.cost = (item.quantity * item.product.price);
                     this.productExists = true;
-                    console.log(item);
                 }
             }
             if (this.productExists === false) {
