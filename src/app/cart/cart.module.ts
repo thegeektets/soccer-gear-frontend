@@ -6,12 +6,14 @@ import { LoadingModule } from '../directives/Loading/loading.module';
 
 @NgModule({
     declarations: [
+        CartComponent
     ],
     imports: [
         CommonModule,
         LoadingModule
     ],
     exports: [
+        CartComponent
     ],
     providers: [ APP_PROVIDERS ],
 })

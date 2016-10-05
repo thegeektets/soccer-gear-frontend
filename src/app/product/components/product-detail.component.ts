@@ -17,9 +17,7 @@ interface RouteParams {
     ]
 })
 export class ProductDetailComponent implements OnInit {
-    attribute;
     public product: Product;
-
     private loading: boolean = false;
 
 

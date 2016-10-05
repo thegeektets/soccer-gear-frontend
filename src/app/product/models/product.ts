@@ -4,7 +4,7 @@ export class Product extends BaseModel {
 
     public id: number;
     public title: string;
-    public price: string;
+    public price: number;
     public description: string;
     public size: string;
     public color: string;
