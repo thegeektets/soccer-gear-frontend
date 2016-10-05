@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
+import {Product} from '../models/product';
 import {ListResponse} from '../../bases/models/ListResponse';
+import {CartService} from '../../cart/services/cart.service';
 
 @Component({
     selector: 'as-product-detail',
@@ -10,13 +12,14 @@ import {ListResponse} from '../../bases/models/ListResponse';
     ]
 })
 export class ProductListComponent implements OnInit {
-
     public productsResponse: ListResponse;
+    public product: Product;
     private loading: boolean = true;
-
-    constructor(private _productService: ProductService) {
-        //
-    }
+    constructor (
+        private _productService: ProductService,
+        private _cart: CartService
+        ) {
+        }
 
     ngOnInit() {
         this.getProducts();
@@ -27,5 +30,8 @@ export class ProductListComponent implements OnInit {
             this.productsResponse = res;
             this.loading = false;
         });
+    }
+    addToCart(product: Product) {
+        this._cart.add(product);
     }
 }

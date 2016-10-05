@@ -20,7 +20,7 @@
             </div>
             <hr>
             <div class="cart_buttons">
-                <button type="button" class="btn btn-default btn-sm" >Add to Cart</button>
+                <button type="button" class="btn btn-default btn-sm" (click)="addToCart(product)" >Add to Cart</button>
 
                 <a [routerLink]="['/product/' + product.id]">
                     <button type="button" class="btn btn-default btn-sm" >View Details</button>
