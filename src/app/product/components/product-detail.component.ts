@@ -17,11 +17,8 @@ interface RouteParams {
     ]
 })
 export class ProductDetailComponent implements OnInit {
-    attribute;
     public product: Product;
-
     private loading: boolean = true;
-
 
     constructor(
         private _productService: ProductService,
@@ -45,5 +42,8 @@ export class ProductDetailComponent implements OnInit {
             this.product = res;
             this.loading = false;
         });
+    }
+    addToCart(product: Product) {
+        this._cart.add(product);
     }
 }
