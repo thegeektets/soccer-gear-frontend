@@ -7,7 +7,8 @@ module.exports = function(config) {
   var dependencies = [
     '@angular',
     'lodash',
-    'rxjs'
+    'rxjs',
+    'ng2-webstorage'
   ];
 
   var configuration = {

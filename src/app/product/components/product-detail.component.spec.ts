@@ -22,6 +22,8 @@ import { SettingsService } from '../../services/SettingsService';
 import { Product } from '../models/product';
 import { LoadingModule } from '../../directives/Loading/loading.module';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../../cart/services/cart.service';
+import { LocalStorageService } from 'ng2-webstorage';
 
 
 
@@ -62,7 +64,9 @@ describe('ProductDetailComponent', () => {
                 UserService,
                 SessionService,
                 SettingsService,
-                ProductService
+                ProductService,
+                CartService,
+                LocalStorageService
             ]
         });
     });
