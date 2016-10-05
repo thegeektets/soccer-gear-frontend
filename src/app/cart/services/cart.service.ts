@@ -41,13 +41,20 @@ export class CartService {
         this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
         if (this.fetchCart() !== null) {
             this.cartItems = this.fetchCart();
+            let index = 0;
             for (let item of this.cartItems) {
                 if (item.product.id === this._cartItem.product.id ) {
                     item.quantity-- ;
-                    item.cost = (item.quantity * item.product.price);
+                    console.log(item.quantity);
+                    if (item.quantity < 1 ) {
+                       this.cartItems.splice(index, 1);
+                    } else {
+                        item.cost = (item.quantity * item.product.price);
+                    }
                     this.productExists = true;
                     console.log(item);
                 }
+                index++;
             }
             if (this.productExists === false) {
                   this.cartItems.push(this._cartItem);

@@ -7,7 +7,7 @@
 
 
 <div *ngIf="!loading">
-    <div *ngFor="let product of productsResponse.results; let i = index" class="col-sm-6 col-md-3 product" >
+    <div *ngFor="let product of productsResponse.results; let i = index" class="col-sm-6 col-md-4 product" >
         <div class="thumbnail">
             <a [routerLink]="['/product/' + product.id]">
                 <img width="600" height="600" src="assets/images/ng2.jpg" alt="Ng2">
@@ -19,16 +19,16 @@
                     <span>Price:</span>&nbsp;&nbsp;&nbsp;{{  product.price}}<br>
             </div>
             <hr>
-            <div class="cart_buttons">
-                <button type="button" class="btn btn-default btn-sm" (click)="addToCart(product)" >Add to Cart</button>
-
-                <a [routerLink]="['/product/' + product.id]">
-                    <button type="button" class="btn btn-default btn-sm" >View Details</button>
-                </a>
-
+            <div class="btn-group cart_buttons">
+                  <button type="button" class="btn btn-success btn-sm" (click)="addToCart(product)" >Add to Cart</button>
+                  <a [routerLink]="['/product/' + product.id]" class="btn btn-default btn-sm" >
+                     View Details
+                  </a>
+                  <a [routerLink]="['/cart/']" class="btn btn-default btn-sm">
+                      View Cart
+                  </a>
+                </div>
             </div>
-
-        </div>
     </div>
 
 </div>

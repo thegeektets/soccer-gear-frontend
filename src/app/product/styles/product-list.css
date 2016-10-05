@@ -41,4 +41,8 @@ a {
     display: inline-block;
     padding-top: 2px;
     padding-bottom: 5px;
+    width:inherit;
+}
+.cart_buttons .btn {
+    width:110px;
 }
