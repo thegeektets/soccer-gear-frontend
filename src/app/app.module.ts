@@ -15,6 +15,7 @@ import { AuthService } from './Auth/services/auth.service';
 import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
 import { AccountModule } from './Account/account.module';
+import { CartModule } from './cart/cart.module';
 import { UserService } from './Account/services/user.service';
 
 
@@ -31,6 +32,7 @@ import { UserService } from './Account/services/user.service';
         routing,
         HttpModule,
         BrowserModule,
+        CartModule
     ],
     providers: [
         APP_PROVIDERS,

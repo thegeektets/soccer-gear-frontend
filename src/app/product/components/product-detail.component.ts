@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../cart/services/cart.service';
+
 
 interface RouteParams {
     id: string;
@@ -18,12 +20,13 @@ export class ProductDetailComponent implements OnInit {
     attribute;
     public product: Product;
 
-    private loading: boolean = false;
+    private loading: boolean = true;
 
 
     constructor(
         private _productService: ProductService,
-        private _activatedRoute: ActivatedRoute
+        private _activatedRoute: ActivatedRoute,
+        private _cart: CartService
 
     ) {
         this._activatedRoute.params.subscribe((res: RouteParams) => {
