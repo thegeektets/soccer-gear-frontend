@@ -18,7 +18,12 @@ interface RouteParams {
 })
 export class ProductDetailComponent implements OnInit {
     public product: Product;
+<<<<<<< HEAD
     private loading: boolean = false;
+=======
+
+    private loading: boolean = true;
+>>>>>>> 8542198bd5a734c06d5e8983ffbbe9ad3e644b96
 
 
     constructor(
