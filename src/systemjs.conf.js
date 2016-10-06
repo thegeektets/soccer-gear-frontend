@@ -12,6 +12,8 @@
     var map = {
         'app': 'src/tmp/app',
         'test': 'src/tmp/test',
+        'ng2-webstorage': 'node_modules/ng2-webstorage',
+        'angular2-localstorage': 'node_modules/angular2-localstorage',
         'angular2-cookie': 'node_modules/angular2-cookie'
     };
 
@@ -26,8 +28,7 @@
         'rxjs': {
             defaultExtension: 'js'
         },
-        'angular2-cookie': {
-            main: 'core.js',
+        'ng2-webstorage': {
             defaultExtension: 'js'
         }
     };
@@ -36,19 +37,19 @@
     var npmPackages = [
         '@angular',
         'rxjs',
-        'lodash',
-        'angular2-cookie',
-        'ng2-webstorage'
+        'lodash'
     ];
 
     // Add package entries for packages that expose barrels using index.js
     var packageNames = [
         // App barrels
         'app/shared',
-        'ng2-webstorage',
 
         // 3rd party barrels
-        'lodash'
+        'lodash',
+        'ng2-webstorage',
+        'angular2-localstorage',
+        'angular2-cookie'
     ];
 
     // Add package entries for angular packages
