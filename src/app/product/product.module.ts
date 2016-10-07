@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './components/product-detail.component';
 import { ProductService } from './services/product.service';
+import { CategoryService } from './services/category.service';
 import { CartService } from '../cart/services/cart.service';
 import { ProductListComponent } from './components/product-list.component';
 import { LoadingModule } from '../directives/Loading/loading.module';
@@ -28,6 +29,7 @@ import { Ng2Webstorage } from 'ng2-webstorage';
     ],
     providers: [
         ProductService,
+        CategoryService,
         CartService
     ]
 })

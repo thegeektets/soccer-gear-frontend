@@ -49,3 +49,14 @@ a {
 .shop_filters {
     padding-bottom:10px;
 }
+.product_select {
+    padding-top: 5px;
+    padding-left: 20px;
+    float: right;
+}
+select {
+    padding: 8px;
+    font-weight: 300;
+    background: #f5f5f5;
+    text-transform: capitalize;
+}
