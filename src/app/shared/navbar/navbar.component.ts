@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core';
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SessionService } from '../../services/SessionService';
 
@@ -10,11 +11,11 @@ export class NavbarComponent {
     @Input() brand: string;
     @Input() isAuthenticated: boolean = false;
     @Input() userDisplayName: string = '';
+    @Input() cartSize: string = '';
 
     constructor(
         private _sessionService: SessionService
     ) {
-
     }
 
     logout() {

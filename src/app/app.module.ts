@@ -16,6 +16,7 @@ import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
 import { AccountModule } from './Account/account.module';
 import { CartModule } from './cart/cart.module';
+import { CartService } from './cart/services/cart.service';
 import { UserService } from './Account/services/user.service';
 
 
@@ -42,6 +43,7 @@ import { UserService } from './Account/services/user.service';
         HttpSettingsService,
         UserService,
         SessionService,
+        CartService,
         SettingsService
     ],
     bootstrap: [ AppComponent ]
