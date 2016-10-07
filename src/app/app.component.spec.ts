@@ -20,6 +20,7 @@ import { AuthToken } from './services/AuthToken';
 import { HttpSettingsService } from './services/HttpSettingsService';
 import { SettingsService } from './services/SettingsService';
 import { BrowserModule } from '@angular/platform-browser';
+import { CartService } from './cart/services/cart.service';
 
 @Component({
     selector: 'as-test-cmp',
@@ -57,6 +58,7 @@ describe('AppComponent', () => {
                 HttpSettingsService,
                 UserService,
                 SessionService,
+                CartService,
                 SettingsService
             ]
         });
