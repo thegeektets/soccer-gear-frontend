@@ -13,6 +13,7 @@ import {CartService} from '../../cart/services/cart.service';
     ]
 })
 export class ProductListComponent implements OnInit {
+    public searchterm: string = '';
     public productsResponse: ListResponse;
     public categoryResponse: ListResponse;
     public product: Product;
@@ -42,5 +43,11 @@ export class ProductListComponent implements OnInit {
     }
     addToCart(product: Product) {
         this._cart.add(product);
+    }
+    search(item: string) {
+        this._productService.getList({search: item}).subscribe((res) => {
+            this.productsResponse = res;
+            this.loading = false;
+        });
     }
 }

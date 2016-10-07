@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { Ng2Webstorage } from 'ng2-webstorage';
         LoadingModule,
         RouterModule,
         BrowserModule,
-        Ng2Webstorage
+        Ng2Webstorage,
+        FormsModule
     ],
     exports: [
         ProductDetailComponent,

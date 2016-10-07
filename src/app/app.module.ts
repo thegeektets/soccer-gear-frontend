@@ -17,6 +17,7 @@ import { ProductModule } from './product/product.module';
 import { AccountModule } from './Account/account.module';
 import { CartModule } from './cart/cart.module';
 import { UserService } from './Account/services/user.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UserService } from './Account/services/user.service';
         routing,
         HttpModule,
         BrowserModule,
-        CartModule
+        CartModule,
+        FormsModule
     ],
     providers: [
         APP_PROVIDERS,
