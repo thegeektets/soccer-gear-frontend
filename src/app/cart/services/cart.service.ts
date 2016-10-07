@@ -99,7 +99,10 @@ export class CartService {
 
     public updateCartInTemplates() {
         let totalq = 0;
-        let cartitems = this.fetchCart();
+        let cartitems = [];
+        if (this.fetchCart() !== null) {
+            cartitems = this.fetchCart();
+        }
         if (cartitems.length > 0 ) {
             for (let item of cartitems) {
                 totalq += item.quantity;
