@@ -21,6 +21,7 @@ import { HttpSettingsService } from './services/HttpSettingsService';
 import { SettingsService } from './services/SettingsService';
 import { BrowserModule } from '@angular/platform-browser';
 import { CartService } from './cart/services/cart.service';
+import { LocalStorageService } from 'ng2-webstorage';
 
 @Component({
     selector: 'as-test-cmp',
@@ -59,6 +60,7 @@ describe('AppComponent', () => {
                 UserService,
                 SessionService,
                 CartService,
+                LocalStorageService,
                 SettingsService
             ]
         });
