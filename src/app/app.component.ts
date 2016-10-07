@@ -1,18 +1,19 @@
-import { Component, ApplicationRef } from '@angular/core';
+import { Component, ApplicationRef, OnInit } from '@angular/core';
 
 import { CONSTANTS } from './shared';
 import { SessionService } from './services/SessionService';
 import { Router, ActivatedRoute, UrlSegment, NavigationStart } from '@angular/router';
 import { UserService } from './Account/services/user.service';
+import { CartService } from './cart/services/cart.service';
 
 @Component({
     selector: 'as-main-app',
     templateUrl: 'app/app.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     public appBrand: string;
     public userDisplayName: string = '';
-
+    public cartSize: string = '';
     public isAuthenticated: boolean = false;
 
     constructor(
@@ -20,7 +21,8 @@ export class AppComponent {
         private _router: Router,
         private _activatedRoute: ActivatedRoute,
         private _applicationRef: ApplicationRef,
-        private _userService: UserService
+        private _userService: UserService,
+        private _cart: CartService
     ) {
         this.isAuthenticated = this._sessionService.isLoggedIn();
         this.appBrand = CONSTANTS.MAIN.APP.BRAND;
@@ -69,8 +71,14 @@ export class AppComponent {
                 this._applicationRef.tick();
             }, 700);
         });
-    }
 
+        this._cart.cartUpdated.subscribe((res) => {
+            this.cartSize = res ;
+         });
+    }
+    ngOnInit() {
+        this._cart.updateCartInTemplates();
+    }
     getUser() {
         this._userService.get('current_user').subscribe((res) => {
             this._sessionService.setUser(res);

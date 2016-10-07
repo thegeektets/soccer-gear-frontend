@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {OnInit, Injectable, EventEmitter } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {HttpSettingsService} from '../../services/HttpSettingsService';
 import {LocalStorageService} from 'ng2-webstorage';
@@ -11,7 +11,10 @@ export class CartService {
     public cartItems = [];
     public _cartItem: CartItem;
     public productExists = false;
+    public cartUpdated: EventEmitter<any> = new EventEmitter();
+
     constructor(private _storage: LocalStorageService) {}
+
 
     public add(product: Product) {
         this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
@@ -34,8 +37,8 @@ export class CartService {
         } else {
             this.cartItems.push(this._cartItem);
         }
-        console.log(this.cartItems);
         this._storage.store('Cart', this.cartItems);
+        this.updateCartInTemplates();
     }
     public remove(product: Product) {
         this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
@@ -64,6 +67,7 @@ export class CartService {
         }
 
         this._storage.store('Cart', this.cartItems);
+        this.updateCartInTemplates();
     }
     public delete(product: Product) {
         this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
@@ -86,10 +90,22 @@ export class CartService {
         }
 
         this._storage.store('Cart', this.cartItems);
+        this.updateCartInTemplates();
     }
 
     public fetchCart() {
         return this._storage.retrieve('Cart');
+    }
+
+    public updateCartInTemplates() {
+        let totalq = 0;
+        let cartitems = this.fetchCart();
+        if (cartitems.length > 0 ) {
+            for (let item of cartitems) {
+                totalq += item.quantity;
+            }
+        }
+        this.cartUpdated.emit(' Items: ' + cartitems.length + ' Quantity: ' + totalq + ' ');
     }
 
 }
