@@ -9,14 +9,45 @@
 <div *ngIf="!loading">
     <div class="shop_filters">
       <div class="row">
-        <div class="col-lg-3 pull-right">
+        <div class="col-lg-3 pull-left">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button"> Search </button>
               </span>
             </div>
-         </div>
+        </div>
+        <div class="col-lg-4 pull-right">
+            <div class="product_select">
+
+               <select>
+                  <option [value]="item">Size</option>
+                  <option [value]="item">8</option>
+                  <option [value]="item">9</option>
+                  <option [value]="item">10</option>
+                  <option [value]="item">11</option>
+                  <option [value]="item">12</option>
+                  <option [value]="item">13</option>
+                  <option [value]="item">14</option>
+                  <option [value]="item">15</option>
+                  <option [value]="item">16</option>
+                  <option [value]="item">17</option>
+                  <option [value]="item">18</option>
+                  <option [value]="item">19</option>
+                  <option [value]="item">20</option>
+               </select>
+               <select>
+                  <option [value]="item">Color</option>
+                  <option [value]="item">Red</option>
+                  <option [value]="item">Blue</option>
+                  <option [value]="item">Green</option>
+                  <option [value]="item">Silver</option>
+                  <option [value]="item">Black</option>
+                  <option [value]="item">White</option>
+                  <option [value]="item">Gray</option>
+               </select>
+            </div>
+        </div>
        </div>
     </div>
     <div *ngFor="let product of productsResponse.results; let i = index" class="col-sm-6 col-md-4 product" >
