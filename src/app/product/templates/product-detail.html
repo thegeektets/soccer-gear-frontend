@@ -13,13 +13,12 @@
         <div class="detail-wrap ">
             <div class="col-sm-6">
                 <div class="thumbnail">
-                    <img width="500" height="500" src="assets/images/ng2.jpg" alt="Ng2">
-
+                    <img [src]="product.getMainImage()" alt="Ng2" style="max-width: 500px; max-height: 500px;">
                     <hr>
                     <div class="col-sm-12 caption">
-                        <img class="caption_img" src="assets/images/ng2.jpg" alt="Ng2">
-                        <img class="caption_img" src="assets/images/ng2.jpg" alt="Ng2">
-                        <img class="caption_img" src="assets/images/ng2.jpg" alt="Ng2">
+                        <img [src]="product.getMainImage()" alt="Ng2" style="max-width: 70px; max-height: 70px;">
+                        <img [src]="product.getMainImage()" alt="Ng2" style="max-width: 70px; max-height: 70px;">
+                        <img [src]="product.getMainImage()" alt="Ng2" style="max-width: 70px; max-height: 70px;">
                     </div>
                     <div style="clear: both"></div>
                 </div>
