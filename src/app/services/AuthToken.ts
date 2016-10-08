@@ -16,6 +16,7 @@ export class AuthToken {
     }
 
     public clearToken() {
+        localStorage.removeItem('cartSession');
         return localStorage.removeItem('auth-token');
     }
 

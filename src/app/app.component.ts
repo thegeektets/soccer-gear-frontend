@@ -36,8 +36,14 @@ export class AppComponent implements OnInit {
             console.log('this.isAuthenticated', this.isAuthenticated);
             if (this.isAuthenticated) {
                 this.getUser();
+                this._cart.getList().subscribe((res) => {
+                    console.log(this.cart);
+                    this.cart = res ;
+                });
             } else {
                 this._sessionService.setUser(null);
+                this._cart.clearSession();
+                this._cart.createNewSession();
             }
         });
 
@@ -48,6 +54,7 @@ export class AppComponent implements OnInit {
             if (nextValue.url !== '/auth/login' &&
                 nextValue.url !== '/account/register' &&
                 nextValue.url !== '/auth/forgot-password' &&
+                nextValue.url !== '/cart' &&
                 nextValue.url !== '/products' &&
                 !nextValue.url.match(/^\/product\/.*?$/) &&
                 nextValue.url !== '/' &&
