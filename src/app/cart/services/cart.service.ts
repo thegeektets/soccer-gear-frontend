@@ -56,6 +56,7 @@ export class CartService extends BaseService {
         let paramName = 'session';
         params[paramName] = this.cartSession;
         let options = this.makeOptions(params);
+        console.log(this.getUrl() + 'my_cart/');
         return this.http.get(this.getUrl() + 'my_cart/', options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);

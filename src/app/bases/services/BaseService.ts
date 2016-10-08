@@ -110,7 +110,7 @@ export class BaseService {
     }
 
     public handleError (error: Response) {
-        console.error(error);
+        console.error(error.status, error.statusText, error.toString());
         let json = error.json();
         // var toReturn = 'Server error';
         let toReturn = json;
