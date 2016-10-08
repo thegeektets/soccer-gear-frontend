@@ -30,6 +30,6 @@ export class Product extends BaseModel {
         if (this.main_image === null || this.main_image === '') {
             return MAIN.APP.DEFAULT_PRODUCT_IMAGE;
         }
-        return MAIN.APP.UPLOADS_URL = this.main_image;
+        return MAIN.APP.UPLOADS_URL + this.main_image;
     }
 }
