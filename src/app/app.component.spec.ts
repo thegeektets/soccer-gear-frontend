@@ -6,7 +6,7 @@ import {
     TestBed,
     ComponentFixture
 } from '@angular/core/testing';
-import { provideRoutes, Routes, RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { provideRoutes, Routes, RouterModule } from '@angular/router';
 import { Component, ApplicationRef } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ import { HttpSettingsService } from './services/HttpSettingsService';
 import { SettingsService } from './services/SettingsService';
 import { BrowserModule } from '@angular/platform-browser';
 import { CartService } from './cart/services/cart.service';
-import { LocalStorageService } from 'ng2-webstorage';
+import { LocalStorageService } from './services/localstorage.service';
 
 @Component({
     selector: 'as-test-cmp',
@@ -60,8 +60,8 @@ describe('AppComponent', () => {
                 UserService,
                 SessionService,
                 CartService,
-                LocalStorageService,
-                SettingsService
+                SettingsService,
+                LocalStorageService
             ]
         });
     });

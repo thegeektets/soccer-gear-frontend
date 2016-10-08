@@ -6,7 +6,7 @@ import {
     TestBed,
     ComponentFixture
 } from '@angular/core/testing';
-import { provideRoutes, Routes, RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { provideRoutes, Routes, RouterModule } from '@angular/router';
 import { Component, ApplicationRef } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +23,7 @@ import { Product } from '../models/product';
 import { LoadingModule } from '../../directives/Loading/loading.module';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../../cart/services/cart.service';
-import { LocalStorageService } from 'ng2-webstorage';
+import { LocalStorageService } from '../../services/localstorage.service';
 
 
 

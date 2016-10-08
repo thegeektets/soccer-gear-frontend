@@ -2,7 +2,7 @@ import { Component, ApplicationRef, OnInit } from '@angular/core';
 
 import { CONSTANTS } from './shared';
 import { SessionService } from './services/SessionService';
-import { Router, ActivatedRoute, UrlSegment, NavigationStart } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { UserService } from './Account/services/user.service';
 import { CartService } from './cart/services/cart.service';
 

@@ -1,9 +1,7 @@
-import {OnInit, Injectable, EventEmitter } from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {HttpSettingsService} from '../../services/HttpSettingsService';
-import {LocalStorageService} from 'ng2-webstorage';
+import {Injectable, EventEmitter } from '@angular/core';
 import {Product} from '../../product/models/product';
 import {CartItem} from '../models/cart';
+import { LocalStorageService } from '../../services/localstorage.service';
 
 @Injectable()
 

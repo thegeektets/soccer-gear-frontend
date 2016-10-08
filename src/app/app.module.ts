@@ -19,6 +19,7 @@ import { CartModule } from './cart/cart.module';
 import { CartService } from './cart/services/cart.service';
 import { UserService } from './Account/services/user.service';
 import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from './services/localstorage.service';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FormsModule } from '@angular/forms';
         UserService,
         SessionService,
         CartService,
-        SettingsService
+        SettingsService,
+        LocalStorageService
     ],
     bootstrap: [ AppComponent ]
 })
