@@ -25,6 +25,7 @@ import { ProductService } from '../services/product.service';
 import { CartService } from '../../cart/services/cart.service';
 import { LocalStorageService } from '../../services/localstorage.service';
 import { FormsModule } from '@angular/forms';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 
 
 
@@ -54,11 +55,13 @@ describe('ProductDetailComponent', () => {
                 HttpModule,
                 FormsModule,
                 BrowserModule,
+                ToasterModule,
                 LoadingModule
             ],
             providers: [
                 provideRoutes(config),
                 ApplicationRef,
+                ToasterService,
                 APP_PROVIDERS,
                 AuthService,
                 AuthToken,

@@ -20,6 +20,7 @@ import { CartService } from './cart/services/cart.service';
 import { UserService } from './Account/services/user.service';
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from './services/localstorage.service';
+import {ToasterModule, ToasterService} from 'angular2-toaster/angular2-toaster';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { LocalStorageService } from './services/localstorage.service';
         HomeModule,
         routing,
         HttpModule,
+        ToasterModule,
         BrowserModule,
         CartModule,
         FormsModule
@@ -48,7 +50,8 @@ import { LocalStorageService } from './services/localstorage.service';
         SessionService,
         CartService,
         SettingsService,
-        LocalStorageService
+        LocalStorageService,
+        ToasterService
     ],
     bootstrap: [ AppComponent ]
 })

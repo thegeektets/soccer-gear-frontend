@@ -25,7 +25,8 @@
         'rxjs': {
             defaultExtension: 'js'
         },
-        'ng2-webstorage': {
+        'angular2-toaster': {
+            main: 'angular2-toaster.js',
             defaultExtension: 'js'
         }
     };
@@ -34,7 +35,8 @@
     var npmPackages = [
         '@angular',
         'rxjs',
-        'lodash'
+        'lodash',
+        'angular2-toaster'
     ];
 
     // Add package entries for packages that expose barrels using index.js

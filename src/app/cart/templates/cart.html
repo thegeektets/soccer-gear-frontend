@@ -16,7 +16,7 @@
             <div class="cart-item clearfix" *ngFor="let item of cart.items; let i = index" >
                 <div class="col-sm-8">
                     <div style="width: 100px; height: 100px; text-align: center; float: left; margin-right: 10px; margin-bottom: 10px;">
-                        <img src="/assets/images/ng2.jpg" style="max-width: 100px; max-height: 100px;" />
+                        <img [src]="item.product.getMainImage()" style="max-width: 100px; max-height: 100px;" />
                     </div>
                     <div>
                         <h4><a [routerLink]="['/product/' + item.product.id]">{{item.product.title}}</a></h4>

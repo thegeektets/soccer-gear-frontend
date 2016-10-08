@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { UserService } from './Account/services/user.service';
 import { CartService } from './cart/services/cart.service';
 import { Cart } from './cart/models/cart';
+import { ToasterConfig } from 'angular2-toaster';
 
 @Component({
     selector: 'as-main-app',
@@ -16,6 +17,13 @@ export class AppComponent implements OnInit {
     public userDisplayName: string = '';
     public cart: Cart = new Cart({});
     public isAuthenticated: boolean = false;
+    public toasterconfig: ToasterConfig =
+        new ToasterConfig({
+            showCloseButton: true,
+            tapToDismiss: true,
+            timeout: 5000,
+            positionClass: 'toast-bottom-left'
+        });
 
     constructor(
         private _sessionService: SessionService,

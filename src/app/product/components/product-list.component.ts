@@ -4,6 +4,7 @@ import {CategoryService} from '../services/category.service';
 import {Product} from '../models/product';
 import {ListResponse} from '../../bases/models/ListResponse';
 import {CartService} from '../../cart/services/cart.service';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
     selector: 'as-product-detail',
@@ -23,8 +24,9 @@ export class ProductListComponent implements OnInit {
     constructor (
         private _productService: ProductService,
         private _categoryService: CategoryService,
-        private _cart: CartService
-        ) {
+        private _cart: CartService,
+        private _toasterService: ToasterService
+    ) {
         }
 
     ngOnInit() {
@@ -48,7 +50,7 @@ export class ProductListComponent implements OnInit {
     }
     addToCart(product: Product) {
         this._cart.add(product.id, {}).subscribe((res) => {
-            //
+            this._toasterService.pop('success', 'Added To Cart', product.title);
         });
     }
     search(searchTerm: string) {

@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../cart/services/cart.service';
+import { ToasterService } from 'angular2-toaster';
 
 interface Attributes {
     size?: number;
@@ -27,7 +28,8 @@ export class ProductDetailComponent implements OnInit {
     constructor(
         private _productService: ProductService,
         private _activatedRoute: ActivatedRoute,
-        private _cart: CartService
+        private _cart: CartService,
+        private _toasterService: ToasterService
 
     ) {
         this._activatedRoute.params.subscribe((res: RouteParams) => {
@@ -49,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
     }
     addToCart(product: Product) {
         this._cart.add(product.id, this.chosen_attributes).subscribe((res) => {
-            //
+            this._toasterService.pop('success', 'Added To Cart', product.title);
         });
     }
 }
