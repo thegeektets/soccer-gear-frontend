@@ -5,6 +5,7 @@ import { SessionService } from './services/SessionService';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { UserService } from './Account/services/user.service';
 import { CartService } from './cart/services/cart.service';
+import { Cart } from './cart/models/cart';
 
 @Component({
     selector: 'as-main-app',
@@ -13,7 +14,7 @@ import { CartService } from './cart/services/cart.service';
 export class AppComponent implements OnInit {
     public appBrand: string;
     public userDisplayName: string = '';
-    public cartSize: string = '';
+    public cart: Cart = new Cart({});
     public isAuthenticated: boolean = false;
 
     constructor(
@@ -72,12 +73,15 @@ export class AppComponent implements OnInit {
             }, 700);
         });
 
-        this._cart.cartUpdated.subscribe((res) => {
-            this.cartSize = res ;
-         });
+        this._cart.getList().subscribe((res) => {
+            this.cart = res ;
+            this._cart.singleO.subscribe((res2) => {
+                this.cart = res2 ;
+            });
+        });
     }
     ngOnInit() {
-        this._cart.updateCartInTemplates();
+        //
     }
     getUser() {
         this._userService.get('current_user').subscribe((res) => {

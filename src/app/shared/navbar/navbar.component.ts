@@ -11,7 +11,7 @@ export class NavbarComponent {
     @Input() brand: string;
     @Input() isAuthenticated: boolean = false;
     @Input() userDisplayName: string = '';
-    @Input() cartSize: string = '';
+    @Input() cartTotal: number = 0;
 
     constructor(
         private _sessionService: SessionService

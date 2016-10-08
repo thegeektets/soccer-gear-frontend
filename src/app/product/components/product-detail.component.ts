@@ -4,7 +4,10 @@ import { Product } from '../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../cart/services/cart.service';
 
-
+interface Attributes {
+    size?: number;
+    color?: string;
+}
 interface RouteParams {
     id: string;
 }
@@ -18,7 +21,8 @@ interface RouteParams {
 })
 export class ProductDetailComponent implements OnInit {
     public product: Product;
-    private loading: boolean = true;
+    public loading: boolean = true;
+    public chosen_attributes: Attributes = {};
 
     constructor(
         private _productService: ProductService,
@@ -44,6 +48,8 @@ export class ProductDetailComponent implements OnInit {
         });
     }
     addToCart(product: Product) {
-        this._cart.add(product);
+        this._cart.add(product.id, this.chosen_attributes).subscribe((res) => {
+            //
+        });
     }
 }

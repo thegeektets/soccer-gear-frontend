@@ -36,10 +36,10 @@
                     <hr>
                     <h1 class="product_name">Select size and color</h1>
                     <div class="product_select">
-                        <select >
+                        <select [(ngModel)]="chosen_attributes.size">
                             <option *ngFor="let item of product.size" [value]="item">{{item}}</option>
                         </select>
-                        <select>
+                        <select [(ngModel)]="chosen_attributes.color">>
                             <option *ngFor="let item of product.color" [value]="item">{{item}}</option>
                         </select>
                     </div>

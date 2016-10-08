@@ -1,5 +1,5 @@
 <as-navbar [brand]="appBrand" [isAuthenticated]="isAuthenticated" [userDisplayName]="userDisplayName"
-[cartSize]="cartSize"></as-navbar>
-<div class="container" style="margin-top: 100px;">
+[cartTotal]="cart.total_quantity"></as-navbar>
+<div class="container-fluid" style="margin-top: 100px;">
 	<router-outlet></router-outlet>
 </div>

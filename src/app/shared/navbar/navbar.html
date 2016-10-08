@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <li><a [routerLink]="['/']">Home</a></li>
         <li><a [routerLink]="['/products']">Products</a></li>
-        <li><a [routerLink]="['/cart']">Cart ({{cartSize}})</a></li>
+        <li><a [routerLink]="['/cart']">Cart <span class="badge" *ngIf="cartTotal > 0">{{cartTotal}}</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="!isAuthenticated" [routerLink]="['/auth/login']">Login</a></li>

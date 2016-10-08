@@ -1,112 +1,104 @@
-import {Injectable, EventEmitter } from '@angular/core';
-import {Product} from '../../product/models/product';
-import {CartItem} from '../models/cart';
-import { LocalStorageService } from '../../services/localstorage.service';
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../bases/services/BaseService';
+import { Http, Response, RequestOptionsArgs, URLSearchParams } from '@angular/http';
+import { HttpSettingsService } from '../../services/HttpSettingsService';
+import { ListResponse } from '../../bases/models/ListResponse';
+import { Cart, CartItem } from '../models/cart';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 
-export class CartService {
-    public cartItems = [];
-    public _cartItem: CartItem;
-    public productExists = false;
-    public cartUpdated: EventEmitter<any> = new EventEmitter();
+export class CartService extends BaseService {
 
-    constructor(private _storage: LocalStorageService) {}
+    public _basePath = 'cart/';
 
-
-    public add(product: Product) {
-        this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
-
-        if (this.fetchCart() !== null && this.fetchCart().length !== 0) {
-            this.cartItems = this.fetchCart();
-            this.productExists = false;
-            for (let item of this.cartItems) {
-               if (item.product.id === this._cartItem.product.id ) {
-                    item.quantity++ ;
-                    item.cost = (item.quantity * item.product.price);
-                    this.productExists = true;
-                }
-            }
-            console.log(this.productExists);
-
-            if (this.productExists === false) {
-                  this.cartItems.push(this._cartItem);
-            }
-        } else {
-            this.cartItems.push(this._cartItem);
-        }
-        this._storage.store('Cart', this.cartItems);
-        this.updateCartInTemplates();
-    }
-    public remove(product: Product) {
-        this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
-        if (this.fetchCart() !== null) {
-            this.cartItems = this.fetchCart();
-            let index = 0;
-            for (let item of this.cartItems) {
-                if (item.product.id === this._cartItem.product.id ) {
-                    item.quantity-- ;
-                    console.log(item.quantity);
-                    if (item.quantity < 1 ) {
-                       this.cartItems.splice(index, 1);
-                    } else {
-                        item.cost = (item.quantity * item.product.price);
-                    }
-                    this.productExists = true;
-                    console.log(item);
-                }
-                index++;
-            }
-            if (this.productExists === false) {
-                  this.cartItems.push(this._cartItem);
-            }
-        } else {
-            this.cartItems.push(this._cartItem);
-        }
-
-        this._storage.store('Cart', this.cartItems);
-        this.updateCartInTemplates();
-    }
-    public delete(product: Product) {
-        this._cartItem = {'product': product, 'quantity': 1, 'cost': product.price};
-        if (this.fetchCart() !== null) {
-            this.cartItems = this.fetchCart();
-            let index = 0;
-            for (let item of this.cartItems) {
-                if (item.product.id === this._cartItem.product.id ) {
-                    this.cartItems.splice(index, 1);
-                    this.productExists = true;
-                    console.log(item);
-                }
-                index++;
-            }
-            if (this.productExists === false) {
-                  this.cartItems.push(this._cartItem);
-            }
-        } else {
-            this.cartItems.push(this._cartItem);
-        }
-
-        this._storage.store('Cart', this.cartItems);
-        this.updateCartInTemplates();
+    constructor(public http: Http, public _httpSettings: HttpSettingsService) {
+        super(http, _httpSettings);
     }
 
-    public fetchCart() {
-        return this._storage.retrieve('Cart');
-    }
-
-    public updateCartInTemplates() {
-        let totalq = 0;
-        let cartitems = [];
-        if (this.fetchCart() !== null) {
-            cartitems = this.fetchCart();
-        }
-        if (cartitems.length > 0 ) {
-            for (let item of cartitems) {
-                totalq += item.quantity;
+    listMap(res: Response): ListResponse {
+        let toReturn = <ListResponse>res.json();
+        for (let num in toReturn.results) {
+            if (toReturn.results.hasOwnProperty(num)) {
+                toReturn.results[num] = new Cart(toReturn.results[num]);
             }
         }
-        this.cartUpdated.emit(' Items: ' + cartitems.length + ' Quantity: ' + totalq + ' ');
+        return toReturn;
+    }
+    singleMap(res: Response): Cart {
+        return new Cart(res.json());
+    }
+
+    public getList(params?): Observable<any> {
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.get(this.getUrl() + 'my_cart/', options)
+            .map(res => {
+                console.log(res);
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
+
+    public add(product_id: number, chosen_attributes: any, params?) {
+        let data = {
+            product_id: product_id,
+            chosen_attributes: chosen_attributes
+        } ;
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl() + 'my_cart/add_item/', JSON.stringify(data), options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
+
+    public setQuantity(cart_item_id: number, quantity: any, params?) {
+        let data = {
+            cart_item_id: cart_item_id,
+            quantity: quantity
+        };
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl() + 'my_cart/set_quantity/', JSON.stringify(data), options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
+
+    public remove(cart_item_id: number, params?) {
+        let data = {
+            cart_item_id: cart_item_id
+        };
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl() + 'my_cart/remove_item/', JSON.stringify(data), options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
     }
 
 }

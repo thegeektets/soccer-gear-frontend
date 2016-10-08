@@ -10,3 +10,32 @@ thead {
     text-transform: capitalize;
     text-align: center;
 }
+.cart-header {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+
+.cart-item {
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+}
+.cart-footer {
+    margin-top: 10px;
+    text-align: right;
+}
+.cart-footer .subtotal {
+ }
+.cart-checkout-box {
+    border: 1px solid lightgray;
+    background-color: rgba(148, 162, 148, 0.11);
+    border-radius: 20px;
+    min-height: 100px;
+    padding: 20px;
+}
+.cart-checkout-box .subtotal {
+    font-size: 120%;
+    font-weight: bold;
+}
+.cart-checkout-box .btn-checkout {
+    margin: 10px 0;
+}

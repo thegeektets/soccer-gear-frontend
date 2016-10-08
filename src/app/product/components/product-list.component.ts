@@ -42,7 +42,9 @@ export class ProductListComponent implements OnInit {
         });
     }
     addToCart(product: Product) {
-        this._cart.add(product);
+        this._cart.add(product.id, {}).subscribe((res) => {
+            //
+        });
     }
     search(item: string) {
         this._productService.getList({search: item}).subscribe((res) => {

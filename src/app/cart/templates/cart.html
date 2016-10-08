@@ -1,37 +1,55 @@
 <as-loading *ngIf="loading"></as-loading>
-<div class="panel panel-default">
-    <div class="panel-heading" >
-        <h2>Cart</h2>
+<h2>Cart</h2>
+<div *ngIf="!loading && cart">
+    <div *ngIf="cart.items.length > 0">
+        <div class="col-sm-8 col-md-9">
+            <div class="cart-header clearfix">
+                <div class="col-sm-8">
+                </div>
+                <div class="col-sm-2 text-right">
+                    Price
+                </div>
+                <div class="col-sm-2 text-right">
+                    Quantity
+                </div>
+            </div>
+            <div class="cart-item clearfix" *ngFor="let item of cart.items; let i = index" >
+                <div class="col-sm-8">
+                    <div style="width: 100px; height: 100px; text-align: center; float: left; margin-right: 10px; margin-bottom: 10px;">
+                        <img src="/assets/images/ng2.jpg" style="max-width: 100px; max-height: 100px;" />
+                    </div>
+                    <div>
+                        <h4><a [routerLink]="['/product/' + item.product.id]">{{item.product.title}}</a></h4>
+                    </div>
+                    <div style="margin: 5px 0;">
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li *ngFor="let attr of item.getChosenAttributesAsArray()">{{ attr.field }}: <b>{{ attr.value}}</b></li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-danger btn-xs" (click)="removeItem(item)">Delete</button>
+                    </div>
+                </div>
+                <div class="col-sm-2 text-right">
+                    {{ item.product.price | currency:'KES':true:'1.2-2' }}
+                </div>
+                <div class="col-sm-2  form-group-sm text-right clearfix">
+                    <select class="form-control" style="width: auto; float: right;" [ngModel]="item.quantity" (ngModelChange)="updateQuantity($event, item)">
+                        <option *ngFor="let item of quantityOptions">{{ item }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <span class="subtotal">Subtotal ({{ cart.total_quantity }} items): {{ cart.subtotal | currency:'KES':true:'1.2-2'}}</span>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3 cart-checkout-box">
+            <span *ngIf="cart" class="subtotal">Subtotal: {{ cart.subtotal | currency:'KES':true:'1.2-2'}}</span>
+            <button class="btn btn-success btn-block btn-checkout">Checkout</button>
+        </div>
+    </div>
+    <div *ngIf="cart.items.length <= 0">
+        <h3 class="text-center">You have no items in your cart.</h3>
     </div>
 </div>
 
-<div *ngIf="!loading">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <td>Name </td>
-            <td>Description </td>
-            <td>Quantity</td>
-            <td>Cost</td>
-            <td>Total Cost</td>
-            <td>Actions</td>
-          </tr>
-        </thead>
-        <tbody>
-         <tr *ngFor="let item of currentCart; let i = index" class="cart_item">
-            <td><a [routerLink]="['/product/' + item.product.id]">{{item.product.title}}</a></td>
-            <td>{{item.product.description}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.product.price}}</td>
-            <td>{{item.cost}}</td>
-            <td>
-                <div class="btn-group" role="group" aria-label="...">
-                  <button type="button" class="btn btn-success"(click)="addToCart(item.product)" ><i class="glyphicon glyphicon-plus"></i></button>
-                  <button type="button" class="btn btn-warning"(click)="removeFromCart(item.product)" ><i class="glyphicon glyphicon-minus"></i> </button>
-                  <button type="button" class="btn btn-danger" (click)="deleteFromCart(item.product)"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </div>
-            </td>
-         </tr>
-        </tbody>
-    </table>
-</div>
