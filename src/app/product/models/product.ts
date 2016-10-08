@@ -1,4 +1,5 @@
 import {BaseModel} from '../../bases/models/BaseModel';
+import { MAIN } from '../../shared/constant/main';
 
 export class Product extends BaseModel {
 
@@ -8,7 +9,7 @@ export class Product extends BaseModel {
     public description: string;
     public attributes: any;
     public attribute_fields: any;
-    public main_image: any[];
+    public main_image: string;
     public images: any[];
     public video: any[];
     public category: any[];
@@ -20,5 +21,15 @@ export class Product extends BaseModel {
                this[field] = obj[field];
            }
        }
+    }
+
+    getMainImage() {
+        if (typeof this.main_image === 'undefined') {
+            return MAIN.APP.DEFAULT_PRODUCT_IMAGE;
+        }
+        if (this.main_image === null || this.main_image === '') {
+            return MAIN.APP.DEFAULT_PRODUCT_IMAGE;
+        }
+        return MAIN.APP.UPLOADS_URL = this.main_image;
     }
 }
