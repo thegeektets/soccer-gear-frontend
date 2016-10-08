@@ -1,3 +1,18 @@
+Until the angualr2-toaster module is fixed, when building this you ened to replace the file located at `node_modules/angular2-toaster/lib/toast.js` with:
+```
+"use strict";
+var bodyOutputType_1 = require('./bodyOutputType');
+var toaster_config_1 = require('./toaster-config');
+var Toast = (function () {
+    function Toast() {
+    }
+    return Toast;
+}());
+exports.Toast = Toast;
+//# sourceMappingURL=toast.js.map
+```
+
+
 ## Introduction
 Welcome to Soccer Gear
 This is the Angular 2.0 front-end package for Soccer Gear
