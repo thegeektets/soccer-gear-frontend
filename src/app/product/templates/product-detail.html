@@ -34,14 +34,14 @@
                     {{product.description}}
                 </div>
                     <hr>
-                    <h1 class="product_name">Select size and color</h1>
+                    <h1 class="product_name">Options</h1>
                     <div class="product_select">
-                        <select [(ngModel)]="chosen_attributes.size">
-                            <option *ngFor="let item of product.size" [value]="item">{{item}}</option>
-                        </select>
-                        <select [(ngModel)]="chosen_attributes.color">>
-                            <option *ngFor="let item of product.color" [value]="item">{{item}}</option>
-                        </select>
+                        <div *ngFor="let attr of product.attribute_fields" class="input-group" style="margin-bottom: 10px;">
+                            <label >{{ attr.field }}</label>
+                            <select [(ngModel)]="chosen_attributes[attr.field]" class="form-control">
+                                <option *ngFor="let value of product.attributes[attr.field]" [value]="value">{{value}}</option>
+                            </select>
+                        </div>
                     </div>
                 <hr>
 
@@ -58,3 +58,4 @@
     </div>
 
 </div>
+<pre>{{ product | json }}</pre>

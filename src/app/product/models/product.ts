@@ -6,8 +6,8 @@ export class Product extends BaseModel {
     public title: string;
     public price: number;
     public description: string;
-    public size: string;
-    public color: string;
+    public attributes: any;
+    public attribute_fields: any;
     public main_image: any[];
     public images: any[];
     public video: any[];
