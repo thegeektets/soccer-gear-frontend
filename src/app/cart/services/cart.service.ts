@@ -55,10 +55,7 @@ export class CartService extends BaseService {
         }
         let paramName = 'session';
         params[paramName] = this.cartSession;
-        let options: RequestOptionsArgs = {
-            headers: this._httpSettings.getHeaders(),
-            search: new URLSearchParams(this.makeStringOfParams(params))
-        };
+        let options = this.makeOptions(params);
         return this.http.get(this.getUrl() + 'my_cart/', options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);
@@ -75,10 +72,7 @@ export class CartService extends BaseService {
             chosen_attributes: chosen_attributes,
             session: this.cartSession
         } ;
-        let options: RequestOptionsArgs = {
-            headers: this._httpSettings.getHeaders(),
-            search: new URLSearchParams(this.makeStringOfParams(params))
-        };
+        let options = this.makeOptions(params);
         return this.http.post(this.getUrl() + 'my_cart/add_item/', JSON.stringify(data), options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);
@@ -95,10 +89,7 @@ export class CartService extends BaseService {
             quantity: quantity,
             session: this.cartSession
         };
-        let options: RequestOptionsArgs = {
-            headers: this._httpSettings.getHeaders(),
-            search: new URLSearchParams(this.makeStringOfParams(params))
-        };
+        let options = this.makeOptions(params);
         return this.http.post(this.getUrl() + 'my_cart/set_quantity/', JSON.stringify(data), options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);
@@ -114,10 +105,7 @@ export class CartService extends BaseService {
             cart_item_id: cart_item_id,
             session: this.cartSession
         };
-        let options: RequestOptionsArgs = {
-            headers: this._httpSettings.getHeaders(),
-            search: new URLSearchParams(this.makeStringOfParams(params))
-        };
+        let options = this.makeOptions(params);
         return this.http.post(this.getUrl() + 'my_cart/remove_item/', JSON.stringify(data), options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);
@@ -126,6 +114,14 @@ export class CartService extends BaseService {
                 return toReturn;
             })
             .catch(this.handleError);
+    }
+
+    makeOptions(params?) {
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return options;
     }
 
 }
