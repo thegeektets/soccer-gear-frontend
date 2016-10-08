@@ -59,6 +59,5 @@ export class Cart {
                 }
             }
         }
-        console.log(this);
     }
 }

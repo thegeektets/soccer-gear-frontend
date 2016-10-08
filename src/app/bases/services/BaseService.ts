@@ -71,7 +71,6 @@ export class BaseService {
             headers: this._httpSettings.getHeaders(),
             search: new URLSearchParams(this.makeStringOfParams(params))
         };
-        console.log(options.headers);
         return this.http.post(this.getUrl(), data, options)
             .map(res => {
                 let toReturn = <any>this.singleMap(res);

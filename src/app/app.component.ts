@@ -33,11 +33,9 @@ export class AppComponent implements OnInit {
         }
         this._sessionService.authStatus.subscribe((obj) => {
             this.isAuthenticated = this._sessionService.isLoggedIn();
-            console.log('this.isAuthenticated', this.isAuthenticated);
             if (this.isAuthenticated) {
                 this.getUser();
                 this._cart.getList().subscribe((res) => {
-                    console.log(this.cart);
                     this.cart = res ;
                 });
             } else {

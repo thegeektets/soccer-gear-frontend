@@ -24,6 +24,7 @@ import { LoadingModule } from '../../directives/Loading/loading.module';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../../cart/services/cart.service';
 import { LocalStorageService } from '../../services/localstorage.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -51,6 +52,7 @@ describe('ProductDetailComponent', () => {
                 RouterTestingModule,
                 RouterModule,
                 HttpModule,
+                FormsModule,
                 BrowserModule,
                 LoadingModule
             ],

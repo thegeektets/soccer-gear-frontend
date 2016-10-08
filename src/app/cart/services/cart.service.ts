@@ -61,7 +61,6 @@ export class CartService extends BaseService {
         };
         return this.http.get(this.getUrl() + 'my_cart/', options)
             .map(res => {
-                console.log(res);
                 let toReturn = <any>this.singleMap(res);
                 this.singleObject = toReturn;
                 this.singleO.emit(toReturn);

@@ -34,7 +34,6 @@ export class CartComponent implements OnInit {
     }
     raiseQuantity(product_id: number, chosen_attributes: any) {
         this._cart.add(product_id, chosen_attributes).subscribe((res) => {
-            console.log(res);
             this.cart = res;
         });
     }
