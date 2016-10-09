@@ -12,6 +12,7 @@ exports.Toast = Toast;
 //# sourceMappingURL=toast.js.map
 ```
 
+copy the env.example.json or env.dev.json file to env.json to configure the env.
 
 ## Introduction
 Welcome to Soccer Gear
