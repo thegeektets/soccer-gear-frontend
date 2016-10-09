@@ -26,6 +26,13 @@
                         <a (click)="activateCategory(cat)" >
                             {{ cat.title }}
                         </a>
+                        <ul style="list-style: none; padding-left: 15px; ">
+                            <li *ngFor="let subcat of cat.categories">
+                                <a (click)="activateCategory(cat)" >
+                                    {{ subcat.title }}
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
