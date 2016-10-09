@@ -53,3 +53,7 @@ img.caption_img {
     height: 120px;
     object-fit: cover;
 }
+*[contenteditable=true] {
+    outline: none;
+    border: none;
+}

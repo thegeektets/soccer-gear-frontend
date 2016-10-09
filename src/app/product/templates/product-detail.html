@@ -7,7 +7,9 @@
 
 
 <div *ngIf="!loading">
-
+<div class="col-sm-12">
+    <button class="btn btn-success" (click)="saveChanges()" *ngIf="showSave">Save</button>
+</div>
     <div class="detail-main">
 
         <div class="detail-wrap ">
@@ -25,11 +27,11 @@
 
             </div>
             <div class="col-sm-6">
-                <h1 class="product_name">{{product.title}}</h1>
+                <h1 class="product_name" (keyup)="productChanged($event, 'title')" [attr.contenteditable]=" _sessionService.user && ( _sessionService.user.is_superuser || _sessionService.user.is_admin)" [innerHtml]="product.title"></h1>
                 <hr>
                 <h1 class="product_name">Description</h1>
 
-                <div class="product_description" [innerHtml]="product.description"></div>
+                <div class="product_description" (keyup)="productChanged($event, 'description')" [attr.contenteditable]=" _sessionService.user && ( _sessionService.user.is_superuser || _sessionService.user.is_admin)" [innerHtml]="product.description"></div>
                 <hr>
                 <div *ngIf="product.attribute_fields.length > 0">
                     <h1 class="product_name">Options</h1>
