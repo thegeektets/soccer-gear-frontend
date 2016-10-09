@@ -13,7 +13,7 @@
         <div class="detail-wrap ">
             <div class="col-sm-6">
                 <div class="thumbnail">
-                    <img [src]="product.getMainImage()" alt="Ng2" style="max-width: 500px; max-height: 500px;">
+                    <img [src]="product.getMainImage()" style="max-width: 500px; max-height: 500px;">
                     <hr>
                     <div class="col-sm-12 caption">
                         <img [src]="product.getMainImage()" style="max-width: 70px; max-height: 70px;">
@@ -29,9 +29,7 @@
                 <hr>
                 <h1 class="product_name">Description</h1>
 
-                <div class="product_description">
-                    {{product.description}}
-                </div>
+                <div class="product_description" [innerHtml]="product.description"></div>
                 <hr>
                 <div *ngIf="product.attribute_fields.length > 0">
                     <h1 class="product_name">Options</h1>
