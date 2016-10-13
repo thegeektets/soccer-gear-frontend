@@ -1,52 +1,96 @@
-
+<as-loading *ngIf="loading"></as-loading>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h2>User Profile </h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6 col-sm-6 col-md-6">
-            <div class="well well-sm">
-                <div class="row">
+    <div *ngIf="!loading" >
+        <div class="col-sm-12">
+            <button class="btn btn-success" (click)="saveChanges()" *ngIf="showSave">Save</button>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-md-6">
+                <div class="well well-sm">
+                    <div class="row">
 
-                    <div class="col-sm-12 col-md-12">
-                        <div class="form-group center" >
-                            <h3>Personal Profile</h3><br>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group center" >
+                                <h3>Personal Profile</h3><br>
+                            </div>
+                                <div class="form-group">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Full Name: &nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'first_name')"
+                                                     [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                     [innerHtml]="userDisplayDetails.first_name">
+
+                                                </span>
+                                </div>
+
+                                <div class="form-group">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Username:&nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'username')"
+                                                   [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                   [innerHtml]="userDisplayDetails.username">
+
+                                                </span>
+                                </div>
+                                <div class="form-group">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    Email: &nbsp;&nbsp;
+                                            <span (keyup)="userChanged($event, 'email')"
+                                                 [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                 [innerHtml]="userDisplayDetails.email">
+                                            </span>
+                                </div>
+                                <div class="form-group">
+                                    <i class="glyphicon glyphicon-phone"></i>
+                                    Phone Number:&nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'mobile_number')"
+                                                       [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                       [innerHtml]="userDisplayDetails.mobile_number">
+                                                </span>
+                                </div>
+                                <div class="form-group">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    Date Joined: &nbsp;&nbsp;{{userDisplayDetails.date_joined}}
+                                </div>
+
+
                         </div>
-                            <div class="form-group">
-                                <i class="glyphicon glyphicon-user"></i>Full Name: &nbsp;&nbsp;{{userDisplayDetails.full_name}}
+
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group center" >
+                                <h3>Address</h3><br>
                             </div>
 
                             <div class="form-group">
-                                <i class="glyphicon glyphicon-user"></i>Username: &nbsp;&nbsp;{{userDisplayDetails.username}}
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                Billing_address: &nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'default_billing_address')"
+                                                        [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                        [innerHtml]="userDisplayDetails.default_billing_address">
+                                                </span>
                             </div>
                             <div class="form-group">
-                                <i class="glyphicon glyphicon-envelope"></i>Email: &nbsp;&nbsp;{{userDisplayDetails.email}}
-                            </div>
-                            <div class="form-group">
-                                <i class="glyphicon glyphicon-phone"></i> Phone Number:&nbsp;&nbsp;{{userDisplayDetails.mobile_number}}
-                            </div>
-                            <div class="form-group">
-                                <i class="glyphicon glyphicon-calendar"></i> Date Joined: &nbsp;&nbsp;{{userDisplayDetails.date_joined}}
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                Shipping_address: &nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'default_shipping_address')"
+                                                        [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
+                                                     _sessionService.user.is_admin)"
+                                                        [innerHtml]="userDisplayDetails.default_shipping_address">
+                                                </span>
                             </div>
 
 
-                    </div>
-
-                    <div class="col-sm-12 col-md-12">
-                        <div class="form-group center" >
-                            <h3>Address</h3><br>
                         </div>
-
-                        <div class="form-group">
-                            <i class="glyphicon glyphicon-envelope"></i>Billing_address: &nbsp;&nbsp;{{userDisplayDetails.default_billing_address}}
-                        </div>
-                        <div class="form-group">
-                            <i class="glyphicon glyphicon-envelope"></i>Shipping_address: &nbsp;&nbsp;{{userDisplayDetails.default_shipping_address}}
-                        </div>
-
-
                     </div>
                 </div>
             </div>

@@ -7,3 +7,7 @@ small {
     line-height: 1.428571429;
     color: #999;
 }
+*[contenteditable=true] {
+    outline: none;
+    border: none;
+}
