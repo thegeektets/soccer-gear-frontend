@@ -45,7 +45,7 @@
         </div>
         <div class="col-sm-4 col-md-3 cart-checkout-box">
             <span *ngIf="cart" class="subtotal">Subtotal: {{ cart.subtotal | currency:'KES':true:'1.2-2'}}</span>
-            <button class="btn btn-success btn-block btn-checkout">Checkout</button>
+            <a  [routerLink]="['/checkout/']" class="btn btn-success btn-block btn-checkout">Checkout</a>
         </div>
     </div>
     <div *ngIf="cart.items.length <= 0">

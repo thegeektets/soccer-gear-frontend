@@ -16,7 +16,9 @@ import { AuthToken } from './services/AuthToken';
 import { ProductModule } from './product/product.module';
 import { AccountModule } from './Account/account.module';
 import { CartModule } from './cart/cart.module';
+import { CheckoutModule } from './checkout/checkout.module';
 import { CartService } from './cart/services/cart.service';
+import { PaymentService } from './checkout/services/payment.service';
 import { UserService } from './Account/services/user.service';
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from './services/localstorage.service';
@@ -38,6 +40,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
         ToasterModule,
         BrowserModule,
         CartModule,
+        CheckoutModule,
         FormsModule
     ],
     providers: [
@@ -48,6 +51,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
         HttpSettingsService,
         UserService,
         SessionService,
+        PaymentService,
         CartService,
         SettingsService,
         LocalStorageService,
