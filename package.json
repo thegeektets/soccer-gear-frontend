@@ -95,6 +95,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.14.0",
-    "connect-history-api-fallback": "^1.2.0"
+    "connect-history-api-fallback": "^1.2.0",
+    "karma-spec-reporter": "0.0.26"
   }
 }
