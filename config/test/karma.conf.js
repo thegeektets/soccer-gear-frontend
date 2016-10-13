@@ -16,7 +16,7 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
     browsers: ['PhantomJS'],
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'coverage', 'spec'],
 
     preprocessors: {},
 
@@ -27,7 +27,14 @@ module.exports = function(config) {
         { type: 'json', subdir: 'report-json' }
       ]
     },
-
+    specReporter: {
+      maxLogLines: 100,         // limit number of lines logged per test
+      suppressErrorSummary: false,  // do not print error summary
+      suppressFailed: false,  // do not print information about failed tests
+      suppressPassed: false,  // do not print information about passed tests
+      suppressSkipped: false,  // do not print information about skipped tests
+      showSpecTiming: false // print the time elapsed for each spec
+    },
     files: [
       'node_modules/core-js/client/shim.min.js',
       'node_modules/zone.js/dist/zone.js',

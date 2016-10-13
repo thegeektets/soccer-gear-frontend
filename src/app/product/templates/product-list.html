@@ -22,7 +22,7 @@
                         </a>
                         <ul style="list-style: none; padding-left: 15px; ">
                             <li *ngFor="let subcat of cat.categories">
-                                <a (click)="activateCategory(cat)" >
+                                <a (click)="activateCategory(subcat)" >
                                     {{ subcat.title }}
                                 </a>
                             </li>

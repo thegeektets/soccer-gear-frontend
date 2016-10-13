@@ -13,4 +13,6 @@ export interface AppEnv {
     API_DOMAIN: string;
     API_baseUrl: string;
     API_apiVersion: string;
+    UPLOADS_URL: string;
+    DEFAULT_PRODUCT_IMAGE: string;
 }
