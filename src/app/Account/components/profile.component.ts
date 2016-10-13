@@ -1,26 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
-import { User } from '../models/user';
+import {Component, OnInit, Input} from '@angular/core';
+import {UserService} from '../services/user.service';
+import {SessionService} from '../../services/SessionService';
+import {User} from '../models/user';
 
 @Component({
-    selector: 'as-register',
+    selector: 'as-profile',
     templateUrl: 'app/Account/templates/userprofile.html',
     styleUrls: [
         'app/Account/styles/userprofile.css'
     ],
+
 })
+export class ProfileComponent implements OnInit {
+    public userDisplayDetails: any = '';
+    public isAuthenticated: boolean = false;
+    public current_user = User;
 
-export class ProfileComponent {
 
-    public user: User;
-    private loading: boolean = false;
-
-    constructor(private _userService: UserService,
-                private _router: Router
+    constructor(
+        private _userService: UserService,
+        private _sessionService: SessionService
     ) {
+        this.isAuthenticated = this._sessionService.isLoggedIn();
+        if (this.isAuthenticated) {
+            this.getUser();
+        }
+    }
 
-    };
+    ngOnInit() {
+    //
+    }
 
+    getUser() {
+        this._userService.get('current_user').subscribe((res) => {
+            this.userDisplayDetails = this._sessionService.user;
+        });
+    }
 
 }
