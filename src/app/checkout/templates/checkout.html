@@ -28,12 +28,22 @@
                         </div>
                         <button (click)="requestPayment()"  class="btn btn-success btn-block btn-checkout" [disabled]="!form.valid">Request Payment</button>
                     </form>
-                    <form class="">
+                    <form [formGroup]="transactionForm">
                          <div class="form-group">
                              Confirm Your Transaction
-                             <input type="text" placeholder="MPESA Transaction Code" class="form-control"/>
                          </div>
-                         <button class="btn btn-success btn-block btn-checkout">Request Payment</button>
+                         <div class="form-group">
+                            <input
+                                    formControlName="transaction"
+                                    name="transaction"
+                                    placeholder="transaction code"
+                                    class="form-control"
+                                    type="text"
+                                    required
+                            />
+                            <p *ngIf="errors && errors.transaction" class="alert alert-danger">{{ errors.transaction }}</p>
+                         </div>
+                         <button (click)="confirmTransaction()" class="btn btn-success btn-block btn-checkout" [disabled]="!transactionForm.valid"> Confirm Transaction </button>
                     </form>
                 </div>
                 <div class="col-sm-6 col-md-6 cart-checkout-box pull-right">

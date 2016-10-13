@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
     public loading: boolean = true;
     public quantityOptions: number[] = [];
     private form: FormGroup;
+    private transactionForm: FormGroup;
 
     constructor(
         private _cart: CartService,
@@ -41,6 +42,9 @@ export class CheckoutComponent implements OnInit {
         this.form = new FormGroup({
             mobile_number: new FormControl('', Validators.required),
         });
+        this.transactionForm = new FormGroup({
+            transaction: new FormControl('', Validators.required),
+        });
     }
     requestPayment() {
         if (this.form.valid) {
@@ -49,8 +53,26 @@ export class CheckoutComponent implements OnInit {
             let requestData = this.form.getRawValue();
             let amount = 'amount';
             requestData[amount] = Math.round(this.cart.subtotal);
-            console.log(JSON.stringify(requestData));
             this._payment.requestPayment(JSON.stringify(requestData))
+                .subscribe((res) => {
+                        console.log(res);
+                        this.loading = false;
+                    },
+                    (errors) => {
+                        this.loading = false;
+                        this.errors = errors;
+                        console.log(errors);
+                    }
+                );
+        }
+        return false;
+    }
+    confirmTransaction() {
+        if (this.transactionForm.valid) {
+            this.loading = true;
+            this.errors = undefined;
+            let requestData = this.transactionForm.getRawValue();
+            this._payment.confirmTransaction(JSON.stringify(requestData))
                 .subscribe((res) => {
                         console.log(res);
                         this.loading = false;

@@ -12,6 +12,7 @@ export class PaymentService extends BaseService {
 
     public _basePath = 'payments/';
     public _requestPath = 'checkout/request_payment/';
+    public _confirmPath = 'checkout/confirm_transaction/';
 
     constructor(public http: Http, public _httpSettings: HttpSettingsService) {
         super(http, _httpSettings);
@@ -46,4 +47,18 @@ export class PaymentService extends BaseService {
             .catch(this.handleError);
     }
 
+    public confirmTransaction(data, params?): Observable<any> {
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getUnauthorizedHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl(this._confirmPath), data, options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
 }
