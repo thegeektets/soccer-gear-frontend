@@ -74,12 +74,6 @@ export class CheckoutComponent implements OnInit {
             requestData[amount] = Math.round(this.cart.subtotal);
             this._payment.requestPayment(JSON.stringify(requestData))
                 .subscribe((res) => {
-                        console.log(res.Payment.status);
-                        if (res.payment.status === 'FAIL') {
-                            this.paymentComplete = false;
-                        } else {
-                            this.paymentComplete = true;
-                        }
                         this.loading = false;
                     },
                     (errors) => {
