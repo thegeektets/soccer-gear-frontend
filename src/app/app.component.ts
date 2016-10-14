@@ -99,7 +99,13 @@ export class AppComponent implements OnInit {
     getUser() {
         this._userService.get('current_user').subscribe((res) => {
             this._sessionService.setUser(res);
-            this.userDisplayName = this._sessionService.user.getName();
+            if ( this._sessionService.user.full_name === '') {
+                this.userDisplayName = this._sessionService.user.getName();
+            } else {
+                this.userDisplayName = this._sessionService.user.full_name;
+            }
+
+
         });
     }
 }
