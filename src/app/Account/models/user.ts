@@ -15,8 +15,8 @@ export class User extends BaseModel {
     date_joined: string | Date;
     full_name: string;
     mobile_number: string;
-    default_billing_address: number;
-    default_shipping_address: number;
+    default_billing_address: string;
+    default_shipping_address: string;
     mpesa_id: string;
     avatar: string;
     groups: any[];

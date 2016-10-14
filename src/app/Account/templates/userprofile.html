@@ -20,8 +20,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                     Full Name: &nbsp;&nbsp;
                                                 <span (keyup)="userChanged($event, 'full_name')"
-                                                     [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                     [attr.contenteditable]="true"
                                                      [innerHtml]="userDisplayDetails.full_name">
 
                                                 </span>
@@ -31,8 +30,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                     Username:&nbsp;&nbsp;
                                                 <span (keyup)="userChanged($event, 'username')"
-                                                   [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                   [attr.contenteditable]="true"
                                                    [innerHtml]="userDisplayDetails.username">
 
                                                 </span>
@@ -41,8 +39,7 @@
                                     <i class="glyphicon glyphicon-envelope"></i>
                                     Email: &nbsp;&nbsp;
                                             <span (keyup)="userChanged($event, 'email')"
-                                                 [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                 [attr.contenteditable]="true"
                                                  [innerHtml]="userDisplayDetails.email">
                                             </span>
                                 </div>
@@ -50,8 +47,7 @@
                                     <i class="glyphicon glyphicon-phone"></i>
                                     Phone Number:&nbsp;&nbsp;
                                                 <span (keyup)="userChanged($event, 'mobile_number')"
-                                                       [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                       [attr.contenteditable]="true"
                                                        [innerHtml]="userDisplayDetails.mobile_number">
                                                 </span>
                                 </div>
@@ -69,25 +65,37 @@
                             </div>
 
                             <div class="form-group">
-                                <i class="glyphicon glyphicon-envelope"></i>
-                                Billing_address: &nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-home"></i>
+                                Billing Address: &nbsp;&nbsp;
                                                 <span (keyup)="userChanged($event, 'default_billing_address')"
-                                                        [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                        [attr.contenteditable]="true"
                                                         [innerHtml]="userDisplayDetails.default_billing_address">
                                                 </span>
                             </div>
                             <div class="form-group">
-                                <i class="glyphicon glyphicon-envelope"></i>
-                                Shipping_address: &nbsp;&nbsp;
+                                <i class="glyphicon glyphicon-home"></i>
+                                Shipping Address: &nbsp;&nbsp;
                                                 <span (keyup)="userChanged($event, 'default_shipping_address')"
-                                                        [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
-                                                     _sessionService.user.is_admin)"
+                                                        [attr.contenteditable]="true"
                                                         [innerHtml]="userDisplayDetails.default_shipping_address">
                                                 </span>
                             </div>
 
 
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="form-group center" >
+                                <h3>Payments</h3><br>
+                            </div>
+
+                            <div class="form-group">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                 Mpesa Mobile Number: &nbsp;&nbsp;
+                                                <span (keyup)="userChanged($event, 'mpesa_phone_number')"
+                                                        [attr.contenteditable]="true"
+                                                        [innerHtml]="userDisplayDetails.mpesa_phone_number">
+                                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-3 pull-right">
