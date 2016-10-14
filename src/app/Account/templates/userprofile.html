@@ -19,10 +19,10 @@
                                 <div class="form-group">
                                     <i class="glyphicon glyphicon-user"></i>
                                     Full Name: &nbsp;&nbsp;
-                                                <span (keyup)="userChanged($event, 'first_name')"
+                                                <span (keyup)="userChanged($event, 'full_name')"
                                                      [attr.contenteditable]="_sessionService.user && (_sessionService.user.is_superuser ||
                                                      _sessionService.user.is_admin)"
-                                                     [innerHtml]="userDisplayDetails.first_name">
+                                                     [innerHtml]="userDisplayDetails.full_name">
 
                                                 </span>
                                 </div>

@@ -45,39 +45,30 @@ export class ProfileComponent implements OnInit {
     userChanged($event, field) {
 
         if (this._sessionService.user !== null) {
-            if (this._sessionService.user.is_admin ||
-                this._sessionService.user.is_staff ||
-                this._sessionService.user.is_superuser
-            ) {
-                this.showSave = true;
-                this.userUpdates[field] = $event.target.innerHTML;
-            }
-
+            this.showSave = true;
+            this.userUpdates[field] = $event.target.innerHTML;
         }
 
     }
 
     saveChanges() {
-        if (this._sessionService.user !== null) {
-            if (this._sessionService.user.is_admin ||
-                this._sessionService.user.is_staff ||
-                this._sessionService.user.is_superuser
-            ) {
-                this.loading = true;
-                let user = new User(this.user);
-                for (let field in this.userUpdates) {
-                    if (this.userUpdates.hasOwnProperty(field)) {
-                        user[field] = this.userUpdates[field].replace(/style=".*?"/ig, '');
-                    }
+         if (this._sessionService.user !== null) {
+            let user = this._sessionService.user;
+            for (let field in this.userUpdates) {
+                if (this.userUpdates.hasOwnProperty(field)) {
+                  user[field] = this.userUpdates[field].replace(/style=".*?"/ig, '');
                 }
-                this._userService.put(user.id, JSON.stringify(user)).subscribe((res) => {
-                    this.loading = true;
-                    this.user = res;
-                    this.showSave = false;
-                    this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
-                });
             }
-        }
+            this._userService.put(user.id, JSON.stringify(user)).subscribe((res) => {
+                this.loading = true;
+                this.user = res;
+                this.showSave = false;
+                this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
+                this.loading = false;
+            });
+
+         }
     }
+
 
 }
