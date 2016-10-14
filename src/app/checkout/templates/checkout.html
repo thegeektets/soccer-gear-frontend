@@ -14,7 +14,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
                     <form [formGroup]="form">
+
+                        <label>
                              Please Confirm your M-PESA Number
+                        </label>
                         <div class="form-group">
                             <input
                                     formControlName="mobile_number"

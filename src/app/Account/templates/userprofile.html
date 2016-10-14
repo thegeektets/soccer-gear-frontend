@@ -6,9 +6,7 @@
         </div>
     </div>
     <div *ngIf="!loading" >
-        <div class="col-sm-12">
-            <button class="btn btn-success" (click)="saveChanges()" *ngIf="showSave">Save</button>
-        </div>
+
         <div class="row">
             <div class="col-lg-6 col-sm-6 col-md-6">
                 <div class="well well-sm">
@@ -92,8 +90,14 @@
 
                         </div>
                     </div>
+                    <div class="col-sm-3 pull-right">
+                        <button class="btn btn-success btn-block" (click)="saveChanges()" *ngIf="showSave">Save</button>
+                    </div>
+                    <div style="clear: both"></div>
                 </div>
             </div>
+
         </div>
+
     </div>
 </div>
