@@ -5,7 +5,6 @@
         <div *ngIf="!loading && cart">
             <div *ngIf="cart.items.length > 0">
                 <div class="col-sm-6 col-md-6">
-
                     <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
                     <form [formGroup]="form" *ngIf="!paymentComplete">
                         <div class="panel-heading" >
@@ -44,6 +43,31 @@
                         </div>
                         <button (click)="requestPayment()"  class="btn btn-success btn-block btn-checkout" [disabled]="!form.valid">Request Payment</button>
                     </form>
+                </div>
+                <div class="col-sm-6 col-md-6 well pull-right">
+                        <div class="pull-right">
+                            <img src="assets/images/mpesa.png" alt="Ng2">
+                        </div>
+                        <ul>
+                          <li> Go to M-PESA Menu on your phone </li>
+                          <li> Select Pay Bill (may be under the Lipa Na M-Pesa) </li>
+                          <li> Enter Business Number - 961700 </li>
+                          <li> Enter Account Number - 06942 </li>
+                          <li> Enter Amount - {{ cart.subtotal | currency:'KES':true:'1.2-2'}} </li>
+                          <li> Enter your M-PESA PIN </li>
+                          <li> Send and wait for SMS receipt from LIPISHA </li>
+                        </ul>
+                </div>
+            </div>
+            <div *ngIf="cart.items.length <= 0 && !paymentComplete">
+                <h3 class="text-center">You have no items in your cart, so you cannot checkout</h3>
+            </div>
+        </div>
+        <div *ngIf="!loading && paymentComplete">
+            <div class="col-sm-6 col-md-6">
+
+                    <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
+
                     <form [formGroup]="transactionForm" *ngIf="paymentComplete">
                          <div class="form-group">
                              <h3>Confirm Transaction </h3>
@@ -62,24 +86,6 @@
                          <button (click)="confirmTransaction()" class="btn btn-success btn-block btn-checkout" [disabled]="!transactionForm.valid"> Confirm Transaction </button>
                     </form>
                 </div>
-                <div class="col-sm-6 col-md-6 well pull-right">
-                        <div class="pull-right">
-                            <img src="assets/images/mpesa.png" alt="Ng2">
-                        </div>
-                        <ul>
-                          <li> Go to M-PESA Menu on your phone </li>
-                          <li> Select Pay Bill (may be under the Lipa Na M-Pesa) </li>
-                          <li> Enter Business Number - 961700 </li>
-                          <li> Enter Account Number - 06942 </li>
-                          <li> Enter Amount - {{ cart.subtotal | currency:'KES':true:'1.2-2'}} </li>
-                          <li> Enter your M-PESA PIN </li>
-                          <li> Send and wait for SMS receipt from LIPISHA </li>
-                        </ul>
-                </div>
-            </div>
-            <div *ngIf="cart.items.length <= 0">
-                <h3 class="text-center">You have no items in your cart, so you cannot checkout</h3>
-            </div>
         </div>
     </div>
 </div>

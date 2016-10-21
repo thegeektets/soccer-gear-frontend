@@ -7,7 +7,7 @@ import {OrderItem} from '../models/order_item';
 
 @Injectable()
 
-export class ProductService extends BaseService {
+export class OrderItemService extends BaseService {
 
     public _basePath = 'order/items/';
 

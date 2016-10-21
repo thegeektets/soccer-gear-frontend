@@ -20,6 +20,7 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { CartService } from './cart/services/cart.service';
 import { PaymentService } from './checkout/services/payment.service';
 import { OrderService } from './checkout/services/order.service';
+import { OrderItemService } from './checkout/services/orderItem.service';
 import { UserService } from './Account/services/user.service';
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from './services/localstorage.service';
@@ -55,6 +56,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
         PaymentService,
         CartService,
         OrderService,
+        OrderItemService,
         SettingsService,
         LocalStorageService,
         ToasterService
