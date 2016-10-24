@@ -113,10 +113,7 @@ export class CheckoutComponent implements OnInit {
                                         item.order = this.order;
                                         item.user_id = this.user_id;
                                         this._orderItemService.post(JSON.stringify(item)).subscribe((resi) => {
-                                            // remove from cart
-                                             this._cart.remove(item.id).subscribe((resc) => {
-                                                this.cart = resc;
-                                             });
+                                            this.loading = false;
                                         }, (errors) => {
                                             this.loading = false;
                                             this.errors = errors;
@@ -124,6 +121,12 @@ export class CheckoutComponent implements OnInit {
                                         });
                                     }
                                 }
+                                // remove cart
+                                this._cart.delete(this.cart.id).subscribe((resc) => {
+                                    this.cart = resc;
+                                    this.cart.items = [];
+                                });
+
                             }, (errors) => {
                                 this.loading = false;
                                 this.errors = errors;

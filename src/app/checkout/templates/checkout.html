@@ -63,29 +63,5 @@
                 <h3 class="text-center">You have no items in your cart, so you cannot checkout</h3>
             </div>
         </div>
-        <div *ngIf="!loading && paymentComplete">
-            <div class="col-sm-6 col-md-6">
-
-                    <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
-
-                    <form [formGroup]="transactionForm" *ngIf="paymentComplete">
-                         <div class="form-group">
-                             <h3>Confirm Transaction </h3>
-                         </div>
-                         <div class="form-group">
-                            <input
-                                    formControlName="transaction"
-                                    name="transaction"
-                                    placeholder="transaction code"
-                                    class="form-control"
-                                    type="text"
-                                    required
-                            />
-                            <p *ngIf="errors && errors.transaction" class="alert alert-danger">{{ errors.transaction }}</p>
-                         </div>
-                         <button (click)="confirmTransaction()" class="btn btn-success btn-block btn-checkout" [disabled]="!transactionForm.valid"> Confirm Transaction </button>
-                    </form>
-                </div>
-        </div>
     </div>
 </div>
