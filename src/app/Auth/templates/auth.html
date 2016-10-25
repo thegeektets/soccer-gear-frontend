@@ -26,11 +26,10 @@
                         />
                     </div>
                     <button (click)="login()" class="btn btn-block btn-primary" [disabled]="loginForm.form.valid == false">Login </button>
-                    <br>
-                    <a [routerLink]="['/password/recovery']" >
-                        Forgot Password ?
-                    </a>
+
                 </form>
+                <a [routerLink]="['/password/reset/']" style="cursor: pointer;" >Forgot password? </a>
+
             </div>
         </div>
     </div>
