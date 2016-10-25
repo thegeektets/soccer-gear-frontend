@@ -162,6 +162,8 @@ export class CheckoutComponent implements OnInit {
                                this.payment = resf;
                                this.order.status = 'Confirmed';
                                this.order.payment = this.payment;
+                               this.order.payment_id = this.payment.id;
+                               console.log(this.order);
                                this._orderService.put(this.order.id, JSON.stringify(this.order)).subscribe((rest) => {
                                     this.loading = false;
                                     this._toasterService.pop('success', 'Payment Confirmed', '');
