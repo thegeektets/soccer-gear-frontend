@@ -21,9 +21,8 @@
         <li *ngIf="isAuthenticated" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ userDisplayName }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-
+            <li><a *ngIf="isAuthenticated"  [routerLink]="['/account/orders/']" style="cursor: pointer;" >My Orders</a></li>
             <li><a *ngIf="isAuthenticated"  [routerLink]="['/user/profile/']" style="cursor: pointer;" >Profile</a></li>
-
             <li><a *ngIf="isAuthenticated" (click)="logout()" style="cursor: pointer;">Logout</a></li>
 
           </ul>

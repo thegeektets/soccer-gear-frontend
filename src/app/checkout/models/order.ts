@@ -8,6 +8,7 @@ export class Order extends BaseModel {
     public status: string ;
     public payment: Payment;
     public cost: string ;
+    public payment_id: any;
     public user_id: any;
 
     constructor (obj: Object) {

@@ -1,13 +1,17 @@
 import {BaseModel} from '../../bases/models/BaseModel';
 import {Order} from './order';
 import {Product} from '../../product/models/product';
+import { User } from '../../Account/models/user';
 
 export class OrderItem extends BaseModel {
     public id: number;
-    public order_id: Order[];
-    public product_id: Product[];
-    public price: string;
-    public quantity: string;
+    public user: User;
+    public order_id: number;
+    public product_id: number;
+    public order: Order;
+    public product: Product;
+    public price: number;
+    public quantity: number;
     public user_id: number;
 
     constructor (obj: Object) {

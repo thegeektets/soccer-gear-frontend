@@ -1,0 +1,6 @@
+<as-loading *ngIf="loading"></as-loading>
+<h2>My Orders</h2>
+<div *ngIf="!loading">
+    <pre>{{order | json }}</pre>
+
+</div>
