@@ -1,6 +1,51 @@
 <as-loading *ngIf="loading"></as-loading>
 <h2>My Orders</h2>
 <div *ngIf="!loading">
-    <pre>{{order | json }}</pre>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>
+                            Order Id
+                        </td>
+                        <td>
+                            Order Status
+                        </td>
+                        <td>
+                            Order Cost
+                        </td>
+                        <td>
+                            Order Payment
+                        </td>
+                        <td>
+                            Order Items
+                        </td>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of order.results; let i = index" >
+                    <tr class="order_item">
+                        <td>
+                            {{item.id}}
+                        </td>
+                        <td>
+                            {{item.status}}
+                        </td>
+                        <td>
+                            {{item.cost}}
+                        </td>
+                        <td>
+                           <button class="btn" *ngIf="item.status == 'Confirmed'">View Payment</button>
+                           <button class="btn" *ngIf="item.status == 'Pending'">Confirm Payment</button>
+                        </td>
+                        <td>
+                            <button class="btn">View Order Items</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>
