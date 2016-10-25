@@ -2,12 +2,13 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'as-auth',
-    templateUrl: 'app/Auth/templates/recoverPassword.html',
+    templateUrl: 'app/Auth/templates/password_reset_done.html',
     styleUrls: [
         'app/Auth/styles/auth.css'
     ]
 })
 
-export class PasswordRecoveryComponent {
+export class PasswordResetDoneComponent {
 
+    public email: string;
 }

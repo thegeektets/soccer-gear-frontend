@@ -4,13 +4,16 @@ import { APP_PROVIDERS } from '../app.providers';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoadingModule } from '../directives/Loading/loading.module';
-import {PasswordRecoveryComponent} from './components/passwordRecovery.component';
 import {RouterModule} from '@angular/router';
+import {PasswordResetComponent} from './components/password_reset.component';
+import {PasswordResetService} from './services/passwordReset.service';
+import {PasswordResetDoneComponent} from './components/password_reset_done.component';
 
 @NgModule({
     declarations: [
         AuthComponent,
-        PasswordRecoveryComponent
+        PasswordResetComponent,
+        PasswordResetDoneComponent
     ],
     imports: [
         CommonModule,
@@ -19,9 +22,13 @@ import {RouterModule} from '@angular/router';
         RouterModule
     ],
     exports: [
-        AuthComponent
+        AuthComponent,
+        PasswordResetComponent
     ],
-    providers: [ APP_PROVIDERS ],
+    providers: [
+            APP_PROVIDERS,
+            PasswordResetService
+                ],
 })
 export class AuthModule {
 }
