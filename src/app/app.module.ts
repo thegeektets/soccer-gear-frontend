@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { AuthModule } from './Auth/auth.module';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { HttpSettingsService } from './services/HttpSettingsService';
 import { SessionService } from './services/SessionService';
 import { SettingsService } from './services/SettingsService';
@@ -42,6 +43,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
         HttpModule,
         ToasterModule,
         BrowserModule,
+        RouterModule,
         CartModule,
         CheckoutModule,
         OrdersModule,
