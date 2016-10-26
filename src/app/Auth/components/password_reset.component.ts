@@ -15,6 +15,7 @@ export class PasswordResetComponent {
     public email: string;
     public errorMsg: Object;
     private loading: boolean = false;
+    private resetdone: boolean = false;
 
     constructor(
         private _passwordReset: PasswordResetService,
@@ -26,22 +27,20 @@ export class PasswordResetComponent {
     };
 
     passwordReset() {
-        console.log('password reset');
         this.loading = true;
         this.errorMsg = undefined;
         this._passwordReset.passwordReset(JSON.stringify({'email': this.email}))
             .subscribe((res) => {
                 this.loading = false;
+                this.resetdone = true;
             },
                 (errorMsg) => {
                     this.loading = false;
                     this.errorMsg = errorMsg;
                     this.email = '';
-
                 }
 
             );
-        this._router.navigate(['/password/reset/done/']);
         return false;
     }
 

@@ -3,5 +3,6 @@ import {OrderItemsComponent} from './components/order-items.component';
 
 export const OrdersRoutes = [
     { path: 'account/orders',  component: OrdersComponent } ,
-    { path: 'order_item/:id',  component: OrderItemsComponent }
+    { path: 'account/orders/:id',  component: OrderItemsComponent }
+    { path: 'account/payment/:id',  component: OrderItemsComponent }
 ];

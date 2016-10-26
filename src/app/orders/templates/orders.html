@@ -39,7 +39,7 @@
                            <button class="btn" *ngIf="item.status == 'Pending'">Confirm Payment</button>
                         </td>
                         <td>
-                            <a >
+                            <a [routerLink]="['/account/orders/' + item.id ]">
                                 View Order Items
                             </a>
                         </td>
