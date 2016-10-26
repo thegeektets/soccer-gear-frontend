@@ -1,5 +1,5 @@
 <as-loading *ngIf="loading"></as-loading>
-<h2>My Orders</h2>
+<h2>Order Items</h2>
 <div *ngIf="!loading">
     <div class="container">
         <div class="row">
@@ -7,44 +7,44 @@
                 <thead>
                     <tr>
                         <td>
+                            Item Id
+                        </td>
+                        <td>
                             Order Id
                         </td>
                         <td>
-                            Order Status
+                            Product
                         </td>
                         <td>
-                            Order Cost
+                            Item Cost
                         </td>
                         <td>
-                            Order Payment
-                        </td>
-                        <td>
-                            Order Items
+                            Item Quantity
                         </td>
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of order.results; let i = index" >
-                    <tr class="order_item">
+                <tbody *ngFor="let item of orderItems.results; let i = index" >
+                    <tr  class="order_item" *ngIf="item.order_id == oid">
                         <td>
                             {{item.id}}
                         </td>
                         <td>
-                            {{item.status}}
+                            {{item.order_id}}
                         </td>
                         <td>
-                            {{item.cost}}
+                            {{item.product.title}}
                         </td>
                         <td>
-                           <button class="btn" *ngIf="item.status == 'Confirmed'">View Payment</button>
-                           <button class="btn" *ngIf="item.status == 'Pending'">Confirm Payment</button>
+                           {{item.price}}
                         </td>
                         <td>
-                            <!--<a [routerlink] = "['/order_items/' + item.id]">View Order Items</a>-->
+                            {{item.quantity}}
                         </td>
 
                     </tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 

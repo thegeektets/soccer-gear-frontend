@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../checkout/services/order.service';
-import { Order } from '../../checkout/models/order';
+import { OrderItemService } from '../../checkout/services/orderItem.service';
+import { OrderItem } from '../../checkout/models/order_item';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -20,27 +20,24 @@ interface RouteParams {
 export class OrderItemsComponent implements OnInit {
     public errors: Object;
     public loading: boolean = true;
-    private order: Order[];
+    private orderItems: OrderItem[];
+    private oid: string;
     constructor(
         private _activatedRoute: ActivatedRoute,
-        private _orderService: OrderService
+        private _orderItemService: OrderItemService
     ) {
         this._activatedRoute.params.subscribe((res: RouteParams) => {
             if (res.hasOwnProperty('id')) {
-                this.getOrderItems(res.id);
+                this.oid = res.id;
             }
         });
     }
 
     ngOnInit() {
-      this._orderService.getList().subscribe((res) => {
-            this.order = res;
+         this._orderItemService.getList().subscribe((res) => {
+            this.orderItems = res;
             this.loading = false;
-      });
-    }
-
-    getOrderItems(id) {
-      // implement this
+        });
     }
 
 }
