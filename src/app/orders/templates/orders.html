@@ -35,8 +35,10 @@
                             {{item.cost}}
                         </td>
                         <td>
-                           <button class="btn" *ngIf="item.status == 'Confirmed'">View Payment</button>
-                           <button class="btn" *ngIf="item.status == 'Pending'">Confirm Payment</button>
+                            <a *ngIf="item.payment_id !== null" [routerLink]="['/account/order_payment/' + item.payment_id ]">
+                                View Payment
+                            </a>
+
                         </td>
                         <td>
                             <a [routerLink]="['/account/order_items/' + item.id ]">
