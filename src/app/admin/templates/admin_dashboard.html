@@ -1,0 +1,12 @@
+<as-loading *ngIf="loading"></as-loading>
+<h2>Admin Dashboard </h2>
+<div *ngIf="!loading">
+    <div class="container">
+        <div class="row">
+                <h4>Payment Id : {{orderPayment.id}} </h4>
+                <h4>Mpesa Confirmation Code : {{ orderPayment.mpesa_code}} </h4>
+
+        </div>
+    </div>
+
+</div>

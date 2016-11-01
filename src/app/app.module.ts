@@ -19,6 +19,7 @@ import { AccountModule } from './Account/account.module';
 import { CartModule } from './cart/cart.module';
 import { CheckoutModule } from './checkout/checkout.module';
 import { OrdersModule } from './orders/orders.module';
+import { AdminModule } from './admin/admin.module';
 import { CartService } from './cart/services/cart.service';
 import { PaymentService } from './checkout/services/payment.service';
 import { OrderService } from './checkout/services/order.service';
@@ -47,6 +48,7 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
         CartModule,
         CheckoutModule,
         OrdersModule,
+        AdminModule,
         FormsModule
     ],
     providers: [

@@ -7,6 +7,7 @@ import {ProductRoutes} from './product/product.routes';
 import {CartRoutes} from './cart/cart.routes';
 import {CheckoutRoutes} from './checkout/checkout.routes';
 import {OrdersRoutes} from './orders/orders.routes';
+import {AdminRoutes} from './admin/admin.routes';
 
 const appRoutes: Routes = [
     ...HomeRoutes,
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
     ...ProductRoutes,
     ...CartRoutes,
     ...CheckoutRoutes,
-    ...OrdersRoutes
+    ...OrdersRoutes,
+    ...AdminRoutes
 ];
 
 export const appRoutingProviders: any[] = [
