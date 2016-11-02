@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
     public userDisplayName: string = '';
     public cart: Cart = new Cart({});
     public isAuthenticated: boolean = false;
+    public isAdmin: boolean = false;
+    public isSuperUser: boolean = false;
     public toasterconfig: ToasterConfig =
         new ToasterConfig({
             showCloseButton: true,
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
         private _cart: CartService
     ) {
         this.isAuthenticated = this._sessionService.isLoggedIn();
+
         this.appBrand = CONSTANTS.MAIN.APP.BRAND;
 
         if (this.isAuthenticated) {
@@ -103,10 +106,13 @@ export class AppComponent implements OnInit {
             this._sessionService.setUser(res);
             if ( this._sessionService.user.full_name === '') {
                 this.userDisplayName = this._sessionService.user.getName();
+                this.isAdmin = this._sessionService.user.is_admin;
+                this.isSuperUser = this._sessionService.user.is_superuser;
             } else {
                 this.userDisplayName = this._sessionService.user.full_name;
+                this.isAdmin = this._sessionService.user.is_admin;
+                this.isSuperUser = this._sessionService.user.is_superuser;
             }
-
 
         });
     }
