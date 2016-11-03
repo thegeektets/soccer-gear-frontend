@@ -10,7 +10,7 @@ import { SessionService } from '../../services/SessionService';
 export class NavbarComponent {
     @Input() brand: string;
     @Input() isAuthenticated: boolean = false;
-    @Input() isAdmin: boolean = false;
+    @Input() isAdmin: boolean = true; // to be changed later
     @Input() isSuperUser: boolean = false;
     @Input() userDisplayName: string = '';
     @Input() cartTotal: number = 0;
