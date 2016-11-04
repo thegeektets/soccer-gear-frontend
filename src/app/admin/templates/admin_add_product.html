@@ -74,9 +74,47 @@
           </div>
 	</div>
 
-    <div class="col-sm-9 col-md-10 affix-content">
-        <as-loading *ngIf="loading"></as-loading>
-
-    </div>
+            <div class="col-sm-6 col-md-7 affix-content">
+                <as-loading *ngIf="loading"></as-loading>
+                <form [formGroup]="productForm">
+                         <div class="form-group">
+                             <h3>Product Form </h3>
+                         </div>
+                         <div class="form-group">
+                            <input
+                                    formControlName="productName"
+                                    name="productName"
+                                    placeholder="Product Name"
+                                    class="form-control"
+                                    type="text"
+                                    required
+                            />
+                            <p *ngIf="errors && errors.productName" class="alert alert-danger">{{ errors.productName }}</p>
+                         </div>
+                         <div class="form-group">
+                            <input
+                                    formControlName="productPrice"
+                                    name="productPrice"
+                                    placeholder="Product Price"
+                                    class="form-control"
+                                    type="text"
+                                    required
+                            />
+                            <p *ngIf="errors && errors.productPrice" class="alert alert-danger">{{ errors.productPrice }}</p>
+                         </div>
+                         <div class="form-group">
+                            <input
+                                    formControlName="productDescription"
+                                    name="productDescription"
+                                    placeholder="Product Description"
+                                    class="form-control"
+                                    type="text"
+                                    required
+                            />
+                            <p *ngIf="errors && errors.productDescription" class="alert alert-danger">{{ errors.productDescription }}</p>
+                         </div>
+                         <button (click)="addProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
+                </form>
+            </div>
 
 </div>
