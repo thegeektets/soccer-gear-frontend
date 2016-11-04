@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import {ListResponse} from '../../bases/models/ListResponse';
+import {SessionService} from '../../services/SessionService';
+import {CategoryService} from '../../product/services/category.service';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
     selector: 'as-admin-add-product',
@@ -13,18 +17,32 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 
 export class AdminAddCategoryComponent implements OnInit {
     public errors: Object;
-    public loading: boolean = false;
+    public loading: boolean = true;
+    public categoryResponse: ListResponse;
     private oid: string;
     private CategoryForm: FormGroup;
-    constructor(private fb: FormBuilder) {
+
+    constructor(private fb: FormBuilder,
+        private _sessionService: SessionService,
+        private _categoryService: CategoryService,
+        private _toasterService: ToasterService) {
         this.buildForm();
     }
     ngOnInit() {
-        // nothing here yet
+        this.getCategories();
     }
     buildForm() {
         this.CategoryForm = new FormGroup({
-            Title: new FormControl('', Validators.required),
+            title: new FormControl('', Validators.required),
+            category: new FormControl('', Validators.required)
         });
     }
+     getCategories() {
+        this.loading = true;
+        this._categoryService.getList().subscribe((res) => {
+            this.categoryResponse = res;
+            this.loading = false;
+        });
+    }
+
 }
