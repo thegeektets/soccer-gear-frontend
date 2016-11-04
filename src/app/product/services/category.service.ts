@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../../bases/services/BaseService';
-import { Http, Response } from '@angular/http';
+import {Http, Response, RequestOptionsArgs, URLSearchParams} from '@angular/http';
 import { HttpSettingsService } from '../../services/HttpSettingsService';
 import { ListResponse } from '../../bases/models/ListResponse';
 import {Category} from '../models/category';
+import {Observable} from 'rxjs';
 
 @Injectable()
 
@@ -28,5 +29,21 @@ export class CategoryService extends BaseService {
     singleMap(res: Response): Category {
         return new Category(res.json());
     }
+    public add(data, params?): Observable<any> {
+        let options: RequestOptionsArgs = {
+            headers: this._httpSettings.getUnauthorizedHeaders(),
+            search: new URLSearchParams(this.makeStringOfParams(params))
+        };
+        return this.http.post(this.getUrl(this._basePath), data, options)
+            .map(res => {
+                let toReturn = <any>this.singleMap(res);
+                this.singleObject = toReturn;
+                this.singleO.emit(toReturn);
+                return toReturn;
+            })
+            .catch(this.handleError);
+    }
+
+
 
 }
