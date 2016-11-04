@@ -25,7 +25,9 @@ export class AdminAddProductComponent implements OnInit {
     }
     buildForm() {
         this.productForm = new FormGroup({
-            productName: new FormControl('', Validators.required),
+            Title: new FormControl('', Validators.required),
+            Price: new FormControl('', Validators.required),
+            Description: new FormControl('', Validators.required),
         });
     }
 }

@@ -82,36 +82,36 @@
                          </div>
                          <div class="form-group">
                             <input
-                                    formControlName="productName"
-                                    name="productName"
+                                    formControlName="Title"
+                                    name="Title"
                                     placeholder="Product Name"
                                     class="form-control"
                                     type="text"
                                     required
                             />
-                            <p *ngIf="errors && errors.productName" class="alert alert-danger">{{ errors.productName }}</p>
+                            <p *ngIf="errors && errors.Title" class="alert alert-danger">{{ errors.Title }}</p>
                          </div>
                          <div class="form-group">
                             <input
-                                    formControlName="productPrice"
-                                    name="productPrice"
+                                    formControlName="Price"
+                                    name="Price"
                                     placeholder="Product Price"
                                     class="form-control"
                                     type="text"
                                     required
                             />
-                            <p *ngIf="errors && errors.productPrice" class="alert alert-danger">{{ errors.productPrice }}</p>
+                            <p *ngIf="errors && errors.Price" class="alert alert-danger">{{ errors.Price }}</p>
                          </div>
                          <div class="form-group">
-                            <input
-                                    formControlName="productDescription"
-                                    name="productDescription"
+                             <textarea
+                                    formControlName="Description"
+                                    name="Description"
                                     placeholder="Product Description"
                                     class="form-control"
                                     type="text"
                                     required
-                            />
-                            <p *ngIf="errors && errors.productDescription" class="alert alert-danger">{{ errors.productDescription }}</p>
+                            ></textarea>
+                            <p *ngIf="errors && errors.Description" class="alert alert-danger">{{ errors.Description }}</p>
                          </div>
                          <button (click)="addProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
                 </form>
