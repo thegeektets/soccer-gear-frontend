@@ -44,6 +44,7 @@ export class AdminAddProductComponent implements OnInit {
             description: new FormControl('', Validators.required),
             category: new FormControl('', Validators.required),
             main_image: new FormControl('', Validators.required),
+            images: new FormControl('-', Validators.required),
         });
     }
     getCategories() {

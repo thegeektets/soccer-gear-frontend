@@ -18,5 +18,6 @@ export class AdminDashboardComponent implements OnInit {
     private oid: string;
     ngOnInit() {
         // nothing here yet
+        this.loading = false;
     }
 }
