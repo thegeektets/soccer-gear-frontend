@@ -7,13 +7,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {AdminAddCategoryComponent} from './components/admin_add_category.component';
 
 
 
 @NgModule({
     declarations: [
         AdminDashboardComponent,
-        AdminAddProductComponent
+        AdminAddProductComponent,
+        AdminAddCategoryComponent
     ],
     imports: [
         CommonModule,
@@ -25,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ],
     exports: [
         AdminDashboardComponent,
-        AdminAddProductComponent
+        AdminAddProductComponent,
+        AdminAddCategoryComponent
     ],
     providers: [ APP_PROVIDERS ],
 })

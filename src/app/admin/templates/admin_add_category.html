@@ -1,4 +1,4 @@
-<h2>Admin Dashboard </h2>
+<h4>Admin Add Category </h4>
 <div>
     <div class="col-sm-3 col-md-2 affix-sidebar">
 		<div class="sidebar-nav">
@@ -21,12 +21,12 @@
                   </a>
                   <div class="collapse" id="products" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a  [routerLink]="['/admin/addproduct/']" >Add Products </a></li>
+                      <li><a >Add Products </a></li>
                       <li><a href="">Edit Products</a></li>
                     </ul>
                   </div>
                 </li>
-                <li style="width:100%">
+                <li style="width:100%"  class="active">
                   <a data-toggle="collapse" data-target="#product_category" data-parent="#sidenav">
                      Product Categories <span class="caret pull-right"></span>
                   </a>
@@ -74,9 +74,45 @@
           </div>
 	</div>
 
-    <div class="col-sm-9 col-md-10 affix-content">
-        <as-loading *ngIf="loading"></as-loading>
+            <div class="col-sm-6 col-md-7 affix-content">
+                <as-loading *ngIf="loading"></as-loading>
+                <div *ngIf="!loading">
+                <form [formGroup]="CategoryForm">
+                         <div class="form-group">
+                             <h3>Category Form </h3>
+                         </div>
+                         <div class="form-group">
+                            <input
+                                    formControlName="title"
+                                    name="title"
+                                    placeholder="Title Name"
+                                    class="form-control"
+                                    type="text"
+                                    required
+                            />
+                            <p *ngIf="errors && errors.title" class="alert alert-danger">{{ errors.title }}</p>
+                         </div>
 
-    </div>
+                         <div class="form-group">
+                            <select class="styled-select semi-square"
+                                    formControlName="categories"
+                                    name="categories"
+                                    placeholder="Category"
+                                    class="form-control"
+                                    type="text"
+                                    >
+                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
+                                    {{ cat.title }}
+                                </option>
+
+                            </select>
+                             <p *ngIf="errors && errors.categories" class="alert alert-danger">{{ errors.categories }}</p>
+
+                         </div>
+
+                         <button (click)="addCategory()" class="btn btn-success btn-block btn-checkout" [disabled]="!CategoryForm.valid"> Add Category </button>
+                </form>
+                </div>
+            </div>
 
 </div>
