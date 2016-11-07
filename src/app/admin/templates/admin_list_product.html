@@ -1,4 +1,4 @@
-<h4>Admin Add Category </h4>
+<h2>Admin Products </h2>
 <div>
     <div class="col-sm-3 col-md-2 affix-sidebar">
 		<div class="sidebar-nav">
@@ -15,18 +15,18 @@
             <div class="navbar-collapse collapse sidebar-navbar-collapse">
               <ul class="nav navbar-nav" id="sidenav">
 
-                <li style="width:100%">
+                <li style="width:100%" class="active">
                   <a data-toggle="collapse" data-target="#products" data-parent="#sidenav">
                      Products <span class="caret pull-right"></span>
                   </a>
                   <div class="collapse" id="products" style="height: 0px;">
                     <ul class="nav nav-list">
-                        <li><a  [routerLink]="['/admin/addproduct/']" >Add Products </a></li>
-                        <li><a  [routerLink]="['/admin/listproduct/']">Edit Products</a></li>
+                      <li><a  [routerLink]="['/admin/addproduct/']" >Add Products </a></li>
+                      <li><a  [routerLink]="['/admin/listproduct/']">Edit Products</a></li>
                     </ul>
                   </div>
                 </li>
-                <li style="width:100%"  class="active">
+                <li style="width:100%">
                   <a data-toggle="collapse" data-target="#product_category" data-parent="#sidenav">
                      Product Categories <span class="caret pull-right"></span>
                   </a>
@@ -72,46 +72,69 @@
             </div>
           </div>
 	</div>
+    <div class="col-sm-8 col-md-9 affix-content">
+        <as-loading *ngIf="loading"></as-loading>
+    </div>
+    <div class="col-sm-8 col-md-9 affix-content" *ngIf="!loading">
+         <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>
+                            Product Id
+                        </td>
+                        <td>
+                            Product Name
+                        </td>
+                        <td>
+                            Product Description
+                        </td>
+                        <td>
+                            Product Cost
+                        </td>
+                        <td>
+                            Edit
+                        </td>
+                        <td>
+                            Delete
+                        </td>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of productsResponse.results; let i = index" >
+                    <tr  class="order_item" *ngIf="item.order_id == oid">
+                        <td>
+                            {{item.id}}
+                        </td>
+                        <td>
+                            {{item.title}}
+                        </td>
+                        <td>
+                            {{item.description}}
+                        </td>
+                        <td>
+                           {{item.price}}
+                        </td>
+                        <td>
+                            <a data-placement="top" data-toggle="tooltip" title="Edit">
+                                <button class="btn btn-primary" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a data-placement="top" data-toggle="tooltip" title="Delete">
+                                <button class="btn btn-danger" data-title="Delete" data-toggle="modal" data-target="#delete" >
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="col-sm-6 col-md-7 affix-content">
-                <as-loading *ngIf="loading"></as-loading>
-                <div *ngIf="!loading">
-                <form [formGroup]="CategoryForm">
-                         <div class="form-group">
-                             <h3>Category Form </h3>
-                         </div>
-                         <div class="form-group">
-                            <input
-                                    formControlName="title"
-                                    name="title"
-                                    placeholder="Title Name"
-                                    class="form-control"
-                                    type="text"
-                                    required
-                            />
-                            <p *ngIf="errors && errors.title" class="alert alert-danger">{{ errors.title }}</p>
-                         </div>
-
-                         <div class="form-group">
-                            <select class="styled-select semi-square"
-                                    formControlName="categories"
-                                    name="categories"
-                                    placeholder="Category"
-                                    class="form-control"
-                                    type="text"
-                                    >
-                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
-                                    {{ cat.title }}
-                                </option>
-
-                            </select>
-                             <p *ngIf="errors && errors.categories" class="alert alert-danger">{{ errors.categories }}</p>
-
-                         </div>
-
-                         <button (click)="addCategory()" class="btn btn-success btn-block btn-checkout" [disabled]="!CategoryForm.valid"> Add Category </button>
-                </form>
-                </div>
-            </div>
+        </div>
+    </div>
+    </div>
 
 </div>

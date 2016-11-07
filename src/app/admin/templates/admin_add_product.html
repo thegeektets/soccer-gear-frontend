@@ -21,8 +21,8 @@
                   </a>
                   <div class="collapse" id="products" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a >Add Products </a></li>
-                      <li><a href="">Edit Products</a></li>
+                        <li><a  [routerLink]="['/admin/addproduct/']" >Add Products </a></li>
+                        <li><a  [routerLink]="['/admin/listproduct/']">Edit Products</a></li>
                     </ul>
                   </div>
                 </li>
@@ -32,7 +32,7 @@
                   </a>
                   <div class="collapse" id="product_category" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a href="">Add Category </a></li>
+                      <li><a [routerLink]="['/admin/addcategory']">Add Category </a></li>
                       <li><a href="">Edit Categories</a></li>
                     </ul>
                   </div>
@@ -43,7 +43,7 @@
                   </a>
                   <div class="collapse" id="orders" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a href="">View Orders</a></li>
+                      <li><a [routerLink]="['/admin/listorders/']" >View Orders</a></li>
                      </ul>
                   </div>
                 </li>
@@ -53,7 +53,7 @@
                   </a>
                   <div class="collapse" id="payments" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a href="">View Payments</a></li>
+                      <li><a [routerLink]="['/admin/listpayments/']">View Payments</a></li>
                      </ul>
                   </div>
                 </li>
@@ -63,8 +63,7 @@
                   </a>
                   <div class="collapse" id="users" style="height: 0px;">
                     <ul class="nav nav-list">
-                      <li><a href="">Add Users </a></li>
-                      <li><a href="">Edit Users</a></li>
+                      <li><a href="">View Users </a></li>
                     </ul>
                   </div>
                 </li>
