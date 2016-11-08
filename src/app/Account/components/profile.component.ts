@@ -80,7 +80,7 @@ export class ProfileComponent implements OnInit {
                   user[field] = this.userUpdates[field].replace(/style=".*?"/ig, '');
                 }
             }
-            this._userService.put(user.id, JSON.stringify(user)).subscribe((res) => {
+            this._userService.put(user.id, JSON.stringify(this.form.getRawValue())).subscribe((res) => {
                 this.loading = true;
                 this.user = res;
                 this.showSave = false;
