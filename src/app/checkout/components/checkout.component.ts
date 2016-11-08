@@ -135,6 +135,7 @@ export class CheckoutComponent implements OnInit {
                            );
                         } else {
                             console.log(res);
+                            this._toasterService.pop('warning', '', '' + res.content.invalid_parameters);
                         }
                         this.loading = false;
                     },

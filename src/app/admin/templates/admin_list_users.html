@@ -1,0 +1,121 @@
+<h2>Admin Products </h2>
+<div>
+    <div class="col-sm-3 col-md-2 affix-sidebar">
+		<div class="sidebar-nav">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              <span class="visible-xs navbar-brand">Sidebar menu</span>
+            </div>
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav" id="sidenav">
+
+                <li style="width:100%">
+                  <a data-toggle="collapse" data-target="#products" data-parent="#sidenav">
+                     Products <span class="caret pull-right"></span>
+                  </a>
+                  <div class="collapse" id="products" style="height: 0px;">
+                    <ul class="nav nav-list">
+                       <li><a  [routerLink]="['/admin/addproduct/']" >Add Products </a></li>
+                       <li><a  [routerLink]="['/admin/listproduct/']">Edit Products</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li style="width:100%">
+                  <a data-toggle="collapse" data-target="#product_category" data-parent="#sidenav">
+                     Product Categories <span class="caret pull-right"></span>
+                  </a>
+                  <div class="collapse" id="product_category" style="height: 0px;">
+                    <ul class="nav nav-list">
+                      <li><a [routerLink]="['/admin/addcategory']">Add Category </a></li>
+                      <li><a href="">Edit Categories</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li style="width:100%">
+                  <a data-toggle="collapse" data-target="#orders" data-parent="#sidenav">
+                     Orders <span class="caret pull-right"></span>
+                  </a>
+                  <div class="collapse" id="orders" style="height: 0px;">
+                    <ul class="nav nav-list">
+                      <li><a [routerLink]="['/admin/listorders/']" >View Orders</a></li>
+                     </ul>
+                  </div>
+                </li>
+                <li style="width:100%"  class="active">
+                  <a data-toggle="collapse" data-target="#users" data-parent="#sidenav">
+                     Users <span class="caret pull-right"></span>
+                  </a>
+                  <div class="collapse" id="users" style="height: 0px;">
+                    <ul class="nav nav-list">
+                      <li><a [routerLink]="['/admin/listusers/']">View Users</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+	</div>
+    <div class="col-sm-8 col-md-9 affix-content">
+        <as-loading *ngIf="loading"></as-loading>
+    </div>
+    <div class="col-sm-8 col-md-9 affix-content" *ngIf="!loading">
+         <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>
+                            Order Id
+                        </td>
+                        <td>
+                            Order Status
+                        </td>
+                        <td>
+                            Order Cost
+                        </td>
+                        <td>
+                            Order Payment
+                        </td>
+                        <td>
+                            Order Items
+                        </td>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of orderResponse.results; let i = index" >
+                    <tr class="order_item">
+                        <td>
+                            {{item.id}}
+                        </td>
+                        <td>
+                            {{item.status}}
+                        </td>
+                        <td>
+                            {{item.cost}}
+                        </td>
+                        <td>
+                            <a *ngIf="item.payment_id !== null" [routerLink]="['/account/order_payment/' + item.payment_id ]">
+                                View Payment
+                            </a>
+
+                        </td>
+                        <td>
+                            <a [routerLink]="['/account/order_items/' + item.id ]">
+                                View Order Items
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+</div>

@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { APP_PROVIDERS } from '../app.providers';
 import { AdminDashboardComponent } from './components/admin-dashboard.component';
 import { AdminAddProductComponent } from './components/admin-add-product.component';
+import { AdminListProductComponent} from './components/admin-list-product.component';
+import { AdminListOrdersComponent} from './components/admin-list-orders.component';
+import { AdminListUsersComponent} from './components/admin-list-users.component';
 import { LoadingModule } from '../directives/Loading/loading.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {AdminAddCategoryComponent} from './components/admin_add_category.component';
-
+import { AdminAddCategoryComponent} from './components/admin_add_category.component';
 
 
 @NgModule({
     declarations: [
         AdminDashboardComponent,
         AdminAddProductComponent,
-        AdminAddCategoryComponent
+        AdminListProductComponent,
+        AdminAddCategoryComponent,
+        AdminListOrdersComponent,
+        AdminListUsersComponent
     ],
     imports: [
         CommonModule,
@@ -28,7 +33,10 @@ import {AdminAddCategoryComponent} from './components/admin_add_category.compone
     exports: [
         AdminDashboardComponent,
         AdminAddProductComponent,
-        AdminAddCategoryComponent
+        AdminListProductComponent,
+        AdminAddCategoryComponent,
+        AdminListUsersComponent,
+        AdminListOrdersComponent
     ],
     providers: [ APP_PROVIDERS ],
 })
