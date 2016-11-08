@@ -15,7 +15,7 @@
             <div class="navbar-collapse collapse sidebar-navbar-collapse">
               <ul class="nav navbar-nav" id="sidenav">
 
-                <li style="width:100%" class="active">
+                <li style="width:100%" >
                   <a data-toggle="collapse" data-target="#products" data-parent="#sidenav">
                      Products <span class="caret pull-right"></span>
                   </a>
@@ -26,7 +26,7 @@
                     </ul>
                   </div>
                 </li>
-                <li style="width:100%">
+                <li style="width:100%" class="active">
                   <a data-toggle="collapse" data-target="#product_category" data-parent="#sidenav">
                      Product Categories <span class="caret pull-right"></span>
                   </a>
@@ -86,7 +86,7 @@
                         </td>
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of productsResponse.results; let i = index" >
+                <tbody *ngFor="let item of categoryResponse.results; let i = index" >
                     <tr  class="order_item" *ngIf="item.order_id == oid">
                         <td>
                             {{item.id}}
