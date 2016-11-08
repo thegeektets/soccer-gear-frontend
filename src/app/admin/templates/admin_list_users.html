@@ -1,4 +1,4 @@
-<h2>Admin Products </h2>
+<h2>Admin Users </h2>
 <div>
     <div class="col-sm-3 col-md-2 affix-sidebar">
 		<div class="sidebar-nav">
@@ -33,7 +33,7 @@
                   <div class="collapse" id="product_category" style="height: 0px;">
                     <ul class="nav nav-list">
                       <li><a [routerLink]="['/admin/addcategory']">Add Category </a></li>
-                      <li><a href="">Edit Categories</a></li>
+                      <li><a [routerLink]="['/admin/listcategory']">Edit Categories</a></li>
                     </ul>
                   </div>
                 </li>
@@ -72,42 +72,70 @@
                 <thead>
                     <tr>
                         <td>
-                            Order Id
+                            User Id
                         </td>
                         <td>
-                            Order Status
+                            Full Names
                         </td>
                         <td>
-                            Order Cost
+                            UserName
                         </td>
                         <td>
-                            Order Payment
+                            Mobile Number
                         </td>
                         <td>
-                            Order Items
+                            Email
+                        </td>
+                        <td>
+                             Billing Address
+                        </td>
+                         <td>
+                             Shipping Address
+                        </td>
+                        <td>
+                            Edit
+                        </td>
+                        <td>
+                            Delete
                         </td>
                     </tr>
                 </thead>
-                <tbody *ngFor="let item of orderResponse.results; let i = index" >
+                <tbody *ngFor="let item of userResponse.results; let i = index" >
                     <tr class="order_item">
                         <td>
                             {{item.id}}
                         </td>
                         <td>
-                            {{item.status}}
+                            {{item.full_name}}
                         </td>
                         <td>
-                            {{item.cost}}
+                            {{item.username}}
                         </td>
                         <td>
-                            <a *ngIf="item.payment_id !== null" [routerLink]="['/account/order_payment/' + item.payment_id ]">
-                                View Payment
-                            </a>
+                          {{item.mobile_number}}
 
                         </td>
                         <td>
-                            <a [routerLink]="['/account/order_items/' + item.id ]">
-                                View Order Items
+                            {{item.email}}
+                        </td>
+                        <td>
+                            {{item.default_billing_address}}
+                        </td>
+                        <td>
+                            {{item.default_shipping_address}}
+                        </td>
+                        <td>
+                            <a data-placement="top" data-toggle="tooltip" title="Edit">
+                                <button class="btn btn-primary" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a data-placement="top" data-toggle="tooltip" title="Delete">
+                                <button class="btn btn-danger" data-title="Delete" data-toggle="modal" data-target="#delete" >
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
                             </a>
                         </td>
 
