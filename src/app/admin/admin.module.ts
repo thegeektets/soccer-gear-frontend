@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminAddCategoryComponent} from './components/admin_add_category.component';
+import {AdminListCategoryComponent} from './components/admin-list-category.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AdminAddCategoryComponent} from './components/admin_add_category.compon
         AdminAddProductComponent,
         AdminListProductComponent,
         AdminAddCategoryComponent,
+        AdminListCategoryComponent,
         AdminListOrdersComponent,
         AdminListUsersComponent
     ],
@@ -36,7 +38,8 @@ import { AdminAddCategoryComponent} from './components/admin_add_category.compon
         AdminListProductComponent,
         AdminAddCategoryComponent,
         AdminListUsersComponent,
-        AdminListOrdersComponent
+        AdminListOrdersComponent,
+        AdminListCategoryComponent
     ],
     providers: [ APP_PROVIDERS ],
 })
