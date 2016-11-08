@@ -6,7 +6,7 @@ import { SessionService } from '../../services/SessionService';
 import { ToasterService } from 'angular2-toaster';
 import { ListResponse } from '../../bases/models/ListResponse';
 import { OrderService } from '../../checkout/services/order.service';
-import { Order } from '../../checkout/models/order';
+import { UserService } from '../../Account/services/user.service';
 
 @Component({
     selector: 'as-admin-list-users',
@@ -20,24 +20,24 @@ export class AdminListUsersComponent implements OnInit {
     public errors: Object;
     public loading: boolean = true;
     public product: Product;
-    public orderResponse: ListResponse;
+    public userResponse: ListResponse;
     private oid: string;
     private productForm: FormGroup;
     constructor(
         private fb: FormBuilder,
         private _sessionService: SessionService,
-        private _orderService: OrderService,
+        private _userService: UserService,
         private _toasterService: ToasterService
                 ) {
         }
     ngOnInit() {
-        this.getPayments();
+        this.getUsers();
     }
 
-    getPayments() {
+    getUsers() {
         this.loading = true;
-        this._orderService.getList().subscribe((res) => {
-            this.orderResponse = res;
+        this._userService.getList().subscribe((res) => {
+            this.userResponse = res;
             this.loading = false;
         });
     }
