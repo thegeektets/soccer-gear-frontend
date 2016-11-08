@@ -27,7 +27,8 @@ export class AdminAddCategoryComponent implements OnInit {
     constructor(private fb: FormBuilder,
         private _sessionService: SessionService,
         private _categoryService: CategoryService,
-        private _toasterService: ToasterService) {
+        private _toasterService: ToasterService
+    ) {
         this.buildForm();
     }
     ngOnInit() {
@@ -36,7 +37,7 @@ export class AdminAddCategoryComponent implements OnInit {
     buildForm() {
         this.CategoryForm = new FormGroup({
             title: new FormControl('', Validators.required),
-            categories: new FormControl('', Validators.nullValidator),
+            parent: new FormControl(''),
         });
     }
      getCategories() {
@@ -53,9 +54,7 @@ export class AdminAddCategoryComponent implements OnInit {
                 this._sessionService.user.is_superuser
             ) {
                 this.loading = true;
-                this.category.categories = [];
-                this._categoryService.add(JSON.stringify(this.CategoryForm.getRawValue()))
-                    .subscribe((res) => {
+                this._categoryService.post(JSON.stringify(this.CategoryForm.getRawValue())).subscribe((res) => {
                     this.loading = false;
                     this.category = res;
                     this._toasterService.pop('success', 'Category Added', this.category.title);

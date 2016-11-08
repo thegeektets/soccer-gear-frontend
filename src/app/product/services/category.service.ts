@@ -29,20 +29,6 @@ export class CategoryService extends BaseService {
     singleMap(res: Response): Category {
         return new Category(res.json());
     }
-    public add(data, params?): Observable<any> {
-        let options: RequestOptionsArgs = {
-            headers: this._httpSettings.getUnauthorizedHeaders(),
-            search: new URLSearchParams(this.makeStringOfParams(params))
-        };
-        return this.http.post(this.getUrl(this._basePath), data, options)
-            .map(res => {
-                let toReturn = <any>this.singleMap(res);
-                this.singleObject = toReturn;
-                this.singleO.emit(toReturn);
-                return toReturn;
-            })
-            .catch(this.handleError);
-    }
 
 
 

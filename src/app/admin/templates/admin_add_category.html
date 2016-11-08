@@ -75,7 +75,8 @@
 
             <div class="col-sm-6 col-md-7 affix-content">
                 <as-loading *ngIf="loading"></as-loading>
-                <div *ngIf="!loading">
+            </div>
+                <div class="col-sm-6 col-md-7 affix-content"  *ngIf="!loading">
                 <form [formGroup]="CategoryForm">
                          <div class="form-group">
                              <h3>Category Form </h3>
@@ -94,9 +95,9 @@
 
                          <div class="form-group">
                             <select class="styled-select semi-square"
-                                    formControlName="categories"
-                                    name="categories"
-                                    placeholder="Category"
+                                    formControlName="parent"
+                                    name="parent"
+                                    placeholder="parent"
                                     class="form-control"
                                     type="text"
                                     >
@@ -105,13 +106,13 @@
                                 </option>
 
                             </select>
-                             <p *ngIf="errors && errors.categories" class="alert alert-danger">{{ errors.categories }}</p>
+                             <p *ngIf="errors && errors.parent" class="alert alert-danger">{{ errors.parent }}</p>
 
                          </div>
 
                          <button (click)="addCategory()" class="btn btn-success btn-block btn-checkout" [disabled]="!CategoryForm.valid"> Add Category </button>
                 </form>
                 </div>
-            </div>
+
 
 </div>
