@@ -13,5 +13,6 @@ export const AdminRoutes = [
     { path: 'admin/addcategory',  component: AdminAddCategoryComponent },
     { path: 'admin/listorders',  component: AdminListOrdersComponent } ,
     { path: 'admin/listpayments',  component: AdminListPaymentsComponent } ,
+    { path: 'admin/listusers',  component: AdminListUsersComponent } ,
 ];
 

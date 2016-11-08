@@ -4,6 +4,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard.component'
 import { AdminAddProductComponent } from './components/admin-add-product.component';
 import { AdminListProductComponent} from './components/admin-list-product.component';
 import { AdminListOrdersComponent} from './components/admin-list-orders.component';
+import { AdminListPaymentsComponent} from './components/admin-list-payments.component';
+import { AdminListUsersComponent} from './components/admin-list-users.component';
 import { LoadingModule } from '../directives/Loading/loading.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -18,7 +20,9 @@ import { AdminAddCategoryComponent} from './components/admin_add_category.compon
         AdminAddProductComponent,
         AdminListProductComponent,
         AdminAddCategoryComponent,
-        AdminListOrdersComponent
+        AdminListPaymentsComponent,
+        AdminListOrdersComponent,
+        AdminListUsersComponent
     ],
     imports: [
         CommonModule,
@@ -33,6 +37,8 @@ import { AdminAddCategoryComponent} from './components/admin_add_category.compon
         AdminAddProductComponent,
         AdminListProductComponent,
         AdminAddCategoryComponent,
+        AdminListPaymentsComponent,
+        AdminListUsersComponent,
         AdminListOrdersComponent
     ],
     providers: [ APP_PROVIDERS ],
