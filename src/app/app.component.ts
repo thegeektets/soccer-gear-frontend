@@ -73,6 +73,7 @@ export class AppComponent implements OnInit {
             ) {
                 if (!this.isAuthenticated) {
                     this._router.navigate(['/auth/login']);
+                    this._router.navigate(['/password/reset/change']);
                 }
             }
 

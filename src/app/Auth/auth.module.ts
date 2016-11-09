@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { AuthComponent } from './components/auth.component';
 import { APP_PROVIDERS } from '../app.providers';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoadingModule } from '../directives/Loading/loading.module';
 import {RouterModule} from '@angular/router';
 import {PasswordResetComponent} from './components/password_reset.component';
 import {PasswordResetService} from './services/passwordReset.service';
 import {PasswordResetChangeComponent} from './components/password_reset_change.component';
+import {PasswordChangeService} from './services/password-change.service';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import {PasswordResetChangeComponent} from './components/password_reset_change.c
         CommonModule,
         FormsModule,
         LoadingModule,
-        RouterModule
+        RouterModule,
+        ReactiveFormsModule
     ],
     exports: [
         AuthComponent,
@@ -28,7 +30,8 @@ import {PasswordResetChangeComponent} from './components/password_reset_change.c
     ],
     providers: [
             APP_PROVIDERS,
-            PasswordResetService
+            PasswordResetService,
+            PasswordChangeService
                 ],
 })
 export class AuthModule {
