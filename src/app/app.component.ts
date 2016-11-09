@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
             if (nextValue.url !== '/auth/login' &&
                 nextValue.url !== '/account/register' &&
                 nextValue.url !== '/password/reset' &&
-                nextValue.url !== '/password/reset/done' &&
+                nextValue.url !== '/password/reset/change' &&
                 nextValue.url !== '/auth/forgot-password' &&
                 nextValue.url !== '/cart' &&
                 nextValue.url !== '/products' &&

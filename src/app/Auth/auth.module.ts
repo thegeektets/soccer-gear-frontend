@@ -7,13 +7,13 @@ import { LoadingModule } from '../directives/Loading/loading.module';
 import {RouterModule} from '@angular/router';
 import {PasswordResetComponent} from './components/password_reset.component';
 import {PasswordResetService} from './services/passwordReset.service';
-import {PasswordResetDoneComponent} from './components/password_reset_done.component';
+import {PasswordResetChangeComponent} from './components/password_reset_change.component';
 
 @NgModule({
     declarations: [
         AuthComponent,
         PasswordResetComponent,
-        PasswordResetDoneComponent
+        PasswordResetChangeComponent
     ],
     imports: [
         CommonModule,
@@ -23,7 +23,8 @@ import {PasswordResetDoneComponent} from './components/password_reset_done.compo
     ],
     exports: [
         AuthComponent,
-        PasswordResetComponent
+        PasswordResetComponent,
+        PasswordResetChangeComponent
     ],
     providers: [
             APP_PROVIDERS,
