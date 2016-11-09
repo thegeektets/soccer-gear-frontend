@@ -69,30 +69,18 @@
          <div class="container">
         <div class="row">
             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>
-                            Product Id
-                        </td>
-                        <td>
-                            Product Name
-                        </td>
-                        <td>
-                            Product Description
-                        </td>
-                        <td>
-                            Product Cost
-                        </td>
-                        <td>
-                            Edit
-                        </td>
-                        <td>
-                            Delete
-                        </td>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of productsResponse.results; let i = index" >
-                    <tr  class="order_item" *ngIf="item.order_id == oid">
+                 <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th> Product Cost</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+
+
+                    <tr  *ngFor="let item of productsResponse.results; let i = index" >
+
                         <td>
                             {{item.id}}
                         </td>
@@ -120,7 +108,7 @@
                             </a>
                         </td>
                     </tr>
-                </tbody>
+
             </table>
 
         </div>

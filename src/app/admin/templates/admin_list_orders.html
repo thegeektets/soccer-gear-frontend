@@ -69,21 +69,14 @@
          <div class="container">
         <div class="row">
             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>
-                            Order Id
-                        </td>
-                        <td>
-                            Order Status
-                        </td>
-                        <td>
-                            Order Cost
-                        </td>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of orderResponse.results; let i = index" >
-                    <tr class="order_item">
+                 <tr>
+                    <th>Order Id</th>
+                    <th>Order Status</th>
+                    <th> Order Cost</th>
+
+                </tr>
+
+                <tr *ngFor="let item of orderResponse.results; let i = index" >
                         <td>
                             {{item.id}}
                         </td>
@@ -93,8 +86,7 @@
                         <td>
                             {{item.cost}}
                         </td>
-                    </tr>
-                </tbody>
+                </tr>
             </table>
         </div>
     </div>
