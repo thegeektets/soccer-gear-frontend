@@ -9,7 +9,9 @@ import {Category} from '../../product/models/category';
 @Component({
     selector: 'as-admin-add-product',
     templateUrl: 'app/admin/templates/admin_list_category.html',
-    styleUrls: [],
+    styleUrls: [
+        'app/admin/styles/admin-list-category.css'
+    ],
     providers: [FormBuilder]
 })
 

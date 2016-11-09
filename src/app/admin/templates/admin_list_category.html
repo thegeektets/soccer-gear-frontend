@@ -69,25 +69,16 @@
          <div class="container">
         <div class="row">
             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>
-                            category Id
-                        </td>
-                        <td>
-                            Category Name
-                        </td>
+                 <tr>
+                    <th> category Id</th>
+                    <th>Category Name</th>
+                    <th> Edit</th>
+                    <th> Delete</th>
 
-                        <td>
-                            Edit
-                        </td>
-                        <td>
-                            Delete
-                        </td>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of categoryResponse.results; let i = index" >
-                    <tr  class="order_item" *ngIf="item.order_id == oid">
+                </tr>
+
+                <tr *ngFor="let item of categoryResponse.results; let i = index" >
+
                         <td>
                             {{item.id}}
                         </td>
@@ -109,8 +100,7 @@
                                 </button>
                             </a>
                         </td>
-                    </tr>
-                </tbody>
+                </tr>
             </table>
 
         </div>
