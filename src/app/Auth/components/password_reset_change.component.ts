@@ -26,7 +26,7 @@ export class PasswordResetChangeComponent {
     public user_uid: string;
     public user_token: string;
     public user: User;
-    public errors: Object;
+    public errorMsg: Object;
     public response: string;
     private passwordchanged: boolean = false;
     private form: FormGroup;
@@ -63,7 +63,7 @@ export class PasswordResetChangeComponent {
     passwordChange() {
         if (this.form.valid) {
             this.loading = true;
-            this.errors = undefined;
+            this.errorMsg = undefined;
             this._passwordchangedservice.passwordChange( JSON.stringify(this.form.getRawValue()))
                 .subscribe((res) => {
                         this.loading = false;
@@ -71,7 +71,7 @@ export class PasswordResetChangeComponent {
                     },
                     (errors) => {
                         this.loading = false;
-                        this.errors = errors;
+                        this.errorMsg = errors;
                     }
                 );
         }
