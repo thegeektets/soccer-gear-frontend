@@ -28,6 +28,11 @@
         'angular2-toaster': {
             main: 'angular2-toaster.js',
             defaultExtension: 'js'
+        },
+        'ng2-uploader': {
+            main: 'ng2-uploader.js',
+            defaultExtension: 'js'
+            
         }
     };
 

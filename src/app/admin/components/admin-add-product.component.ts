@@ -25,10 +25,10 @@ export class AdminAddProductComponent implements OnInit {
     public categoryResponse: ListResponse;
     private oid: string;
     private productForm: FormGroup;
-    uploadFile: any;
-    hasBaseDropZoneOver: boolean = false;
-    options: object = {
-        url: 'http://localhost:10050/upload'
+    private uploadFile: any;
+    private hasBaseDropZoneOver: boolean = false;
+    private options: Object = {
+        url: 'http://localhost:8000'
     };
     constructor(
         private fb: FormBuilder,
@@ -60,13 +60,13 @@ export class AdminAddProductComponent implements OnInit {
         });
     }
     handleUpload(data): void {
-        if(data && data.response){
+        if (data && data.response ) {
             data = JSON.parse(data.response);
             this.uploadFile = data;
         }
     }
 
-    fileOverBsase(e:any):void {
+    fileOverBsase(e: any): void {
         this.hasBaseDropZoneOver = e;
     }
     addProduct() {
