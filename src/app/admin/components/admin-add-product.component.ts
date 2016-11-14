@@ -25,6 +25,11 @@ export class AdminAddProductComponent implements OnInit {
     public categoryResponse: ListResponse;
     private oid: string;
     private productForm: FormGroup;
+    uploadFile: any;
+    hasBaseDropZoneOver: boolean = false;
+    options: object = {
+        url: 'http://localhost:10050/upload'
+    };
     constructor(
         private fb: FormBuilder,
         private _sessionService: SessionService,
@@ -53,6 +58,16 @@ export class AdminAddProductComponent implements OnInit {
             this.categoryResponse = res;
             this.loading = false;
         });
+    }
+    handleUpload(data): void {
+        if(data && data.response){
+            data = JSON.parse(data.response);
+            this.uploadFile = data;
+        }
+    }
+
+    fileOverBsase(e:any):void {
+        this.hasBaseDropZoneOver = e;
     }
     addProduct() {
         if (this._sessionService.user !== null) {

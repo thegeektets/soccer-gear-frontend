@@ -36,7 +36,8 @@
         '@angular',
         'rxjs',
         'lodash',
-        'angular2-toaster'
+        'angular2-toaster',
+        'ng2-uploader'
     ];
 
     // Add package entries for packages that expose barrels using index.js

@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminAddCategoryComponent} from './components/admin_add_category.component';
 import {AdminListCategoryComponent} from './components/admin-list-category.component';
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {AdminListCategoryComponent} from './components/admin-list-category.compo
         AdminAddCategoryComponent,
         AdminListCategoryComponent,
         AdminListOrdersComponent,
-        AdminListUsersComponent
+        AdminListUsersComponent,
+        UPLOAD_DIRECTIVES
     ],
     imports: [
         CommonModule,
