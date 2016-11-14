@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
             if (nextValue.url !== '/auth/login' &&
                 nextValue.url !== '/account/register' &&
                 nextValue.url !== '/password/reset' &&
-                nextValue.url !== '/password/reset/change' &&
+                nextValue.url !== '/password/reset/:uid/:token' &&
                 nextValue.url !== '/auth/forgot-password' &&
                 nextValue.url !== '/cart' &&
                 nextValue.url !== '/products' &&
@@ -73,7 +73,8 @@ export class AppComponent implements OnInit {
             ) {
                 if (!this.isAuthenticated) {
                     this._router.navigate(['/auth/login']);
-                    this._router.navigate(['/password/reset/change']);
+                    this._router.navigate(['/password/reset']);
+                    this._router.navigate(['/password/reset/:uid/:token']);
                 }
             }
 

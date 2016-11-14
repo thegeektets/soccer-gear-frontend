@@ -26,7 +26,7 @@ export class PasswordResetChangeComponent {
     public user_uid: string;
     public user_token: string;
     public user: User;
-    public errors: Object;
+    public errorMsg: Object;
     public response: string;
     private passwordchanged: boolean = false;
     private form: FormGroup;
@@ -37,16 +37,15 @@ export class PasswordResetChangeComponent {
                 private fb: FormBuilder,
                 private _route: ActivatedRoute
     ) {
-        this.buildForm();
         this.getToken();
     };
 
-    buildForm() {
+    buildForm(uid, token) {
         this.form = new FormGroup({
             new_password1: new FormControl('', Validators.compose([ValidationService.passwordValidator, ValidationService.validateControl('new_password2')])),
             new_password2: new FormControl('', Validators.compose([ValidationService.passwordValidator, ValidationService.matchesFieldValidator('new_password1')])),
-            uid: new FormControl(this.user_uid),
-            token: new FormControl(this.user_token)
+            uid: new FormControl(uid, Validators.required),
+            token: new FormControl(token, Validators.required)
         });
 
     }
@@ -54,18 +53,17 @@ export class PasswordResetChangeComponent {
         this._route.params.subscribe( (params: UrlParams) => {
             if (params.hasOwnProperty('uid')) {
                 this.user_uid = params.uid;
-                alert(params.uid);
             }
             if (params.hasOwnProperty('token')) {
                 this.user_token = params.token;
-                console.log(this.user_token);
             }
+            this.buildForm(this.user_uid, this.user_token);
         });
     }
     passwordChange() {
         if (this.form.valid) {
             this.loading = true;
-            this.errors = undefined;
+            this.errorMsg = undefined;
             this._passwordchangedservice.passwordChange( JSON.stringify(this.form.getRawValue()))
                 .subscribe((res) => {
                         this.loading = false;
@@ -73,7 +71,7 @@ export class PasswordResetChangeComponent {
                     },
                     (errors) => {
                         this.loading = false;
-                        this.errors = errors;
+                        this.errorMsg = errors;
                     }
                 );
         }
