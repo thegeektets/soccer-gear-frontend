@@ -37,7 +37,7 @@ export class AdminAddCategoryComponent implements OnInit {
     buildForm() {
         this.CategoryForm = new FormGroup({
             title: new FormControl('', Validators.required),
-            parent: new FormControl(''),
+            parent_id: new FormControl(''),
         });
     }
      getCategories() {
