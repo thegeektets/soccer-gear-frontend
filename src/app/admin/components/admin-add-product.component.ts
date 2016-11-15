@@ -23,12 +23,12 @@ export class AdminAddProductComponent implements OnInit {
     public loading: boolean = true;
     public product: Product;
     public categoryResponse: ListResponse;
-    private oid: string;
     private productForm: FormGroup;
     private uploadFile: any;
+    private imageUploaded: boolean = false;
     private hasBaseDropZoneOver: boolean = false;
-    private options: Object = {
-        url: 'http://localhost:8000'
+    private options: Object  = {
+        url: 'http://www.localhost:8000/api/v1/fileupload/'
     };
     constructor(
         private fb: FormBuilder,
@@ -48,7 +48,6 @@ export class AdminAddProductComponent implements OnInit {
             price: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             category: new FormControl('', Validators.required),
-            main_image: new FormControl('', Validators.required),
             images: new FormControl('-', Validators.required),
         });
     }
@@ -60,9 +59,10 @@ export class AdminAddProductComponent implements OnInit {
         });
     }
     handleUpload(data): void {
-        if (data && data.response ) {
+        if (data && data.response) {
             data = JSON.parse(data.response);
             this.uploadFile = data;
+            this.imageUploaded = true;
         }
     }
 
@@ -76,7 +76,11 @@ export class AdminAddProductComponent implements OnInit {
                 this._sessionService.user.is_superuser
             ) {
                 this.loading = true;
-                this._productService.post(JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
+                let productData = this.productForm.getRawValue();
+                if (this.imageUploaded) {
+                     productData['datafile'] = this.uploadFile.id;
+                }
+                this._productService.post(JSON.stringify(productData)).subscribe((res) => {
                     this.loading = false;
                     this.product = res;
                     this._toasterService.pop('success', 'Product Added', this.product.title);
