@@ -12,7 +12,7 @@ export const AdminRoutes = [
     { path: 'admin/addproduct',  component: AdminAddProductComponent },
     { path: 'admin/listproduct',  component: AdminListProductComponent },
     { path: 'admin/addcategory',  component: AdminAddCategoryComponent },
-    { path: 'admin/editcategory',  component: AdminEditCategoryComponent } ,
+    { path: 'admin/editcategory/:id',  component: AdminEditCategoryComponent } ,
     { path: 'admin/listcategory',  component: AdminListCategoryComponent },
     { path: 'admin/listorders',  component: AdminListOrdersComponent } ,
     { path: 'admin/listusers',  component: AdminListUsersComponent } ,
