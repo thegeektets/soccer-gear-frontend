@@ -1,0 +1,17 @@
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+.styled-select {
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+tr:nth-child(even) {
+   background-color: #f2f2f2;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
