@@ -61,17 +61,16 @@
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
-        </div>
-    </div>
+          </div>
+	</div>
     <div class="col-sm-6 col-md-7 affix-content">
-        <as-loading *ngIf="loading"></as-loading>
+        <as-loading *ngIf="loading || loadingcats"></as-loading>
     </div>
-    <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading">
+    <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading && !loadingcats">
         <form [formGroup]="productForm">
-            <div class="form-group">
-                <h3>Edit Product </h3>
-            </div>
-
+             <div class="form-group">
+                 <h3>Edit Product  </h3>
+             </div>
             <div class="form-group">
                 <input
                         formControlName="title"
@@ -104,6 +103,7 @@
                                      [ngModel]="product.description"
                                      class="form-control"
                                      type="text"
+
 
                              ></textarea>
                 <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
@@ -153,6 +153,7 @@
                     [disabled]="!productForm.valid"> Edit Product
             </button>
         </form>
+
     </div>
     <pre>{{product | json}}</pre>
 
