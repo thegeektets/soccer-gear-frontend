@@ -61,7 +61,8 @@ export class AdminEditProductComponent implements OnInit {
             price: new FormControl(''),
             description: new FormControl(''),
             category: new FormControl(''),
-            images: new FormControl('-'),
+            images: new FormControl(''),
+            datafile_id: new FormControl(''),
         });
     }
     getProducts(id) {
@@ -83,7 +84,7 @@ export class AdminEditProductComponent implements OnInit {
         this.hasBaseDropZoneOver = e;
     }
     editProduct() {
-        this._categoryService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
+        this._productService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
             this.loading = true;
             this.product = res;
             this._toasterService.pop('success', 'Edited Changes for ', this.product.title);

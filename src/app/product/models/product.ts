@@ -10,6 +10,7 @@ export class Product extends BaseModel {
     public attributes: any;
     public attribute_fields: any;
     public datafile: any;
+    public datafile_id: number;
     public images: any[];
     public video: any[];
     public category: any[];
