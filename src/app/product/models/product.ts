@@ -9,7 +9,7 @@ export class Product extends BaseModel {
     public description: string;
     public attributes: any;
     public attribute_fields: any;
-    public main_image: string;
+    public datafile: any;
     public images: any[];
     public video: any[];
     public category: any[];
@@ -24,12 +24,12 @@ export class Product extends BaseModel {
     }
 
     getMainImage() {
-        if (typeof this.main_image === 'undefined') {
+        if (typeof this.datafile === 'undefined') {
             return ENV.DEFAULT_PRODUCT_IMAGE;
         }
-        if (this.main_image === null || this.main_image === '') {
+        if (this.datafile === null || this.datafile === '') {
             return ENV.DEFAULT_PRODUCT_IMAGE;
         }
-        return ENV.UPLOADS_URL + this.main_image;
+        return ENV.UPLOADS_URL + this.datafile.datafile;
     }
 }

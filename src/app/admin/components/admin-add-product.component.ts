@@ -78,7 +78,10 @@ export class AdminAddProductComponent implements OnInit {
                 this.loading = true;
                 let productData = this.productForm.getRawValue();
                 if (this.imageUploaded) {
-                     productData['datafile'] = this.uploadFile.id;
+                     productData['datafile'] = this.uploadFile;
+                     productData['datafile_id'] = this.uploadFile.id;
+                     productData['category_id'] = productData.category;
+
                 }
                 this._productService.post(JSON.stringify(productData)).subscribe((res) => {
                     this.loading = false;
