@@ -41,7 +41,14 @@ export class AdminListOrdersComponent implements OnInit {
             this.loading = false;
         });
     }
-
+    deleteOrder($order_id) {
+        this.loading = true;
+        this._orderService.delete($order_id).subscribe((res) => {
+            this.getOrders();
+            this._toasterService.pop('success', 'Order deleted');
+            this.loading = false;
+        });
+    }
 
 }
 

@@ -41,6 +41,15 @@ export class AdminListUsersComponent implements OnInit {
             this.loading = false;
         });
     }
+    deleteUser($user_id) {
+        this.loading = true;
+        this._userService.delete($user_id).subscribe((res) => {
+            this.getUsers();
+            this._toasterService.pop('success', 'User deleted');
+            this.loading = false;
+        });
+        return false;
+    }
 
 
 }
