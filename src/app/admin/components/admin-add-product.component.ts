@@ -80,8 +80,6 @@ export class AdminAddProductComponent implements OnInit {
                 if (this.imageUploaded) {
                      productData['datafile'] = this.uploadFile;
                      productData['datafile_id'] = this.uploadFile.id;
-                     // productData['category_id'] = productData.category;
-
                 }
                 this._productService.post(JSON.stringify(productData)).subscribe((res) => {
                     this.loading = false;
