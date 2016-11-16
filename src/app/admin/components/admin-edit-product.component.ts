@@ -27,6 +27,7 @@ interface RouteParams {
 export class AdminEditProductComponent implements OnInit {
     public errors: Object;
     public loading: boolean = true;
+    public loadingcats: boolean = true;
     public product: Product;
     public category: Category;
     public categoryResponse: ListResponse;
@@ -53,7 +54,7 @@ export class AdminEditProductComponent implements OnInit {
         this.buildForm();
     }
     ngOnInit() {
-        // this.getProducts(id);
+        this.getCategories();
     }
     buildForm() {
         this.productForm = new FormGroup({
@@ -62,6 +63,13 @@ export class AdminEditProductComponent implements OnInit {
             description: new FormControl(''),
             category: new FormControl(''),
             images: new FormControl('-'),
+            datafile_id: new FormControl(),
+        });
+    }
+    getCategories() {
+        this._categoryService.getList().subscribe((res) => {
+            this.categoryResponse = res;
+            this.loadingcats = false;
         });
     }
     getProducts(id) {
@@ -71,7 +79,7 @@ export class AdminEditProductComponent implements OnInit {
             this.loading = false;
         });
     }
-        handleUpload(data): void {
+    handleUpload(data): void {
         if (data && data.response) {
             data = JSON.parse(data.response);
             this.uploadFile = data;
@@ -83,11 +91,20 @@ export class AdminEditProductComponent implements OnInit {
         this.hasBaseDropZoneOver = e;
     }
     editProduct() {
-        this._categoryService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
-            this.loading = true;
+        this.loading = true;
+        let productData = this.productForm.getRawValue();
+        if (this.imageUploaded) {
+             productData['datafile'] = this.uploadFile;
+             productData['datafile_id'] = this.uploadFile.id;
+        } else {
+            productData['datafile'] = this.product.datafile;
+            productData['datafile_id'] = this.product.datafile.id;
+        }
+        this._productService.put(this.product.id, JSON.stringify(productData)).subscribe((res) => {
             this.product = res;
             this._toasterService.pop('success', 'Edited Changes for ', this.product.title);
             this.loading = false;
         });
+        return false;
     }
 }

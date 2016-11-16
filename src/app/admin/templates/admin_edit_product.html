@@ -63,9 +63,9 @@
           </div>
 	</div>
             <div class="col-sm-6 col-md-7 affix-content">
-                <as-loading *ngIf="loading"></as-loading>
+                <as-loading *ngIf="loading || loadingcats"></as-loading>
             </div>
-            <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading">
+            <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading && !loadingcats">
                 <form [formGroup]="productForm">
                          <div class="form-group">
                              <h3>Edit Product  </h3>
@@ -108,20 +108,19 @@
                             <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
                          </div>
                          <div class="form-group">
-                            <input
+                            <select
                                     formControlName="category"
                                     name="category"
                                     placeholder="Category"
                                     class="form-control"
-                                    [ngModel]="product.category.title"
                                     type="text"
-
                             >
-                                <!--<option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">-->
-                                    <!--{{ cat.title }}-->
-                                <!--</option>-->
-
-                            <p *ngIf="errors && errors.category_id" class="alert alert-danger">{{ errors.category_id }}</p>
+                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}"
+                                        [selected]="product.category == cat.id">
+                                    {{ cat.title }}
+                                </option>
+                            </select>
+                            <p *ngIf="errors && errors.category" class="alert alert-danger">{{ errors.category }}</p>
                          </div>
                          <div class="form-group">
                              <div class="alert alert-success" *ngIf="imageUploaded">
@@ -136,7 +135,7 @@
                                [options]="options"
                                (onUpload)="handleUpload($event)">
                          </div>
-                         <button (click)="editProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
+                         <button (click)="editProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Edit Product </button>
                 </form>
             </div>
     <pre>{{product | json}}</pre>
