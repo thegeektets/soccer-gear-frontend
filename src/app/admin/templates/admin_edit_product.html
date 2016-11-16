@@ -1,4 +1,4 @@
-<h2>Edit Products </h2>
+<h2>Admin Products </h2>
 <div>
     <div class="col-sm-3 col-md-2 affix-sidebar">
 		<div class="sidebar-nav">
@@ -76,6 +76,7 @@
                                     formControlName="title"
                                     name="title"
                                     placeholder="Product Name"
+                                    [ngModel]="product.title"
                                     class="form-control"
                                     type="text"
                                     required
@@ -87,6 +88,7 @@
                                     formControlName="price"
                                     name="price"
                                     placeholder="Product Price"
+                                    [ngModel]="product.price"
                                     class="form-control"
                                     type="text"
                                     required
@@ -98,6 +100,7 @@
                                     formControlName="description"
                                     name="description"
                                     placeholder="Product Description"
+                                    [ngModel]="product.description"
                                     class="form-control"
                                     type="text"
                                     required
@@ -105,18 +108,19 @@
                             <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
                          </div>
                          <div class="form-group">
-                            <select
+                            <input
                                     formControlName="category"
                                     name="category"
                                     placeholder="Category"
                                     class="form-control"
+                                    [ngModel]="product.category.title"
                                     type="text"
                                     required
                             >
-                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
-                                    {{ cat.title }}
-                                </option>
-                            </select>
+                                <!--<option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">-->
+                                    <!--{{ cat.title }}-->
+                                <!--</option>-->
+
                             <p *ngIf="errors && errors.category_id" class="alert alert-danger">{{ errors.category_id }}</p>
                          </div>
                          <div class="form-group">
@@ -132,7 +136,7 @@
                                [options]="options"
                                (onUpload)="handleUpload($event)">
                          </div>
-                         <button (click)="addProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
+                         <button (click)="editProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
                 </form>
             </div>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../product/services/product.service';
 import { CategoryService } from '../../product/services/category.service';
@@ -7,6 +7,12 @@ import { Product } from '../../product/models/product';
 import { SessionService } from '../../services/SessionService';
 import { ToasterService } from 'angular2-toaster';
 import { ListResponse } from '../../bases/models/ListResponse';
+import {Category} from '../../product/models/category';
+
+interface RouteParams {
+    id: string;
+}
+
 
 @Component({
     selector: 'as-admin-add-product',
@@ -22,6 +28,7 @@ export class AdminEditProductComponent implements OnInit {
     public errors: Object;
     public loading: boolean = true;
     public product: Product;
+    public category: Category;
     public categoryResponse: ListResponse;
     private productForm: FormGroup;
     private uploadFile: any;
@@ -35,12 +42,18 @@ export class AdminEditProductComponent implements OnInit {
         private _sessionService: SessionService,
         private _productService: ProductService,
         private _categoryService: CategoryService,
-        private _toasterService: ToasterService
+        private _toasterService: ToasterService,
+        private _activatedRoute: ActivatedRoute
                 ) {
+         this._activatedRoute.params.subscribe((res: RouteParams) => {
+            if (res.hasOwnProperty('id')) {
+                this.getProducts(res.id);
+            }
+        });
         this.buildForm();
     }
     ngOnInit() {
-        this.getCategories();
+        // this.getProducts(id);
     }
     buildForm() {
         this.productForm = new FormGroup({
@@ -51,22 +64,19 @@ export class AdminEditProductComponent implements OnInit {
             images: new FormControl('-', Validators.required),
         });
     }
-    getCategories() {
+    getProducts(id) {
         this.loading = true;
-        this._categoryService.getList().subscribe((res) => {
-            this.categoryResponse = res;
+        this._productService.get(id).subscribe((res) => {
+            this.product = res;
             this.loading = false;
         });
     }
-    handleUpload(data): void {
-        if (data && data.response) {
-            data = JSON.parse(data.response);
-            this.uploadFile = data;
-            this.imageUploaded = true;
-        }
-    }
-
-    fileOverBsase(e: any): void {
-        this.hasBaseDropZoneOver = e;
+    editProduct() {
+        this._categoryService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
+            this.loading = true;
+            this.product = res;
+            this._toasterService.pop('success', 'Edited Changes for ', this.product.title);
+            this.loading = false;
+        });
     }
 }
