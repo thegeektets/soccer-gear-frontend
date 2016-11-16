@@ -71,6 +71,17 @@ export class AdminEditProductComponent implements OnInit {
             this.loading = false;
         });
     }
+        handleUpload(data): void {
+        if (data && data.response) {
+            data = JSON.parse(data.response);
+            this.uploadFile = data;
+            this.imageUploaded = true;
+        }
+    }
+
+    fileOverBsase(e: any): void {
+        this.hasBaseDropZoneOver = e;
+    }
     editProduct() {
         this._categoryService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
             this.loading = true;
