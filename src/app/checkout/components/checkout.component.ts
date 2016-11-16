@@ -121,12 +121,6 @@ export class CheckoutComponent implements OnInit {
                                         });
                                     }
                                 }
-                                // remove cart
-                                this._cart.delete(this.cart.id).subscribe((resc) => {
-                                    this.cart = resc;
-                                    this.cart.items = [];
-                                });
-
                             }, (errors) => {
                                 this.loading = false;
                                 this.errors = errors;
@@ -166,6 +160,11 @@ export class CheckoutComponent implements OnInit {
                                this.order.payment_id = this.payment.id;
                                console.log(this.order);
                                this._orderService.put(this.order.id, JSON.stringify(this.order)).subscribe((rest) => {
+                                    // remove cart
+                                    this._cart.delete(this.cart.id).subscribe((resc) => {
+                                        this.cart = resc;
+                                        this.cart.items = [];
+                                    });
                                     this.loading = false;
                                     this._toasterService.pop('success', 'Payment Confirmed', '');
                                     this.paymentComplete = true;
