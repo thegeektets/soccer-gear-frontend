@@ -79,7 +79,7 @@
                                     [ngModel]="product.title"
                                     class="form-control"
                                     type="text"
-                                    required
+
                             />
                             <p *ngIf="errors && errors.title" class="alert alert-danger">{{ errors.title }}</p>
                          </div>
@@ -91,7 +91,7 @@
                                     [ngModel]="product.price"
                                     class="form-control"
                                     type="text"
-                                    required
+
                             />
                             <p *ngIf="errors && errors.price" class="alert alert-danger">{{ errors.price }}</p>
                          </div>
@@ -103,7 +103,7 @@
                                     [ngModel]="product.description"
                                     class="form-control"
                                     type="text"
-                                    required
+
                             ></textarea>
                             <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
                          </div>
@@ -115,7 +115,7 @@
                                     class="form-control"
                                     [ngModel]="product.category.title"
                                     type="text"
-                                    required
+
                             >
                                 <!--<option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">-->
                                     <!--{{ cat.title }}-->

@@ -57,11 +57,11 @@ export class AdminEditProductComponent implements OnInit {
     }
     buildForm() {
         this.productForm = new FormGroup({
-            title: new FormControl('', Validators.required),
-            price: new FormControl('', Validators.required),
-            description: new FormControl('', Validators.required),
-            category: new FormControl('', Validators.required),
-            images: new FormControl('-', Validators.required),
+            title: new FormControl(''),
+            price: new FormControl(''),
+            description: new FormControl(''),
+            category: new FormControl(''),
+            images: new FormControl('-'),
         });
     }
     getProducts(id) {
