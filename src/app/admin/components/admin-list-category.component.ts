@@ -42,4 +42,14 @@ export class AdminListCategoryComponent implements OnInit {
         });
     }
 
+    deleteCategory($category_id) {
+        this.loading = true;
+        this._categoryService.delete($category_id).subscribe((res) => {
+            this.getCategories();
+            this._toasterService.pop('success', 'Category deleted');
+            this.loading = false;
+        });
+        return false;
+    }
+
 }

@@ -44,5 +44,13 @@ export class AdminListProductComponent implements OnInit {
         });
     }
 
-
+    deleteProduct($product_id) {
+        this.loading = true;
+        this._productService.delete($product_id).subscribe((res) => {
+            this.getProducts();
+            this._toasterService.pop('success', 'Product deleted');
+            this.loading = false;
+        });
+        return false;
+    }
 }
