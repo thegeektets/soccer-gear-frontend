@@ -14,6 +14,7 @@ import { AdminAddCategoryComponent} from './components/admin_add_category.compon
 import { AdminListCategoryComponent} from './components/admin-list-category.component';
 import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import {AdminEditCategoryComponent} from './components/admin-edit-category.component';
+import {AdminEditProductComponent} from './components/admin-edit-product.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {AdminEditCategoryComponent} from './components/admin-edit-category.compo
         AdminListOrdersComponent,
         AdminListUsersComponent,
         UPLOAD_DIRECTIVES,
-        AdminEditCategoryComponent
+        AdminEditCategoryComponent,
+        AdminEditProductComponent
     ],
     imports: [
         CommonModule,
@@ -44,7 +46,8 @@ import {AdminEditCategoryComponent} from './components/admin-edit-category.compo
         AdminListUsersComponent,
         AdminListOrdersComponent,
         AdminListCategoryComponent,
-        AdminEditCategoryComponent
+        AdminEditCategoryComponent,
+        AdminEditProductComponent
     ],
     providers: [ APP_PROVIDERS ],
 })

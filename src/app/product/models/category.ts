@@ -6,6 +6,7 @@ export class Category extends BaseModel {
     public id: number;
     public title: string;
     public parent: string;
+    public parent_id: number = null;
     public categories: Category[] = [];
 
  constructor (obj: Object) {

@@ -94,7 +94,7 @@
                            {{item.price}}
                         </td>
                         <td>
-                            <a data-placement="top" data-toggle="tooltip" title="Edit">
+                            <a data-placement="top" data-toggle="tooltip" title="Edit" [routerLink]="['/admin/editproduct/' + item.id ]">
                                 <button class="btn btn-primary" data-title="Edit" data-toggle="modal" data-target="#edit" >
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
