@@ -98,10 +98,7 @@
                 <select
                         formControlName="parent_id"
                         name="parent_id"
-                        placeholder="parent"
                         class="form-control"
-                        type="text"
-
                 >
                     <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
                         {{ cat.title }}
