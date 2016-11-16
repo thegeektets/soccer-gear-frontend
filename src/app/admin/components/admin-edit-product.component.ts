@@ -100,7 +100,6 @@ export class AdminEditProductComponent implements OnInit {
             productData['datafile_id'] = this.product.datafile.id;
         }
         this._productService.put(this.product.id, JSON.stringify(productData)).subscribe((res) => {
-        this._productService.put(this.product.id, JSON.stringify(this.productForm.getRawValue())).subscribe((res) => {
             this.loading = true;
             this.product = res;
             this._toasterService.pop('success', 'Edited Changes for ', this.product.title);
