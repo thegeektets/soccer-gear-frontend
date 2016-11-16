@@ -109,18 +109,18 @@
                 <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
             </div>
             <div class="form-group">
-                <input
+                <select
                         formControlName="category"
                         name="category"
                         placeholder="Category"
                         class="form-control"
-                        [ngModel]="product.category.title"
                         type="text"
 
                 >
-                <!--<option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">-->
-                <!--{{ cat.title }}-->
-                <!--</option>-->
+                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
+                {{ cat.title }}
+                </option>
+                </select>
 
                 <p *ngIf="errors && errors.category_id" class="alert alert-danger">{{ errors.category_id }}</p>
             </div>
@@ -155,5 +155,6 @@
         </form>
     </div>
     <pre>{{product | json}}</pre>
+
 
 </div>

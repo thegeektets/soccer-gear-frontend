@@ -53,7 +53,7 @@ export class AdminEditProductComponent implements OnInit {
         this.buildForm();
     }
     ngOnInit() {
-        // this.getProducts(id);
+        this.getCategories();
     }
     buildForm() {
         this.productForm = new FormGroup({
@@ -69,6 +69,13 @@ export class AdminEditProductComponent implements OnInit {
         this.loading = true;
         this._productService.get(id).subscribe((res) => {
             this.product = res;
+            this.loading = false;
+        });
+    }
+    getCategories() {
+        this.loading = true;
+        this._categoryService.getList().subscribe((res) => {
+            this.categoryResponse = res;
             this.loading = false;
         });
     }
