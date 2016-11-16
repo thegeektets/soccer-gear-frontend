@@ -61,30 +61,16 @@
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
-<<<<<<< HEAD
           </div>
 	</div>
-            <div class="col-sm-6 col-md-7 affix-content">
-                <as-loading *ngIf="loading || loadingcats"></as-loading>
-            </div>
-            <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading && !loadingcats">
-                <form [formGroup]="productForm">
-                         <div class="form-group">
-                             <h3>Edit Product  </h3>
-                         </div>
-=======
-        </div>
-    </div>
     <div class="col-sm-6 col-md-7 affix-content">
-        <as-loading *ngIf="loading"></as-loading>
+        <as-loading *ngIf="loading || loadingcats"></as-loading>
     </div>
-    <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading">
+    <div class="col-sm-6 col-md-7 affix-content" *ngIf="!loading && !loadingcats">
         <form [formGroup]="productForm">
-            <div class="form-group">
-                <h3>Edit Product </h3>
-            </div>
->>>>>>> 04d0617412f20042d9e52edcf9caed57fce76304
-
+             <div class="form-group">
+                 <h3>Edit Product  </h3>
+             </div>
             <div class="form-group">
                 <input
                         formControlName="title"
@@ -118,7 +104,6 @@
                                      class="form-control"
                                      type="text"
 
-<<<<<<< HEAD
                             ></textarea>
                             <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
                          </div>
@@ -152,56 +137,6 @@
                          </div>
                          <button (click)="editProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Edit Product </button>
                 </form>
-=======
-                             ></textarea>
-                <p *ngIf="errors && errors.description" class="alert alert-danger">{{ errors.description }}</p>
-            </div>
-            <div class="form-group">
-                <input
-                        formControlName="category"
-                        name="category"
-                        placeholder="Category"
-                        class="form-control"
-                        [ngModel]="product.category.title"
-                        type="text"
-
-                >
-                <!--<option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">-->
-                <!--{{ cat.title }}-->
-                <!--</option>-->
-
-                <p *ngIf="errors && errors.category_id" class="alert alert-danger">{{ errors.category_id }}</p>
-            </div>
-            <div class="form-group">
-                <div class="alert alert-success" *ngIf="imageUploaded">
-                    Product Image Uploaded
-                </div>
-                <label>
-                    Main Product Image:
-                </label>
-                <input type="file"
-                       name="datafile"
-                       ngFileSelect
-                       [options]="options"
-                       (onUpload)="handleUpload($event)">
-            </div>
-            <div class="form-group">
-                <input
-                        formControlName="datafile_id"
-                        name="datafile_id"
-                        placeholder="datafile_id "
-                        [ngModel]="product.datafile_id"
-                        class="form-control"
-                        type="text"
-
-                />
-                <p *ngIf="errors && errors.price" class="alert alert-danger">{{ errors.price }}</p>
->>>>>>> 04d0617412f20042d9e52edcf9caed57fce76304
-            </div>
-            <button (click)="editProduct()" class="btn btn-success btn-block btn-checkout"
-                    [disabled]="!productForm.valid"> Edit Product
-            </button>
-        </form>
     </div>
     <pre>{{product | json}}</pre>
 
