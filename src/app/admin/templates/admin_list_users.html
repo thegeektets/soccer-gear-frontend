@@ -77,6 +77,7 @@
                     <th>Email</th>
                     <th>Billing Address</th>
                     <th>Shipping Address</th>
+                    <th>Edit</th>
                     <th>Delete</th>
                 </tr>
                 <tr *ngFor="let item of userResponse.results; let i = index" >
@@ -101,6 +102,13 @@
                         </td>
                         <td>
                             {{item.default_shipping_address}}
+                        </td>
+                        <td>
+                            <a data-placement="top" data-toggle="tooltip" title="Edit" [routerLink]="['/admin/edituser/' + item.id ]">
+                                <button class="btn btn-primary" data-title="Edit" data-toggle="modal" data-target="#edit" >
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
                         </td>
 
                         <td>

@@ -7,6 +7,7 @@ import { AdminListUsersComponent} from './components/admin-list-users.component'
 import {AdminListCategoryComponent} from './components/admin-list-category.component';
 import {AdminEditCategoryComponent} from './components/admin-edit-category.component';
 import {AdminEditProductComponent} from './components/admin-edit-product.component';
+import {AdminEditUserComponent} from './components/admin-edit-user.component';
 
 export const AdminRoutes = [
     { path: 'admin/dashboard',  component: AdminDashboardComponent } ,
@@ -18,5 +19,6 @@ export const AdminRoutes = [
     { path: 'admin/listcategory',  component: AdminListCategoryComponent },
     { path: 'admin/listorders',  component: AdminListOrdersComponent } ,
     { path: 'admin/listusers',  component: AdminListUsersComponent } ,
+    { path: 'admin/edituser/:id',  component: AdminEditUserComponent } ,
 ];
 
