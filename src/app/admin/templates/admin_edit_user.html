@@ -111,6 +111,19 @@
                                                 <p *ngIf="errors && errors.default_shipping_address" class="alert alert-danger">{{ errors.default_shipping_address }}</p>
                                             </div>
                                         </div>
+                                       <div class="col-sm-8 col-md-8">
+                                            <div class="form-group center" >
+                                                <h4>Permissions</h4><br>
+                                            </div>
+                                            <div class="form-group">
+                                                <input
+                                                        formControlName="is_admin"
+                                                        name="is_admin"
+                                                        type="checkbox"
+                                                        [checked]="userDisplayDetails.is_admin"
+                                                >  Admin User
+                                            </div>
+                                       </div>
                                      <div class="col-sm-8 col-md-8">
                                             <div class="form-group center" >
                                                 <h4>Payments</h4><br>

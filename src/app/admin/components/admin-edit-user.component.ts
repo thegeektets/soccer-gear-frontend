@@ -49,6 +49,7 @@ export class AdminEditUserComponent implements OnInit {
             full_name: new FormControl('', Validators.required),
             username: new FormControl('', Validators.required),
             email: new FormControl('', Validators.required),
+            is_admin: new FormControl(''),
             // email: new FormControl('', Validators.compose([Validators.required, ValidationService.emailValidator])),
             mobile_number: new FormControl('', Validators.required),
             date_joined: new FormControl('', Validators.required),
