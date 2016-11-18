@@ -73,6 +73,7 @@
                     <th>Order Id</th>
                     <th>Order Status</th>
                     <th> Order Cost</th>
+                    <th> Order Payment </th>
                     <th> Delete </th>
 
                 </tr>
@@ -86,6 +87,13 @@
                         </td>
                         <td>
                             {{item.cost}}
+                        </td>
+                        <td *ngIf="item.payment !== null">
+                            {{item.payment.mpesa_code}}
+                        </td>
+                        <td *ngIf="item.payment == null">
+                                Payment Pending
+
                         </td>
                         <td>
                             <a data-placement="top" data-toggle="tooltip" title="Delete" (click)="deleteOrder(item.id)">

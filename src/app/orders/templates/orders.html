@@ -34,10 +34,12 @@
                         <td>
                             {{item.cost}}
                         </td>
-                        <td>
-                            <a *ngIf="item.payment_id !== null" [routerLink]="['/account/order_payment/' + item.payment_id ]">
-                                View Payment
-                            </a>
+                        <td *ngIf="item.payment !== null">
+                            {{item.payment.mpesa_code}}
+
+                        </td>
+                        <td *ngIf="item.payment == null">
+                                Payment Pending
 
                         </td>
                         <td>
