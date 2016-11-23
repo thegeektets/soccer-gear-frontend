@@ -12,7 +12,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminAddCategoryComponent} from './components/admin_add_category.component';
 import { AdminListCategoryComponent} from './components/admin-list-category.component';
-import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import {AdminEditCategoryComponent} from './components/admin-edit-category.component';
 import {AdminEditProductComponent} from './components/admin-edit-product.component';
 import {AdminEditUserComponent} from './components/admin-edit-user.component';
@@ -27,7 +26,6 @@ import {AdminEditUserComponent} from './components/admin-edit-user.component';
         AdminListCategoryComponent,
         AdminListOrdersComponent,
         AdminListUsersComponent,
-        UPLOAD_DIRECTIVES,
         AdminEditCategoryComponent,
         AdminEditProductComponent,
         AdminEditUserComponent
