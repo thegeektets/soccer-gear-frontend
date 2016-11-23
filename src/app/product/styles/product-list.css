@@ -24,6 +24,7 @@ ul {
 }
 .thumbnail > img, .thumbnail a > img {
     max-width: 100% !important;
+    max-height: 70% !important;
 }
 .thumbnail .caption{
     padding: 9px;
