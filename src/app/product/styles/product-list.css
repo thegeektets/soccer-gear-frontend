@@ -22,6 +22,9 @@ ul {
     transition: border .2s ease-in-out;
     height: 300px;
 }
+.thumbnail > img, .thumbnail a > img {
+    max-width: 100% !important;
+}
 .thumbnail .caption{
     padding: 9px;
     color: #555;
