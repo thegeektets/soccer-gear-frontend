@@ -69,7 +69,7 @@ export class AdminEditUserComponent implements OnInit {
     getUser(id) {
         this.loading = true;
         this._userService.get(id).subscribe((res) => {
-            this.userDisplayDetails = res;
+            this.user = res;
             this.loading = false;
         });
     }
@@ -83,23 +83,15 @@ export class AdminEditUserComponent implements OnInit {
     }
 
     saveChanges() {
-         if (this._sessionService.user !== null) {
-            let user = this._sessionService.user;
-            for (let field in this.userUpdates) {
-                if (this.userUpdates.hasOwnProperty(field)) {
-                  user[field] = this.userUpdates[field].replace(/style=".*?"/ig, '');
-                }
-            }
-            this._userService.put(user.id, JSON.stringify(this.form.getRawValue())).subscribe((res) => {
-                this.loading = true;
-                this.user = res;
-                this.showSave = false;
-                this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
-                this.loading = false;
-            });
-
-         }
+        this._userService.put(this.user.id, JSON.stringify(this.form.getRawValue())).subscribe((res) => {
+            this.loading = true;
+            this.user = res;
+            this.showSave = false;
+            this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
+            this.loading = false;
+        });
     }
+
 
 
 }
