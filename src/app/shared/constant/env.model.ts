@@ -15,4 +15,5 @@ export interface AppEnv {
     API_apiVersion: string;
     UPLOADS_URL: string;
     DEFAULT_PRODUCT_IMAGE: string;
+    UPLOAD_URL: string;
 }
