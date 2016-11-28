@@ -23,7 +23,7 @@
                                                         formControlName="full_name"
                                                         name="full_name"
                                                         placeholder="Full Name"
-                                                        [ngModel]="userDisplayDetails.full_name"
+                                                        [ngModel]="user.full_name"
                                                         class="form-control"
                                                         type="text"
                                                         required
@@ -36,7 +36,7 @@
                                                         formControlName="username"
                                                         name="username"
                                                         placeholder="Username"
-                                                        [ngModel]="userDisplayDetails.username"
+                                                        [ngModel]="user.username"
                                                         class="form-control"
                                                         type="text"
                                                         required
@@ -48,7 +48,7 @@
                                                         formControlName="email"
                                                         name="email"
                                                         placeholder="Username"
-                                                        [ngModel]="userDisplayDetails.email"
+                                                        [ngModel]="user.email"
                                                         class="form-control"
                                                         type="email"
                                                         required
@@ -61,7 +61,7 @@
                                                         formControlName="mobile_number"
                                                         name="mobile_number"
                                                         placeholder="mobile number"
-                                                        [ngModel]="userDisplayDetails.mobile_number"
+                                                        [ngModel]="user.mobile_number"
                                                         class="form-control"
                                                         type="text"
                                                         required
@@ -73,7 +73,7 @@
                                                         formControlName="date_joined"
                                                         name="date_joined"
                                                         placeholder="date joined"
-                                                        [ngModel]="userDisplayDetails.date_joined"
+                                                        [ngModel]="user.date_joined"
                                                         class="form-control"
                                                         type="text"
                                                         required
@@ -92,7 +92,7 @@
                                                         name="default_billing_address"
                                                         placeholder="billing address"
                                                         class="form-control"
-                                                        [ngModel]="userDisplayDetails.default_billing_address"
+                                                        [ngModel]="user.default_billing_address"
                                                         type="text"
                                                         required
                                                 />
@@ -103,7 +103,7 @@
                                                         formControlName="default_shipping_address"
                                                         name="default_shipping_address"
                                                         placeholder="shipping addres"
-                                                        [ngModel]="userDisplayDetails.default_shipping_address"
+                                                        [ngModel]="user.default_shipping_address"
                                                         class="form-control"
                                                         type="text"
                                                         required
@@ -120,7 +120,7 @@
                                                         formControlName="is_admin"
                                                         name="is_admin"
                                                         type="checkbox"
-                                                        [checked]="userDisplayDetails.is_admin"
+                                                        [checked]="user.is_admin"
                                                 >  Admin User
                                             </div>
                                        </div>
@@ -134,7 +134,7 @@
                                                         formControlName="mpesa_phone_number"
                                                         name="mpesa_phone_number"
                                                         placeholder="Mpesa Phone Number"
-                                                        [ngModel]="userDisplayDetails.mpesa_phone_number"
+                                                        [ngModel]="user.mpesa_phone_number"
                                                         class="form-control"
                                                         type="text"
                                                         required

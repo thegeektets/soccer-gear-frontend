@@ -3,9 +3,13 @@ import { SessionService} from '../../services/SessionService';
 import { ToasterService} from 'angular2-toaster/angular2-toaster';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { ValidationService } from '../../Validators/ValidationService';
-import { Router } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {User} from '../../Account/models/user';
 import {UserService} from '../../Account/services/user.service';
+
+interface RouteParams {
+    id: string;
+}
 
 @Component({
     selector: 'as-profile',
@@ -31,13 +35,15 @@ export class AdminEditUserComponent implements OnInit {
         private _userService: UserService,
         private _sessionService: SessionService,
         private _toasterService: ToasterService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private _activatedRoute: ActivatedRoute
     ) {
-        this.isAuthenticated = this._sessionService.isLoggedIn();
-        if (this.isAuthenticated) {
-            this.getUser();
-            this.buildForm();
-        }
+         this._activatedRoute.params.subscribe((res: RouteParams) => {
+            if (res.hasOwnProperty('id')) {
+                this.getUser(res.id);
+            }
+        });
+        this.buildForm();
     }
 
     ngOnInit() {
@@ -60,9 +66,11 @@ export class AdminEditUserComponent implements OnInit {
 
     }
 
-    getUser() {
-        this._userService.get('current_user').subscribe((res) => {
-            this.userDisplayDetails = this._sessionService.user;
+    getUser(id) {
+        this.loading = true;
+        this._userService.get(id).subscribe((res) => {
+            this.user = res;
+            this.loading = false;
         });
     }
     userChanged($event, field) {
@@ -75,23 +83,15 @@ export class AdminEditUserComponent implements OnInit {
     }
 
     saveChanges() {
-         if (this._sessionService.user !== null) {
-            let user = this._sessionService.user;
-            for (let field in this.userUpdates) {
-                if (this.userUpdates.hasOwnProperty(field)) {
-                  user[field] = this.userUpdates[field].replace(/style=".*?"/ig, '');
-                }
-            }
-            this._userService.put(user.id, JSON.stringify(this.form.getRawValue())).subscribe((res) => {
-                this.loading = true;
-                this.user = res;
-                this.showSave = false;
-                this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
-                this.loading = false;
-            });
-
-         }
+        this._userService.put(this.user.id, JSON.stringify(this.form.getRawValue())).subscribe((res) => {
+            this.loading = true;
+            this.user = res;
+            this.showSave = false;
+            this._toasterService.pop('success', 'Saved Changes', this.user.full_name);
+            this.loading = false;
+        });
     }
+
 
 
 }
