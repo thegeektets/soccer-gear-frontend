@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ENV } from '../../shared/constant/env';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../product/services/product.service';
 import { CategoryService } from '../../product/services/category.service';
@@ -28,7 +28,7 @@ export class AdminAddProductComponent implements OnInit {
     private imageUploaded: boolean = false;
     private hasBaseDropZoneOver: boolean = false;
     private options: Object  = {
-        url: 'http://www.localhost:8000/api/v1/fileupload/'
+        url: ENV.UPLOAD_URL
     };
     constructor(
         private fb: FormBuilder,
