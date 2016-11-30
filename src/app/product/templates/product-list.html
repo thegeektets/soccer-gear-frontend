@@ -43,7 +43,7 @@
                     <div class="caption">
                         <span>Name: </span>
                         <a [routerLink]="['/product/' + product.id ]">{{ product.title }}</a><br>
-                        <span>Price:</span>&nbsp;&nbsp;&nbsp;{{ product.price}}<br>
+                        <span>Price:</span>&nbsp;&nbsp;{{ product.price | currency:'KES' }}<br>
                     </div>
                     <div class="btn-group cart_buttons">
                         <button type="button" class="btn btn-success btn-xs" (click)="addToCart(product)">Add to Cart

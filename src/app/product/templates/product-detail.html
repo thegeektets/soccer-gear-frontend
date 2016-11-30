@@ -30,7 +30,7 @@
                 <hr>
                 <h1 class="product_name">Price</h1>
 
-                <div class="product_price" (keyup)="productChanged($event, 'description')" [attr.contenteditable]=" _sessionService.user && ( _sessionService.user.is_superuser || _sessionService.user.is_admin)" [innerHtml]="product.price"></div>
+                <div class="product_price" (keyup)="productChanged($event, 'description')" [attr.contenteditable]=" _sessionService.user && ( _sessionService.user.is_superuser || _sessionService.user.is_admin)" [innerHtml]="product.price | currency:'KES'"></div>
                 <hr>
                 <div *ngIf="product.attribute_fields.length > 0">
                     <h1 class="product_name">Options</h1>
