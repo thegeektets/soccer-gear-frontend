@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../cart/services/cart.service';
 import { ToasterService } from 'angular2-toaster';
 import { SessionService } from '../../services/SessionService';
+import { ENV } from '../../shared/constant/env';
 
 interface Attributes {
     size?: number;
@@ -27,6 +28,8 @@ export class ProductDetailComponent implements OnInit {
     public loading: boolean = true;
     public chosen_attributes: Attributes = {};
     public showSave: boolean = false;
+    public mainImage: string;
+    public otherImages: any = {};
 
     constructor(
         private _productService: ProductService,
@@ -50,8 +53,22 @@ export class ProductDetailComponent implements OnInit {
     getProducts(id) {
         this._productService.get(id).subscribe((res) => {
             this.product = res;
+            this.mainImage = this.product.getMainImage();
+            if (String(this.product.images) !== '' && String(this.product.images) !== '-') {
+                this.otherImages = JSON.parse(String(this.product.images));
+            } else {
+                this.otherImages = '';
+            }
             this.loading = false;
         });
+    }
+
+    changeMainImage(image) {
+        this.mainImage = image;
+    }
+
+    getOtherImage(image) {
+        return ENV.UPLOADS_URL + image;
     }
     addToCart(product: Product) {
         this._cart.add(product.id, this.chosen_attributes).subscribe((res) => {

@@ -9,18 +9,19 @@
         <div class="detail-wrap ">
             <div class="col-sm-6">
                 <div class="thumbnail">
-                    <img [src]="product.getMainImage()" style="max-height: 500px;object-fit: cover;">
+                    <img [src]="mainImage" style="max-height: 500px;object-fit: cover;">
                     <hr>
                     <div class="col-sm-12 caption">
-                        <img [src]="product.getMainImage()" style="max-width: 70px; max-height: 70px;">
-                        <img [src]="product.getMainImage()" style="max-width: 70px; max-height: 70px;">
-                        <img [src]="product.getMainImage()" style="max-width: 70px; max-height: 70px;">
+                        <img [src]="product.getMainImage()" style="max-width: 70px; max-height: 70px;" (click)="changeMainImage(product.getMainImage())">
+                        <span *ngFor="let item of otherImages; let i = index">
+                                <img [src]="getOtherImage(item)" style="max-width: 70px; max-height: 70px;" (click)="changeMainImage(getOtherImage(item))" >
+                        </span>
                     </div>
                     <div style="clear: both"></div>
                 </div>
 
             </div>
-            <div class="col-sm-6">http://localhost:8000/media/uploads/product_images/3bdcc55d26b89c09b00d94bc9fa09511.jpg
+            <div class="col-sm-6">
                 <h1 class="product_name" (keyup)="productChanged($event, 'title')" [attr.contenteditable]=" _sessionService.user && ( _sessionService.user.is_superuser || _sessionService.user.is_admin)" [innerHtml]="product.title"></h1>
                 <hr>
                 <h1 class="product_name">Description</h1>

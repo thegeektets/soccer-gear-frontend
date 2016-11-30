@@ -6,7 +6,7 @@
             <div *ngIf="cart.items.length > 0">
                 <div class="col-sm-6 col-md-6">
                     <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
-                    <form [formGroup]="form" *ngIf="!paymentComplete">
+                    <form [formGroup]="form" *ngIf="!paymentComplete && !paymentConfirmed">
                         <div class="panel-heading" >
                             <h3>Complete Transaction </h3>
                             The total cost of your purchase is
@@ -48,6 +48,8 @@
                         <div class="pull-right">
                             <img src="assets/images/mpesa.png" alt="Ng2">
                         </div>
+                        <p> If SoccerGear request payment fails please use this procedure to make your payment :- </p>
+
                         <ul>
                           <li> Go to M-PESA Menu on your phone </li>
                           <li> Select Pay Bill (may be under the Lipa Na M-Pesa) </li>
@@ -63,7 +65,7 @@
                 <h3 class="text-center">You have no items in your cart, so you cannot checkout</h3>
             </div>
         </div>
-        <div *ngIf="!loading && paymentComplete">
+        <div *ngIf="!loading && paymentComplete && !paymentConfirmed">
             <div class="col-sm-6 col-md-6">
                     <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable text-center">{{errorMsg}}</div>
                     <form [formGroup]="transactionForm" *ngIf="paymentComplete">
@@ -84,6 +86,10 @@
                          <button (click)="confirmTransaction()" class="btn btn-success btn-block btn-checkout" [disabled]="!transactionForm.valid"> Confirm Transaction </button>
                     </form>
                 </div>
+        </div>
+        <div *ngIf="!loading && paymentConfirmed">
+                <h3> Payment Confirmed </h3>
+                <p> Your payment has been confirmed , delivery details will be communicated to you via phone</p>
         </div>
     </div>
 </div>

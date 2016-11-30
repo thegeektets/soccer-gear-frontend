@@ -33,6 +33,7 @@ export class CheckoutComponent implements OnInit {
     private userMpesaPhone: string;
     private userShippingAddress: string;
     private paymentComplete = false;
+    private paymentConfirmed = false;
     private user: User;
     private order_id: number;
     private item_id: number;
@@ -167,7 +168,7 @@ export class CheckoutComponent implements OnInit {
                                     });
                                     this.loading = false;
                                     this._toasterService.pop('success', 'Payment Confirmed', '');
-                                    this.paymentComplete = true;
+                                    this.paymentConfirmed = true;
                                 });
                            });
                        } else {

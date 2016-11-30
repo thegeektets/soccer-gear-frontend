@@ -28,7 +28,9 @@ export class AdminEditProductComponent implements OnInit {
     public categoryResponse: ListResponse;
     private productForm: FormGroup;
     private uploadFile: any;
+    private multiFiles: any = [];
     private imageUploaded: boolean = false;
+    private allUploaded: boolean = false;
     private hasBaseDropZoneOver: boolean = false;
     private options: Object = {
         url: 'http://www.localhost:8000/api/v1/fileupload/'
@@ -85,6 +87,15 @@ export class AdminEditProductComponent implements OnInit {
         }
     }
 
+    handlemultiUpload(data): void {
+        if (data && data.response) {
+            data = JSON.parse(data.response);
+            this.multiFiles.push(data.datafile);
+            console.log(this.multiFiles);
+            this.allUploaded = true;
+        }
+    }
+
     fileOverBsase(e: any): void {
         this.hasBaseDropZoneOver = e;
     }
@@ -98,6 +109,9 @@ export class AdminEditProductComponent implements OnInit {
         } else {
             productData['datafile'] = this.product.datafile;
             productData['datafile_id'] = this.product.datafile.id;
+        }
+        if (this.allUploaded) {
+            productData['images'] = JSON.stringify(this.multiFiles);
         }
         this._productService.put(this.product.id, JSON.stringify(productData)).subscribe((res) => {
             this.loading = true;

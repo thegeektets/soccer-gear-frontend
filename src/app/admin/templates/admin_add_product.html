@@ -132,6 +132,19 @@
                                [options]="options"
                                (onUpload)="handleUpload($event)">
                          </div>
+                         <div class="form-group">
+                            <div class="alert alert-success" *ngIf="allUploaded">
+                                Product Images Uploaded
+                            </div>
+                            <label>
+                                Other Product Images: ( upload one image at a time )
+                            </label>
+                            <input type="file"
+                                   name="otherfiles"
+                                   ngFileSelect
+                                   [options]="options"
+                                   (onUpload)="handlemultiUpload($event)">
+                        </div>
                          <button (click)="addProduct()" class="btn btn-success btn-block btn-checkout" [disabled]="!productForm.valid"> Add Product </button>
                 </form>
             </div>
