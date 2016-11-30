@@ -100,6 +100,7 @@
                         name="parent_id"
                         class="form-control"
                 >
+                     <option value="" disabled="true" [selected]="categoryResponse.results">--please select a category--</option>
                     <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
                         {{ cat.title }}
                     </option>
