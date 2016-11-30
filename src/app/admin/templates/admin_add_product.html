@@ -108,12 +108,13 @@
                             <select
                                     formControlName="category"
                                     name="category"
-                                    placeholder="Category"
                                     class="form-control"
                                     type="text"
                                     required
                             >
-                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}">
+                                <option value="" disabled="true" [selected]="categoryResponse.results">--please select a category--</option>
+                                <option *ngFor="let cat of categoryResponse.results" value="{{cat.id}}"
+                                >
                                     {{ cat.title }}
                                 </option>
                             </select>
