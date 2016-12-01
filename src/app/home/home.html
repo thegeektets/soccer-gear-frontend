@@ -1,3 +1,70 @@
-<div class="container">
-    <h3 class="panel-title"><i class="fa fa-home"></i> Home</h3>
+<div class=" banner">
+    <img src="assets/images/banner.png">
 </div>
+<div class="container">
+    <br>
+    <h2 class="panel-title"><i class="fa fa-shop"></i> Products Shop</h2>
+    <br>
+<div>
+    <div class="shop_filters col-sm-3 col-md-2">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchterm" (keypress)="searchKeyPressed($event)" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" (click)="search(searchterm)" type="button"> Search </button>
+                </span>
+            </div>
+            <as-loading *ngIf="loadingCategories"></as-loading>
+            <div *ngIf="!loadingCategories">
+                <ul style="margin: 0; padding: 0; list-style: none; margin-top: 20px;">
+                    <li>
+                        <a (click)="activateCategory(null)" >
+                            All
+                        </a>
+                    </li>
+                    <li *ngFor="let cat of categoryResponse.results">
+                        <a (click)="activateCategory(cat)" >
+                            {{ cat.title }}
+                        </a>
+                        <ul style="list-style: none; padding-left: 15px; ">
+                            <li *ngFor="let subcat of cat.categories">
+                                <a (click)="activateCategory(subcat)" >
+                                    {{ subcat.title }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 col-md-10">
+        <as-loading *ngIf="loadingProducts"></as-loading>
+        <div *ngIf="!loadingProducts">
+            <div *ngFor="let product of productsResponse.results; let i = index" class="col-sm-6 col-md-4 col-lg-4 product">
+                <div class="thumbnail" *ngIf="i < 6">
+                    <a [routerLink]="['/product/' + product.id]" >
+                        <img [src]="product.getMainImage()" style="height: 160px; object-fit: cover; width: inherit"/>
+                    </a>
+                    <div class="caption">
+                        <span>Name: </span>
+                        <a [routerLink]="['/product/' + product.id ]">{{ product.title }}</a><br>
+                        <span>Price:</span>&nbsp;&nbsp;{{ product.price | currency:'KES' }}<br>
+                    </div>
+                    <div class="btn-group cart_buttons">
+                        <button type="button" class="btn btn-success btn-xs" (click)="addToCart(product)">Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-success">View More Products !!</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
