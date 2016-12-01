@@ -1,18 +1,16 @@
 h4 {
 	color: gray;
 }
-.banner{
-	margin-right: auto;
+.banner {
+    margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-	margin-top: -50px;
-	width: 1170px;
-
+    margin-top: -50px;
+    width: inherit;
 }
-img{
-	height: 500px;
-	width: 1150px;
+.banner img{
+	height: auto;
+    width: 100%;
+    object-fit: cover;
 }
 
 ul {
