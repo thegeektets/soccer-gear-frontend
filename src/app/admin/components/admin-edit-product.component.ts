@@ -8,6 +8,8 @@ import {SessionService} from '../../services/SessionService';
 import {ToasterService} from 'angular2-toaster';
 import {ListResponse} from '../../bases/models/ListResponse';
 import {Category} from '../../product/models/category';
+import { ENV } from '../shared/constant/env';
+
 interface RouteParams {
     id: string;
 }
@@ -32,8 +34,8 @@ export class AdminEditProductComponent implements OnInit {
     private imageUploaded: boolean = false;
     private allUploaded: boolean = false;
     private hasBaseDropZoneOver: boolean = false;
-    private options: Object = {
-        url: 'http://www.localhost:8000/api/v1/fileupload/'
+    private options: Object  = {
+        url: ENV.UPLOAD_URL
     };
 
     constructor(private fb: FormBuilder,
