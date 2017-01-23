@@ -8,7 +8,7 @@ import {SessionService} from '../../services/SessionService';
 import {ToasterService} from 'angular2-toaster';
 import {ListResponse} from '../../bases/models/ListResponse';
 import {Category} from '../../product/models/category';
-import { ENV } from '../shared/constant/env';
+import { ENV } from '../../shared/constant/env';
 
 interface RouteParams {
     id: string;
